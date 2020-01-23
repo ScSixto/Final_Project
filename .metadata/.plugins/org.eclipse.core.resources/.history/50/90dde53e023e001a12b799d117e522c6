@@ -1,0 +1,26 @@
+package models;
+
+public class Util{
+
+    public static WaterType getWaterType(String waterTypeName){
+        WaterType waterType = null;
+        for(WaterType water: WaterType.values()){
+            if(water.getName().equals(waterTypeName)){
+                waterType = water;
+                break;
+            }
+        }
+        return waterType;
+    }
+
+    public static Food getFood(String foodName){
+        Food food = null;
+        for(Food foodValue: Food.values()){
+            if(foodValue.getName().equals(foodName)){
+                food = foodValue;
+                break;
+            }
+        }
+        return food;
+    }
+}

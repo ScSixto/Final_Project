@@ -1,0 +1,29 @@
+Title_Window = Sistema de Pscicultura Departamento de Boyacá
+Cultive = Cultivo
+Add = Agregar
+Delete = Eliminar
+Edit = Editar
+Language = Lenguaje
+Spanish = Español
+English = Inglés
+Export = Exportar
+Options = Opciones
+Message_Presentation = BIENVENIDO
+Exit = Salir
+Confirmation = Confirmación
+Message_End_Program = Programa finalizado
+Message_Confirmation_End_Program = ¿Estás seguro que deseas salir del programa?
+Yes_Button = Sí
+No_Button = No
+Accept_Button = Aceptar
+Town = Municipio
+Year = Año
+Specie = Especie
+Cultivated_Quantity = Cantidad Cultivada
+Harvested_Quantity = Cantidad Cosechada
+Price_Per_KG = Precio por Kg (Kilogramo)
+Cultives = Cultivos
+Tables =  Tablas
+
+
+
