@@ -6,6 +6,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class FishFarmManager{
+    "Comentario de pruba :V"
+    public static final String MENSAJE_DE_PRUEBA = "mensaje";
+
+    public void mensajeDeprueba(){
+        System.out.println(MENSAJE_DE_PRUEBA);
+    }
 
     public  static final int VALUE_NOT_FOUND_CODE = -1;
     public static final String SPECIES_UNFOUNDED_MESSAGE = "Especie no encontrada.";
