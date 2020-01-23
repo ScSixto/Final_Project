@@ -125,6 +125,11 @@ public class FishFarmManager{
 		}
 		return townsAndCultives;
     }
+    
+    //hola perro soy el sebas
+    public void metodoMio() {
+    	System.out.println("Esos si es de gangsters");
+    }
 
 
 
