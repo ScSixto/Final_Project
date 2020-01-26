@@ -38,8 +38,8 @@ public class FishFarmManager{
             }
         if(position == VALUE_NOT_FOUND_CODE) throw new UnfoundObject(TOWN_UNFOUNDED_MESSAGE);
         else return position;
-    }
-
+	}
+	
     public int searchTownByName(String name) throws UnfoundObject{
         int position = VALUE_NOT_FOUND_CODE;
         for(int i = 0; i < townList.size(); i++)
@@ -65,7 +65,8 @@ public class FishFarmManager{
 
     public Species getSpecies(int position){
         return this.speciesList.get(position);
-    }
+	}
+	
 
     public int searchSpecies(int id) throws UnfoundObject{
         int position = VALUE_NOT_FOUND_CODE;
