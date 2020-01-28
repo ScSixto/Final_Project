@@ -57,7 +57,7 @@ public class Controller implements ActionListener{
         try{
             ArrayList<Object[]> speciesList = this.fileManager.readSpeciesList(SPECIES_JSON_FILE_PATH, true);
             for(Object[] speciesObj: speciesList){
-                farmManager.addSpecies(this.farmManager.createSpecies((int)speciesObj[0],(String)speciesObj[1], (double)speciesObj[2], Util.getWaterType((String)speciesObj[3]), Util.getFood((String)speciesObj[4])));
+                farmManager.addSpecies(FishFarmManager.createSpecies((int)speciesObj[0],(String)speciesObj[1], (double)speciesObj[2], Util.getWaterType((String)speciesObj[3]), Util.getFood((String)speciesObj[4])));
             }
         }catch(FileNotFoundException e){
             e.printStackTrace();
@@ -76,11 +76,11 @@ public class Controller implements ActionListener{
             for(Object[] cultiveObj: cultiveList){
             	try {
             		speciesPosition = this.farmManager.searchSpeciesByName((String)cultiveObj[2]);
-	                cultive = this.farmManager.createCultive((Integer)cultiveObj[1], this.farmManager.getSpecies(speciesPosition), (Integer)cultiveObj[3], (Integer)cultiveObj[4], Util.toKilograms((Double)cultiveObj[5]),(Double)cultiveObj[6]);
+	                cultive = FishFarmManager.createCultive((Integer)cultiveObj[1], this.farmManager.getSpecies(speciesPosition), (Integer)cultiveObj[3], (Integer)cultiveObj[4], Util.toKilograms((Double)cultiveObj[5]),(Double)cultiveObj[6]);
 	                try{
 	                    this.farmManager.addCultive(cultive, this.farmManager.getTownId(this.farmManager.searchTownByName((String)cultiveObj[0])));
 	                }catch(UnfoundObject e){
-	                    Town town = this.farmManager.createTown((String)cultiveObj[0]);
+	                    Town town = FishFarmManager.createTown((String)cultiveObj[0]);
 	                    town.addCultive(cultive);
 	                    this.farmManager.addTown(town);
 	                }
