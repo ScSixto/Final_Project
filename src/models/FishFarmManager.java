@@ -126,6 +126,8 @@ public class FishFarmManager{
 		}
 		return townsAndCultives;
     }
+    
+    meotodo error
 
 //Esto es solo de prueba
     public void showConsoleReport(){
