@@ -37,15 +37,20 @@ public class Controller implements ActionListener{
 	    this.fileManager = new JsonFile();
 //	    this.farmManager.showConsoleReport();
 	    this.init();
+//---------------------------------------------------------------------------------------------------
 	    this.farmManager.showConsoleReport();
-		loadConfiguration();
+//---------------------------------------------------------------------------------------------------
+		this.loadConfiguration();
 		frame = new JFramePrincipal(this);	
 		frame.revalidate();
-		getLanguageDefault();
+		this.getLanguageDefault();
 	}
 	
     private void init(){
         this.readRecords();
+//---------------------------------------------------------------------------------------------------
+        farmManager.showConsoleReportReport();
+//---------------------------------------------------------------------------------------------------
     }
 
     private void readRecords(){
@@ -101,13 +106,14 @@ public class Controller implements ActionListener{
 
 	public String getLanguageDefault(){
 		languageDefault = Locale.getDefault().getLanguage();
+		String language = "Spanish";
 		switch (languageDefault) {
 		case "es":
-			return "Spanish";
+			language = "Spanish";
 		case "us":
-			return "English";
+			language = "English";
 		}
-		return "Spanish";
+		return language;
 	}
 
 	public void loadLanguage() throws IOException{
@@ -205,7 +211,7 @@ public class Controller implements ActionListener{
 			System.exit(0);	
 		}
 	}
-	
+
 	private void showTableCultives() {
 		frame.showTableCultives(farmManager.townsAndCultives());
 		showCardImage(ConstantsGUI.PANEL_TABLE);
