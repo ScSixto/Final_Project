@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -19,14 +20,17 @@ import views.ConstantsGUI;
 public class JPanelMenu extends JPanel{
 
 	private static final long serialVersionUID = 1L;
+	public static final String SEPARATOR = " |";
 	
 	private JMenuBar menu;
-	private JMenu cultive,language,export,options,table;
-	private JMenuItem add,delete,edit,spanishItem,englishItem,invalidRunners,leave,tableCultives;
+	private JMenu cultive,export,options,table;
+	private JMenuItem add,delete,edit,invalidRunners,leave,tableCultives;
 	
 	public JPanelMenu(ActionListener actionListenner) {
 		setLayout(new FlowLayout(FlowLayout.LEFT));
-		setBackground(Color.WHITE);
+		setBackground(new Color(225,225,225,150));
+		setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
+		setOpaque(false);
 		menu = new JMenuBar();
 		menu.setOpaque(false);
 		menu.setBorderPainted(false);
@@ -37,12 +41,21 @@ public class JPanelMenu extends JPanel{
 	
 	private void initComponents(ActionListener actionListenner) {
 		addCultiveOptions(actionListenner);
-		addLanguageOptions(actionListenner);
 		addExportOptions(actionListenner);
 		addTableOptions(actionListenner);
 		addLeaveOptions(actionListenner);
 		
 	}
+	
+//	private void addLogo() {
+//		JPanel panelsito = new JPanel();
+//		panelsito.setOpaque(false);
+//		JLabel labelLogo = new JLabel();
+//		labelLogo.setIcon(ConstantsGUI.convertToIcon("resources/img/logo.png",170,170));
+//		labelLogo.setOpaque(false);
+//		panelsito.add(labelLogo);
+//		panelsito.setVisible(true);
+//	}
 	
 	private void addCultiveOptions(ActionListener actionListenner) {
 		cultive = createJMenu(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_CULTIVE));
@@ -61,18 +74,6 @@ public class JPanelMenu extends JPanel{
 		menu.add(cultive);
 	}
 	
-	private void addLanguageOptions(ActionListener actionListenner) {
-		language = createJMenu(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_LANGUAGE));
-		spanishItem = createJMenuItem(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_SPANISH));
-		spanishItem.addActionListener(actionListenner);
-		spanishItem.setActionCommand(Commands.CHANGE_SPANISH.toString());
-		language.add(spanishItem);
-		englishItem = createJMenuItem(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_ENGLISH));
-		englishItem.addActionListener(actionListenner);
-		englishItem.setActionCommand(Commands.CHANGE_ENGLISH.toString());
-		language.add(englishItem);
-		menu.add(language);
-	}
 	
 	private void addExportOptions(ActionListener actionListenner) {
 		export = createJMenu(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EXPORT));
@@ -85,11 +86,12 @@ public class JPanelMenu extends JPanel{
 	
 	private void addLeaveOptions(ActionListener actionListenner) {
 		options = createJMenu(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_OPTIONS));
-		leave = createJMenuItem(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EXIT));
+		leave = createJMenuItem(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EXIT) + SEPARATOR);
 		leave.addActionListener(actionListenner);
 		leave.setActionCommand(Commands.EXIT.toString());
+		leave.setForeground(Color.WHITE);
 		options.add(leave);
-		menu.add(options);
+		menu.add(leave);
 	}
 	
 	private void addTableOptions(ActionListener actionListenner) {
@@ -102,34 +104,34 @@ public class JPanelMenu extends JPanel{
 	}
 	
 	public void changeLanguage() {
-		cultive.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_CULTIVE));
+		cultive.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_CULTIVE) + SEPARATOR);
 		add.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_ADD));
 		delete.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_DELETE));
 		edit.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EDIT));
-		language.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_LANGUAGE));
-		spanishItem.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_SPANISH));
-		englishItem.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_ENGLISH));
-		export.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EXPORT));
-		options.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_OPTIONS));
-		leave.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EXIT));
-		table.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TABLES));
+		export.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EXPORT) + SEPARATOR);
+		options.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_OPTIONS)+ SEPARATOR);
+		leave.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EXIT) + SEPARATOR);
+		table.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TABLES)+ SEPARATOR);
 		tableCultives.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TABLE_CULTIVES));
 	}
 	
 	private JMenu createJMenu(String text) {
-		JMenu menuOptions = new JMenu(text);
+		JMenu menuOptions = new JMenu(text + " |");
+		menuOptions.setForeground(Color.WHITE);
+		menuOptions.setOpaque(false);
 		createFont(menuOptions);
 		return menuOptions;
 	}
 	
 	private JMenuItem createJMenuItem(String text) {
 		JMenuItem item = new JMenuItem(text);
+		item.setOpaque(false);
 		createFont(item);
 		return item;
 	}
 	
 	private void createFont(Component component) {
-		component.setFont((new Font("Calibri", Font.BOLD,17)));
+		component.setFont((new Font("Roboto", Font.BOLD,20)));
 	}
 	
 	

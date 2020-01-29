@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -22,8 +23,10 @@ public class JPanelMenuIcons extends JPanel{
 	
 	public JPanelMenuIcons(ActionListener actionListener) {
 		FlowLayout layout = new FlowLayout(FlowLayout.CENTER);
+		setBackground(new Color(225,225,225,150));
+		setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
 		setLayout(layout);
-		setOpaque(false);
+		setOpaque(true);
 		initComponents(actionListener);
 		setVisible(true);
 	}
@@ -35,7 +38,7 @@ public class JPanelMenuIcons extends JPanel{
 	
 	private void addLogo() {
 		JLabel labelLogo = new JLabel();
-		labelLogo.setIcon(ConstantsGUI.convertToIcon("resources/img/logo.png",120,120));
+		labelLogo.setIcon(ConstantsGUI.convertToIcon("resources/img/logo.png",200,200));
 		this.add(labelLogo);
 	}
 	

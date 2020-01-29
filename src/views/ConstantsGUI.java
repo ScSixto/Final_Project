@@ -37,7 +37,7 @@ public class ConstantsGUI {
 	public static final String BUTTON_NO = "No_Button";
 	public static final String BUTTON_ACCEPT = "Accept_Button";
 	
-	public static final String COLOR_BACKGRAUND = "#181818";
+	public static final String COLOR_BACKGRAUND = "#ffffff";
 	public static final String COLOR_PRESENTATION = "#E77714";
 	
 //nombre paneles cardlayout
