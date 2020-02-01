@@ -355,9 +355,52 @@ public class FishFarmManager{
     	return waterTypeQuantityPerType;
     }
     //-------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------
-
-//Esto es solo de prueba
+    //CULTIVE PER TOWN
+    //-------------------------------------------------------------------------------------------------
+    public ArrayList<Object[]> getCultivesPerTown(String townSearched){
+    	ArrayList<Object[]> cultivesTown = new ArrayList<Object[]>();
+    	for (Town town : townList) {
+			if(town.getName().equalsIgnoreCase(townSearched)) {
+				cultivesTown = town.toObjectVectorCultives();
+				break;
+			}	
+		}
+    	return cultivesTown;
+    }
+    
+    //-------------------------------------------------------------------------------------------------
+    //CULTIVE PER SPECIE
+    //-------------------------------------------------------------------------------------------------
+    
+    public ArrayList<Object[]> getCultivesPerSpecie(String specieSearched){
+    	ArrayList<Object[]> cultivesSpecie = new ArrayList<Object[]>();
+    	for (Town town : townList) {
+    		for (Cultive cultive : town.getCultiveList()) {
+    			if(cultive.getSpecies().getName().equalsIgnoreCase(specieSearched)) {
+    				cultivesSpecie.add(cultive.toObjectVector());
+    			}	
+			}
+		}
+    	return cultivesSpecie;
+    }
+    
+    //-------------------------------------------------------------------------------------------------
+    //CULTIVE PER YEAR
+    //-------------------------------------------------------------------------------------------------
+    
+    public ArrayList<Object[]> getCultivesPerYear(int yearSearched){
+    	ArrayList<Object[]> cultivesYear = new ArrayList<Object[]>();
+    	for (Town town : townList) {
+    		for (Cultive cultive : town.getCultiveList()) {
+    			if(cultive.getYear() == (yearSearched)) {
+    				cultivesYear.add(cultive.toObjectVector());
+    			}	
+			}
+		}
+    	return cultivesYear;
+    }
+    
+    //Esto es solo de prueba
     public void showConsoleReport(){
         for(Town tow: this.townList){
             System.out.println(tow.getId() + ". " + tow.getName());
@@ -384,4 +427,12 @@ public class FishFarmManager{
             }
         }
     }
+    
+    public void reportdelreport() {
+    	for (Object[] object : getCultivesPerYear(2018)) {
+			System.err.println(object[0] + "-" + object[1] + "-" + object[2] + "-"  + object[3] );
+		}
+    }
+    
+    
 }

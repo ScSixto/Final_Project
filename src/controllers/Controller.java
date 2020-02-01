@@ -39,6 +39,7 @@ public class Controller implements ActionListener{
 	    this.init();
 //---------------------------------------------------------------------------------------------------
 	    this.farmManager.showConsoleReport();
+	    this.farmManager.reportdelreport();
 //---------------------------------------------------------------------------------------------------
 		this.loadConfiguration();
 		frame = new JFramePrincipal(this);	

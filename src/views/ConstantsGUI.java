@@ -1,5 +1,6 @@
 package views;
 
+import java.awt.Color;
 import java.awt.Image;
 
 import javax.swing.Icon;
@@ -37,8 +38,9 @@ public class ConstantsGUI {
 	public static final String BUTTON_NO = "No_Button";
 	public static final String BUTTON_ACCEPT = "Accept_Button";
 	
-	public static final String COLOR_BACKGRAUND = "#181818";
+	public static final String COLOR_BACKGRAUND = "#ffffff";
 	public static final String COLOR_PRESENTATION = "#E77714";
+	public static final Color COLOR_BLACK = Color.BLACK;
 	
 //nombre paneles cardlayout
 	public static final String PANEL_PRESENTATION = "Panel Presentation";

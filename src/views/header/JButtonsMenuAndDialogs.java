@@ -61,5 +61,6 @@ public class JButtonsMenuAndDialogs extends JButton{
 		setFocusable(false);
 		setCursor(new Cursor(Cursor.HAND_CURSOR));
 	}
+
 		
 }
