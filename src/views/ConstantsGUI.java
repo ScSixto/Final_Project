@@ -5,7 +5,6 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.Font;
 
-
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
@@ -39,6 +38,14 @@ public class ConstantsGUI {
 	public static final String T_TEXT_OF_PISCICULTURE = "Text_Of_Pisciculture";
 	public static final String T_TITLE_TABLE_CULTIVES = "Title_Table_Cultives";
 	public static final String T_GRAPHICS = "Graphics";
+
+    public static final char LOWERCASE_ACCENTED_N = (char) 241;
+    public static final char LOWERCASE_ACCENTED_A = (char) 225;
+    public static final char LOWERCASE_ACCENTED_E = (char) 233;
+    public static final char LOWERCASE_ACCENTED_I = (char) 237;
+    public static final char LOWERCASE_ACCENTED_O = (char) 243;
+    public static final char LOWERCASE_ACCENTED_U = (char) 250;
+    public static final char RAYA = (char) 8212;
 	
 	public static final String ID = "Id";
 	public static final double WIDTH = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
@@ -62,7 +69,8 @@ public class ConstantsGUI {
 	public static final String PANEL_GRAPHIC_REPORTS = "Panel Graphics Reports";
 	
 //adiciones
-	public static final String LINE = "—————————————";
+//	public static final String LINE = "—————————————";
+	public static final String LINE = RAYA + " " + RAYA + " " + RAYA + " " + RAYA + " " + RAYA + " " + RAYA + " " + RAYA + " " + RAYA + " " + RAYA + " " + RAYA;
 	public static final String PANEL_GRAFICA = "Panel Grafica";
 	
 	public static Icon convertToIcon(String route, int width, int heigth) {

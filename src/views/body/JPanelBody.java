@@ -39,8 +39,6 @@ public class JPanelBody extends JPanel{
 		this.add(table,ConstantsGUI.PANEL_TABLE);
 		panelTableReports = new JPanelTableReports();
 		this.add(panelTableReports,ConstantsGUI.PANEL_TABLE_REPORTS);
-		panelGraphicReports = new JPanelGraphicReports();
-		this.add(panelGraphicReports,ConstantsGUI.PANEL_GRAPHIC_REPORTS);
 	}
 	
 	public void addGraphicPanel(HashMap<String, Double> cols){
@@ -50,9 +48,14 @@ public class JPanelBody extends JPanel{
 		this.add(grafica, ConstantsGUI.PANEL_GRAFICA);
 	}
 	
-	public void changeLanguage(){
-		panelPresentation.changeLanguage();
-		table.changeLanguageTableCultives();
+	public void changeLanguage() {
+		setBorder(BorderFactory.createEmptyBorder(20,0,0,0));
+		panelInitial.changeLanguage();
+	}
+
+	public void setGraphicReportPanel(HashMap<String, Double> info){
+		panelGraphicReports = new JPanelGraphicReports(info);
+		this.add(panelGraphicReports,ConstantsGUI.PANEL_GRAPHIC_REPORTS);
 	}
 	
 	public void showTableCultives(HashMap<String, ArrayList<Object[]>> info) {
