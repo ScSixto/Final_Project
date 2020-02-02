@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 #Sat Feb 01 20:14:34 COT 2020
 Language=resources/language/languageUS.properties
+=======
+#Sat Feb 01 18:48:34 COT 2020
+Language=resources/language/languageES.properties
+>>>>>>> 23db6bbe654164f766c1e03100086c5d3e0f00b0

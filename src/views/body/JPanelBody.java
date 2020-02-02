@@ -1,7 +1,11 @@
 package views.body;
 
 import java.awt.CardLayout;
+<<<<<<< HEAD
 import java.awt.event.ActionListener;
+=======
+import java.awt.FlowLayout;
+>>>>>>> 23db6bbe654164f766c1e03100086c5d3e0f00b0
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -18,8 +22,12 @@ public class JPanelBody extends JPanel{
 	private CardLayout layout;
 	private JPanelInitiation panelInitial;
 	private JPanelTable table;
+<<<<<<< HEAD
 	private JPanelTableReports panelTableReports;
 	private JPanelGraphicReports panelGraphicReports;
+=======
+	private JPanel grafica;
+>>>>>>> 23db6bbe654164f766c1e03100086c5d3e0f00b0
 	
 	public JPanelBody(ActionListener actionListener) {
 		this.layout = new CardLayout();
@@ -41,9 +49,21 @@ public class JPanelBody extends JPanel{
 		this.add(panelGraphicReports,ConstantsGUI.PANEL_GRAPHIC_REPORTS);
 	}
 	
+<<<<<<< HEAD
 	public void changeLanguage() {
 		setBorder(BorderFactory.createEmptyBorder(20,0,0,0));
 		panelInitial.changeLanguage();
+=======
+	public void addGraphicPanel(HashMap<String, Double> cols){
+		grafica = new JPanel();
+		grafica.setLayout(new FlowLayout(FlowLayout.CENTER));
+		grafica.add(new JPGraphicPanel(cols));
+		this.add(grafica, ConstantsGUI.PANEL_GRAFICA);
+	}
+	
+	public void changeLanguage(){
+		panelPresentation.changeLanguage();
+>>>>>>> 23db6bbe654164f766c1e03100086c5d3e0f00b0
 		table.changeLanguageTableCultives();
 	}
 	
@@ -58,6 +78,9 @@ public class JPanelBody extends JPanel{
                 break;
             case ConstantsGUI.PANEL_TABLE:
                 this.layout.show(this, ConstantsGUI.PANEL_TABLE);
+				break;
+				case ConstantsGUI.PANEL_GRAFICA:
+                this.layout.show(this, ConstantsGUI.PANEL_GRAFICA);
                 break;
             case ConstantsGUI.PANEL_TABLE_REPORTS:
                 this.layout.show(this, ConstantsGUI.PANEL_TABLE_REPORTS);

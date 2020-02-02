@@ -46,5 +46,9 @@ public class JPanelPrincipal extends JPanel{
 	public void showTableCultives(HashMap<String, ArrayList<Object[]>> info) {
 		panelBody.showTableCultives(info);
 	}
+
+	public void showGrafica(HashMap<String, Double> earningsPerTown) {
+		panelBody.addGraphicPanel(earningsPerTown);
+	}
 	
 }

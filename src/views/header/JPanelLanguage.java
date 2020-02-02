@@ -33,9 +33,15 @@ public class JPanelLanguage extends JPanel{
 	
 	private void initComponents(ActionListener actionListener) {
 		spanishLabel = createLabel(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_SPANISH));
+<<<<<<< HEAD
 		add(createPanel(this.spanishLabel,"resources/img/BanderaEspaña.png",50,30,actionListener,Commands.CHANGE_SPANISH.toString()));
 		if(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_ENGLISH).equals("Inglés"))
 			englishLabel = createLabel(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_ENGLISH) + "   ");
+=======
+		add(createPanel(this.spanishLabel,"resources/img/BanderaEspaï¿½a.png",50,30,actionListener,Commands.CHANGE_SPANISH.toString()));
+		if(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_ENGLISH).equals("Inglï¿½s"))
+			englishLabel = createLabel(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_ENGLISH) + "    ");
+>>>>>>> 23db6bbe654164f766c1e03100086c5d3e0f00b0
 		else
 			englishLabel = createLabel(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_ENGLISH) + "  ");
 		add(createPanel(this.englishLabel,"resources/img/BanderadelReinoUnido.png",50,30,actionListener,Commands.CHANGE_ENGLISH.toString()));
@@ -63,8 +69,13 @@ public class JPanelLanguage extends JPanel{
 	
 	public void changeLanguage() {
 		spanishLabel.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_SPANISH));
+<<<<<<< HEAD
 		if(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_ENGLISH).equals("Inglés"))
 			englishLabel.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_ENGLISH) + "   ");
+=======
+		if(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_ENGLISH).equals("Inglï¿½s"))
+			englishLabel.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_ENGLISH) + "    ");
+>>>>>>> 23db6bbe654164f766c1e03100086c5d3e0f00b0
 		else
 			englishLabel.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_ENGLISH) + "  ");
 			

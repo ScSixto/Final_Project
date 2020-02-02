@@ -61,60 +61,6 @@ public class JsonFile{
 		}
 		return inputStream;
 	}
-//
-//	public static ArrayList<Object[]> readJSONServices(String route, boolean isFile) throws DeserializationException, IOException{
-//		ArrayList<Object[]> objectVector = new ArrayList<Object[]>();
-//		JsonArray fishesList = new JsonArray();
-//		if (isFile)
-//			fishesList = (JsonArray) Jsoner.deserialize( new FileReader(route));
-//		else
-//			fishesList = (JsonArray) Jsoner.deserialize(readJSONWeb(route));
-//		for (Object objectFishes : fishesList) {
-//			JsonObject object = (JsonObject) objectFishes;
-//			objectVector.add(new Object[] {object.getString("a_o"),object.getString("municipio"),object.getString("especie"),object.getString("animales_cosechados"),object.getString("peso_promedio_por_animal_al_cosechar_g")});
-//		}
-//		return objectVector;
-//	}
-
-//	public static void getEspecies() {
-//		try {
-//			int  i = 1;
-//			ArrayList<Object[]> todo = readJSONServices("https://www.datos.gov.co/resource/yi68-jjgw.json",false);
-//			for (Object[] objects : todo) {
-//				if((!especies.contains((String)objects[1])) && (String)objects[2] != null) {
-//					System.out.println( (i++) + " - " + (String)objects[1]);
-//					especies.add((String)objects[1]);
-//				}
-//			}
-////			for (String especie : especies) {
-////				System.out.println(especie);
-////			}
-//		} catch (DeserializationException e) {
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//	}
-////
-//	public static void getTowns() {
-//		try {
-//			int  i = 1;
-//			ArrayList<Object[]> todo = readJSONServices("https://www.datos.gov.co/resource/yi68-jjgw.json",false);
-//			for (Object[] objects : todo) {
-//				if((!especies.contains((String)objects[1])) && (String)objects[2] != null) {
-//					System.out.println( (i++) + " - " + (String)objects[1]);
-//					especies.add((String)objects[1]);
-//				}
-//			}
-////			for (String especie : especies) {
-////				System.out.println(especie);
-////			}
-//		} catch (DeserializationException e) {
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//	}
 
 	public Reader getReader(String route, boolean isFile) throws FileNotFoundException{
 		Reader reader;

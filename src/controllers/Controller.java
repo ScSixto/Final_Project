@@ -37,8 +37,8 @@ public class Controller implements ActionListener{
 	    this.fileManager = new JsonFile();
 //	    this.farmManager.showConsoleReport();
 //---------------------------------------------------------------------------------------------------
-	    this.farmManager.showConsoleReport();
-	    this.farmManager.reportdelreport();
+//	    this.farmManager.showConsoleReport();
+//	    this.farmManager.reportdelreport();
 //---------------------------------------------------------------------------------------------------
 		this.loadConfiguration();
 		frame = new JFramePrincipal(this);	
@@ -51,7 +51,7 @@ public class Controller implements ActionListener{
         this.readRecords();
         frame.showTableCultives(farmManager.townsAndCultives());
 //---------------------------------------------------------------------------------------------------
-        farmManager.showConsoleReportReport();
+//        farmManager.showConsoleReportReport();
 //---------------------------------------------------------------------------------------------------
     }
 
@@ -190,6 +190,10 @@ public class Controller implements ActionListener{
 		case OPEN_LENGUAGE_DIALOG:
 			frame.openDialogLanguage();
 			break;
+		case GRAFICA:
+			showGrafica();
+			showCardImage(ConstantsGUI.PANEL_GRAFICA);
+			break;
 		case EXIT:
 			endProgram();
 			break;
@@ -233,6 +237,11 @@ public class Controller implements ActionListener{
 	
 	private void showPanelGraphicReports() {
 		showCardImage(ConstantsGUI.PANEL_GRAPHIC_REPORTS);
+	}
+
+	
+	private void showGrafica() {
+		frame.showGrafica(farmManager.getFishesPerYear(FishFarmManager.CULTIVATED_FISHES_STATE));
 	}
 	
 	public static void main(String[] args) {

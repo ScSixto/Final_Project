@@ -73,4 +73,7 @@ public class JFramePrincipal extends JFrame{
 		panelPpal.showTableCultives(info);
 	}
 
+	public void showGrafica(HashMap<String, Double> earningsPerTown) {
+		panelPpal.showGrafica(earningsPerTown);
+	}
 }

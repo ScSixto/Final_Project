@@ -83,12 +83,23 @@ public class JPanelMenu extends JPanel{
 		menu.add(export);
 	}
 	
+<<<<<<< HEAD
 	private void addHomePageOptions(ActionListener actionListenner) {
 		homePage = createJMenuItem(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_HOMEPAGE) + SEPARATOR);
 		homePage.addActionListener(actionListenner);
 		homePage.setActionCommand(Commands.PANEL_INITIAL.toString());
 		homePage.setForeground(Color.WHITE);
 		menu.add(homePage);
+=======
+	private void addLeaveOptions(ActionListener actionListenner) {
+		options = createJMenu(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_OPTIONS));
+		leave = createJMenuItem(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EXIT) + SEPARATOR);
+		leave.addActionListener(actionListenner);
+		leave.setActionCommand(Commands.GRAFICA.toString());
+		leave.setForeground(Color.WHITE);
+		options.add(leave);
+		menu.add(leave);
+>>>>>>> 23db6bbe654164f766c1e03100086c5d3e0f00b0
 	}
 	
 	private void addTableOptions(ActionListener actionListenner) {
