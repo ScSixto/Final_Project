@@ -88,7 +88,7 @@ public class JPanelMenu extends JPanel{
 		options = createJMenu(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_OPTIONS));
 		leave = createJMenuItem(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EXIT) + SEPARATOR);
 		leave.addActionListener(actionListenner);
-		leave.setActionCommand(Commands.EXIT.toString());
+		leave.setActionCommand(Commands.GRAFICA.toString());
 		leave.setForeground(Color.WHITE);
 		options.add(leave);
 		menu.add(leave);

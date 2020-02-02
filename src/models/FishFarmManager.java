@@ -179,11 +179,20 @@ public class FishFarmManager{
     
     //FISH QUANTITY PER YEAR
     //-------------------------------------------------------------------------------------------------
-    public HashMap<Integer, Long> getFishesPerYear(char cultiveState){
+/*    public HashMap<Integer, Long> getFishesPerYear(char cultiveState){
     	HashMap<Integer, Long> fishesPerYear = new HashMap<>();
     	ArrayList<Integer> yearQuantity = getCultiveYearList();
 		for (Integer year : yearQuantity){
 			fishesPerYear.put(year, this.calculateFishesPerYear(year, cultiveState));		
+		}
+		return fishesPerYear;
+	}
+*/	
+    public HashMap<String, Double> getFishesPerYear(char cultiveState){
+    	HashMap<String, Double> fishesPerYear = new HashMap<>();
+    	ArrayList<Integer> yearQuantity = getCultiveYearList();
+		for (Integer year : yearQuantity){
+			fishesPerYear.put(""+year, (double)this.calculateFishesPerYear(year, cultiveState));		
 		}
 		return fishesPerYear;
     }
@@ -264,7 +273,7 @@ public class FishFarmManager{
     //-------------------------------------------------------------------------------------------------
     //EARNINGS PER TOWN
     //-------------------------------------------------------------------------------------------------
-    public HashMap<Integer,HashMap<Town, Double>> getEarningsPerTownPerYear(){
+/*    public HashMap<Integer,HashMap<Town, Double>> getEarningsPerTownPerYear(){
     	HashMap<Integer,HashMap<Town, Double>> earningsPerTownPerYear = new HashMap<>();
     	for (Integer year : this.getCultiveYearList()){
     		earningsPerTownPerYear.put(year, this.getEarningsPerTown(year));		
@@ -276,6 +285,14 @@ public class FishFarmManager{
     	HashMap<Town, Double> earningsPerTown = new HashMap<>();
     	for (Town town : this.townList){
     		earningsPerTown.put(town, this.calculateEarningsPerTown(year, town));
+    	}
+    	return earningsPerTown;
+	}
+*/
+	public HashMap<String, Double> getEarningsPerTown(int year){
+    	HashMap<String, Double> earningsPerTown = new HashMap<>();
+    	for (Town town : this.townList){
+    		earningsPerTown.put(town.getName(), this.calculateEarningsPerTown(year, town));
     	}
     	return earningsPerTown;
     }
@@ -410,7 +427,7 @@ public class FishFarmManager{
             }
         }
     }
-    
+/*
     public void showConsoleReportReport(){
     	HashMap<Integer, Long> harvestedFishesPerYear = getFishesPerYear(HARVESTED_FISHES_STATE);
     	Iterator<Entry<Integer, Long>> it = harvestedFishesPerYear.entrySet().iterator();
@@ -426,13 +443,11 @@ public class FishFarmManager{
                 		+ "\n\t\t(" + cultive.getYear() + ") Catidad: " + cultive.getCultivatedQuantity());
             }
         }
-    }
+    }*/
     
     public void reportdelreport() {
     	for (Object[] object : getCultivesPerYear(2018)) {
 			System.err.println(object[0] + "-" + object[1] + "-" + object[2] + "-"  + object[3] );
 		}
-    }
-    
-    
+	}
 }

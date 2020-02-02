@@ -2,6 +2,8 @@ package views;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.Font;
+
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -45,6 +47,7 @@ public class ConstantsGUI {
 //nombre paneles cardlayout
 	public static final String PANEL_PRESENTATION = "Panel Presentation";
 	public static final String PANEL_TABLE = "Panel Table";
+	public static final String PANEL_GRAFICA = "Panel Grafica";
 	
 	public static Icon convertToIcon(String route, int width, int heigth) {
 		ImageIcon icon = new ImageIcon(route);
@@ -52,4 +55,15 @@ public class ConstantsGUI {
 		return scaleIcon;
 	}
 
+//Valores gráfica de barras
+	public static final Color DEFAULT_AXIS_COLOR = ConstantsGUI.COLOR_BLACK;
+	public static final int MAX_PIXEL_COL_HEIGHT_VALUE = 300;
+	public static final int MAX_PIXEL_COL_WIDTH_VALUE = 40;
+	public static final int AXIS_LINE_WIDTH = 2;
+	public static final int COL_SEPARATION = 3;
+	public static final int Y_AXIS_VALUE_QUANTITY = 5;
+	public static final Font DATA_LABEL_FONT = new Font("Arial",Font.PLAIN,10);
+	public static final int Y_AXIS_LABEL_WIDTH = 30;
+	public static final int INFORMATION_CIRCLE_DIAMETER = 15;
+	public static final int INFORMATION_CIRCLE_ANGLE = 45;
 }

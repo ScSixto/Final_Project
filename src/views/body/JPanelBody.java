@@ -1,6 +1,7 @@
 package views.body;
 
 import java.awt.CardLayout;
+import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -16,6 +17,7 @@ public class JPanelBody extends JPanel{
 	private CardLayout layout;
 	private JPanelPresentation panelPresentation;
 	private JPanelTable table;
+	private JPanel grafica;
 	
 	public JPanelBody() {
 		this.layout = new CardLayout();
@@ -32,7 +34,14 @@ public class JPanelBody extends JPanel{
 		this.add(table,ConstantsGUI.PANEL_TABLE);
 	}
 	
-	public void changeLanguage() {
+	public void addGraphicPanel(HashMap<String, Double> cols){
+		grafica = new JPanel();
+		grafica.setLayout(new FlowLayout(FlowLayout.CENTER));
+		grafica.add(new JPGraphicPanel(cols));
+		this.add(grafica, ConstantsGUI.PANEL_GRAFICA);
+	}
+	
+	public void changeLanguage(){
 		panelPresentation.changeLanguage();
 		table.changeLanguageTableCultives();
 	}
@@ -48,6 +57,9 @@ public class JPanelBody extends JPanel{
                 break;
             case ConstantsGUI.PANEL_TABLE:
                 this.layout.show(this, ConstantsGUI.PANEL_TABLE);
+				break;
+				case ConstantsGUI.PANEL_GRAFICA:
+                this.layout.show(this, ConstantsGUI.PANEL_GRAFICA);
                 break;
             default:
                 break;
