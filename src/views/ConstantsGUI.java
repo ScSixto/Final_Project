@@ -2,12 +2,9 @@ package views;
 
 import java.awt.Color;
 import java.awt.Image;
-<<<<<<< HEAD
 import java.awt.Toolkit;
-=======
 import java.awt.Font;
 
->>>>>>> 23db6bbe654164f766c1e03100086c5d3e0f00b0
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -51,28 +48,22 @@ public class ConstantsGUI {
 	public static final String BUTTON_NO = "No_Button";
 	public static final String BUTTON_ACCEPT = "Accept_Button";
 	
-<<<<<<< HEAD
 	public static final String COLOR_BACKGRAUND = "#d7d8d8";
 	public static final String COLOR_PRESENTATION = "#333333";
 	public static final String COLOR_LINE = "#17a788";
-=======
-	public static final String COLOR_BACKGRAUND = "#ffffff";
-	public static final String COLOR_PRESENTATION = "#E77714";
+	public static final String COLOR_BACKGRAUND_SIXTO = "#ffffff";
+	public static final String COLOR_PRESENTATION_SIXTO = "#E77714";
 	public static final Color COLOR_BLACK = Color.BLACK;
->>>>>>> 23db6bbe654164f766c1e03100086c5d3e0f00b0
 	
 //nombre paneles cardlayout
 	public static final String PANEL_INITIAL = "Panel Presentation";
 	public static final String PANEL_TABLE = "Panel Table";
-<<<<<<< HEAD
 	public static final String PANEL_TABLE_REPORTS = "Panel Table Reports";
 	public static final String PANEL_GRAPHIC_REPORTS = "Panel Graphics Reports";
 	
 //adiciones
 	public static final String LINE = "—————————————";
-=======
 	public static final String PANEL_GRAFICA = "Panel Grafica";
->>>>>>> 23db6bbe654164f766c1e03100086c5d3e0f00b0
 	
 	public static Icon convertToIcon(String route, int width, int heigth) {
 		ImageIcon icon = new ImageIcon(route);
