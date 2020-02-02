@@ -45,7 +45,7 @@ public class ConstantsGUI {
     public static final char LOWERCASE_ACCENTED_I = (char) 237;
     public static final char LOWERCASE_ACCENTED_O = (char) 243;
     public static final char LOWERCASE_ACCENTED_U = (char) 250;
-    public static final char RAYA = (char) 8212;
+    public static final char EM_DASH = (char) 8212;
 	
 	public static final String ID = "Id";
 	public static final double WIDTH = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
@@ -69,8 +69,12 @@ public class ConstantsGUI {
 	public static final String PANEL_GRAPHIC_REPORTS = "Panel Graphics Reports";
 	
 //adiciones
+<<<<<<< HEAD
 //	public static final String LINE = "—————————————";
 	public static final String LINE = RAYA + " " + RAYA + " " + RAYA + " " + RAYA + " " + RAYA + " " + RAYA + " " + RAYA + " " + RAYA + " " + RAYA + " " + RAYA;
+=======
+	public static final String LINE = EM_DASH + " " + EM_DASH + " " + EM_DASH + " " + EM_DASH + " " + EM_DASH + " " + EM_DASH + " " + EM_DASH + " " + EM_DASH + " " + EM_DASH + " " + EM_DASH;
+>>>>>>> a90486ecaa20d6975a09dacb9b16ec463330e438
 	public static final String PANEL_GRAFICA = "Panel Grafica";
 	
 	public static Icon convertToIcon(String route, int width, int heigth) {
