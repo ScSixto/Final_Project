@@ -190,10 +190,6 @@ public class Controller implements ActionListener{
 		case OPEN_LENGUAGE_DIALOG:
 			frame.openDialogLanguage();
 			break;
-		case GRAFICA:
-			showGrafica();
-			showCardImage(ConstantsGUI.PANEL_GRAFICA);
-			break;
 		case EXIT:
 			endProgram();
 			break;
@@ -236,12 +232,8 @@ public class Controller implements ActionListener{
 	}
 	
 	private void showPanelGraphicReports() {
+		frame.showPanelGraphicReports(farmManager.getFishesPerYear(FishFarmManager.CULTIVATED_FISHES_STATE));
 		showCardImage(ConstantsGUI.PANEL_GRAPHIC_REPORTS);
-	}
-
-	
-	private void showGrafica() {
-		frame.showGrafica(farmManager.getFishesPerYear(FishFarmManager.CULTIVATED_FISHES_STATE));
 	}
 	
 	public static void main(String[] args) {

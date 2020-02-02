@@ -2,12 +2,8 @@ package views;
 
 import java.awt.Color;
 import java.awt.Image;
-<<<<<<< HEAD
 import java.awt.Toolkit;
-=======
 import java.awt.Font;
-
->>>>>>> 23db6bbe654164f766c1e03100086c5d3e0f00b0
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -42,6 +38,14 @@ public class ConstantsGUI {
 	public static final String T_TEXT_OF_PISCICULTURE = "Text_Of_Pisciculture";
 	public static final String T_TITLE_TABLE_CULTIVES = "Title_Table_Cultives";
 	public static final String T_GRAPHICS = "Graphics";
+
+    public static final char LOWERCASE_ACCENTED_N = (char) 241;
+    public static final char LOWERCASE_ACCENTED_A = (char) 225;
+    public static final char LOWERCASE_ACCENTED_E = (char) 233;
+    public static final char LOWERCASE_ACCENTED_I = (char) 237;
+    public static final char LOWERCASE_ACCENTED_O = (char) 243;
+    public static final char LOWERCASE_ACCENTED_U = (char) 250;
+    public static final char RAYA = (char) 8212;
 	
 	public static final String ID = "Id";
 	public static final double WIDTH = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
@@ -51,28 +55,22 @@ public class ConstantsGUI {
 	public static final String BUTTON_NO = "No_Button";
 	public static final String BUTTON_ACCEPT = "Accept_Button";
 	
-<<<<<<< HEAD
-	public static final String COLOR_BACKGRAUND = "#d7d8d8";
-	public static final String COLOR_PRESENTATION = "#333333";
-	public static final String COLOR_LINE = "#17a788";
-=======
-	public static final String COLOR_BACKGRAUND = "#ffffff";
-	public static final String COLOR_PRESENTATION = "#E77714";
+	public static final Color COLOR_BACKGRAUND = Color.decode("#d7d8d8");
+	public static final Color COLOR_PRESENTATION = Color.decode("#333333");
+	public static final Color COLOR_LINE = Color.decode("#17a788");
+	//public static final Color COLOR_BACKGRAUND = Color.decode("#ffffff");
+	//public static final Color COLOR_PRESENTATION = Color.decode("#E77714");
 	public static final Color COLOR_BLACK = Color.BLACK;
->>>>>>> 23db6bbe654164f766c1e03100086c5d3e0f00b0
 	
 //nombre paneles cardlayout
 	public static final String PANEL_INITIAL = "Panel Presentation";
 	public static final String PANEL_TABLE = "Panel Table";
-<<<<<<< HEAD
 	public static final String PANEL_TABLE_REPORTS = "Panel Table Reports";
 	public static final String PANEL_GRAPHIC_REPORTS = "Panel Graphics Reports";
 	
 //adiciones
-	public static final String LINE = "—————————————";
-=======
+	public static final String LINE = RAYA + " " + RAYA + " " + RAYA + " " + RAYA + " " + RAYA + " " + RAYA + " " + RAYA + " " + RAYA + " " + RAYA + " " + RAYA;
 	public static final String PANEL_GRAFICA = "Panel Grafica";
->>>>>>> 23db6bbe654164f766c1e03100086c5d3e0f00b0
 	
 	public static Icon convertToIcon(String route, int width, int heigth) {
 		ImageIcon icon = new ImageIcon(route);

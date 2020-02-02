@@ -1,7 +1,6 @@
 package views;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,7 +19,7 @@ public class JPanelPrincipal extends JPanel{
 	
 	
 	public JPanelPrincipal(ActionListener actionListenner) {
-		setBackground(Color.decode(ConstantsGUI.COLOR_BACKGRAUND));
+		setBackground(ConstantsGUI.COLOR_BACKGRAUND);
 		setLayout(new BorderLayout());
 		initComponents(actionListenner);
 		setVisible(true);
@@ -47,8 +46,7 @@ public class JPanelPrincipal extends JPanel{
 		panelBody.showTableCultives(info);
 	}
 
-	public void showGrafica(HashMap<String, Double> earningsPerTown) {
-		panelBody.addGraphicPanel(earningsPerTown);
+	public void showPanelGraphicReports(HashMap<String, Double> info) {
+		panelBody.setGraphicReportPanel(info);
 	}
-	
 }

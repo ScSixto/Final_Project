@@ -1,6 +1,5 @@
 package views.body;
 
-import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.util.ArrayList;
@@ -44,14 +43,14 @@ public class JPanelInitiation extends JPanel{
 	public void addInformation() {
 		labelTitle = new JLabel(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_PISCICULTURE));
 		labelTitle.setFont(new Font("Roboto", Font.ITALIC, 50));
-		labelTitle.setForeground(Color.decode(ConstantsGUI.COLOR_PRESENTATION));
+		labelTitle.setForeground(ConstantsGUI.COLOR_PRESENTATION);
 //		labelTitle.setBackground(Color.BLACK);
 //		labelTitle.setOpaque(true);
 		panelYAxis.add(labelTitle);
 		createLine();
 		labelText = new JLabel("<html>"+ HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_OF_PISCICULTURE) + "</html>");
 		labelText.setFont(new Font("Roboto", Font.PLAIN, 20));
-		labelText.setForeground(Color.decode(ConstantsGUI.COLOR_PRESENTATION));
+		labelText.setForeground(ConstantsGUI.COLOR_PRESENTATION);
 //		labelText.setBackground(Color.BLACK);
 //		labelText.setOpaque(true);
 		panelYAxis.add(labelText);
@@ -61,7 +60,7 @@ public class JPanelInitiation extends JPanel{
 		labelTitleTable = new JLabel( HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TITLE_TABLE_CULTIVES) );
 		labelTitleTable.setBorder(BorderFactory.createEmptyBorder(20,0,0,0));
 		labelTitleTable.setFont(new Font("Roboto", Font.ITALIC, 50));
-		labelTitleTable.setForeground(Color.decode(ConstantsGUI.COLOR_PRESENTATION));
+		labelTitleTable.setForeground(ConstantsGUI.COLOR_PRESENTATION);
 //		labelTitleTable.setBackground(Color.BLACK);
 //		labelTitleTable.setOpaque(true);
 		panelYAxis.add(labelTitleTable);
@@ -85,7 +84,7 @@ public class JPanelInitiation extends JPanel{
 	public void createLine() {
 		JLabel line = new JLabel(ConstantsGUI.LINE);
 		line.setFont(new Font("Roboto", Font.BOLD, 40));
-		line.setForeground(Color.decode(ConstantsGUI.COLOR_LINE));
+		line.setForeground(ConstantsGUI.COLOR_LINE);
 		panelYAxis.add(line);
 		
 	}

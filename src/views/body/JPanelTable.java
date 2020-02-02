@@ -76,7 +76,7 @@ public class JPanelTable extends JPanel{
 	public void showTableCultives(HashMap<String, ArrayList<Object[]>> info) {
 		setBorder(BorderFactory.createEmptyBorder(20, 0, 15, 0));
 		cleanRowsTable();
-		jtElements.getTableHeader().setBackground(Color.decode(ConstantsGUI.COLOR_LINE));
+		jtElements.getTableHeader().setBackground(ConstantsGUI.COLOR_LINE);
 		changeLanguageTableCultives();
 		stringFormat(info);
 		this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH * 0.12),(int)(ConstantsGUI.HEIGHT*0.6)));
