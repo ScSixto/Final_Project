@@ -41,6 +41,7 @@ public class JPanelHeader extends JPanel{
 	
 	public void changeLanguage() {
 		panelMenu.changeLanguage();
+		panelLanguage.changeLanguage();
 	}
 	
 	private void setBackGraund() {
@@ -49,8 +50,8 @@ public class JPanelHeader extends JPanel{
 	
 	public void addPanelLogoAndMenu(ActionListener actionListener) {
 		JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-//		panel.setBackground(new Color(198,227,128,180));
-		panel.setBackground(Color.decode("#a0b56f"));
+		panel.setBackground(new Color(198,227,128,180));
+//		panel.setBackground(Color.decode("#a0b56f"));
 		panel.add(addLogo());
 		panel.add(panelMenu);
 		panel.add(panelLanguage);
@@ -58,14 +59,14 @@ public class JPanelHeader extends JPanel{
 	}
 	
 	private JPanel addLogo() {
-		JPanel panelsito = new JPanel();
-		panelsito.setOpaque(false);
+		JPanel panelMenu = new JPanel();
+		panelMenu.setOpaque(false);
 		JLabel labelLogo = new JLabel();
 		labelLogo.setIcon(ConstantsGUI.convertToIcon("resources/img/logo.png",150,150));
 		labelLogo.setOpaque(false);
-		panelsito.add(labelLogo);
-		panelsito.setVisible(true);
-		return panelsito;
+		panelMenu.add(labelLogo);
+		panelMenu.setVisible(true);
+		return panelMenu;
 	}
 	
 	public void paintComponent(Graphics g) {

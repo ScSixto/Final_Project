@@ -53,9 +53,9 @@ public class JPanelMenuIcons extends JPanel{
 		language.addActionListener(actionListener);
 		language.setActionCommand(Commands.OPEN_LENGUAGE_DIALOG.toString());
 		add(language);
-		tableCultives = new JButtonsMenuAndDialogs(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TABLE_CULTIVES),"resources/img/tablaCultivos.png",WIDTH_BUTTONS,HEIGTH_BUTTONS,Color.WHITE);
+		tableCultives = new JButtonsMenuAndDialogs(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TABLES),"resources/img/tablaCultivos.png",WIDTH_BUTTONS,HEIGTH_BUTTONS,Color.WHITE);
 		tableCultives.addActionListener(actionListener);
-		tableCultives.setActionCommand(Commands.TABLE_CULTIVES.toString());
+		tableCultives.setActionCommand(Commands.TABLE_REPORTS.toString());
 		add(tableCultives);
 	}
 	
@@ -64,7 +64,7 @@ public class JPanelMenuIcons extends JPanel{
 		delete.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_DELETE));
 		edit.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EDIT));
 		language.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_LANGUAGE));
-		tableCultives.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TABLE_CULTIVES));
+		tableCultives.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TABLES));
 	}
 	
 }

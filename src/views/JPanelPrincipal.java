@@ -29,7 +29,7 @@ public class JPanelPrincipal extends JPanel{
 	private void initComponents(ActionListener actionListenner) {
 		panelHeader = new JPanelHeader(actionListenner);
 		add(panelHeader,BorderLayout.NORTH);
-		panelBody = new JPanelBody();
+		panelBody = new JPanelBody(actionListenner);
 		add(panelBody,BorderLayout.CENTER);
 		
 	}

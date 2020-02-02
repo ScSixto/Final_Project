@@ -35,7 +35,7 @@ public class JPanelLanguage extends JPanel{
 		spanishLabel = createLabel(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_SPANISH));
 		add(createPanel(this.spanishLabel,"resources/img/BanderaEspaña.png",50,30,actionListener,Commands.CHANGE_SPANISH.toString()));
 		if(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_ENGLISH).equals("Inglés"))
-			englishLabel = createLabel(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_ENGLISH) + "    ");
+			englishLabel = createLabel(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_ENGLISH) + "   ");
 		else
 			englishLabel = createLabel(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_ENGLISH) + "  ");
 		add(createPanel(this.englishLabel,"resources/img/BanderadelReinoUnido.png",50,30,actionListener,Commands.CHANGE_ENGLISH.toString()));
@@ -64,7 +64,7 @@ public class JPanelLanguage extends JPanel{
 	public void changeLanguage() {
 		spanishLabel.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_SPANISH));
 		if(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_ENGLISH).equals("Inglés"))
-			englishLabel.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_ENGLISH) + "    ");
+			englishLabel.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_ENGLISH) + "   ");
 		else
 			englishLabel.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.LANGUAGE_ENGLISH) + "  ");
 			

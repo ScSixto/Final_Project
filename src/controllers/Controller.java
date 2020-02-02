@@ -36,19 +36,20 @@ public class Controller implements ActionListener{
 		this.farmManager = new FishFarmManager();
 	    this.fileManager = new JsonFile();
 //	    this.farmManager.showConsoleReport();
-	    this.init();
 //---------------------------------------------------------------------------------------------------
 	    this.farmManager.showConsoleReport();
 	    this.farmManager.reportdelreport();
 //---------------------------------------------------------------------------------------------------
 		this.loadConfiguration();
 		frame = new JFramePrincipal(this);	
-		frame.revalidate();
 		this.getLanguageDefault();
+		
+		this.init();
 	}
 	
     private void init(){
         this.readRecords();
+        frame.showTableCultives(farmManager.townsAndCultives());
 //---------------------------------------------------------------------------------------------------
         farmManager.showConsoleReportReport();
 //---------------------------------------------------------------------------------------------------
@@ -192,8 +193,16 @@ public class Controller implements ActionListener{
 		case EXIT:
 			endProgram();
 			break;
-		case TABLE_CULTIVES:
-			showTableCultives();
+		case TABLE_REPORTS:
+			showPanelTableReports();
+			break;
+		case PANEL_INITIAL:
+			showPanelInitial();
+			break;
+		case GRAPHIC_REPORTS:
+			showPanelGraphicReports();
+			break;
+		default:
 			break;
 		}
 	}
@@ -213,9 +222,17 @@ public class Controller implements ActionListener{
 		}
 	}
 
-	private void showTableCultives() {
+	private void showPanelInitial() {
 		frame.showTableCultives(farmManager.townsAndCultives());
-		showCardImage(ConstantsGUI.PANEL_TABLE);
+		showCardImage(ConstantsGUI.PANEL_INITIAL);
+	}
+	
+	private void showPanelTableReports() {
+		showCardImage(ConstantsGUI.PANEL_TABLE_REPORTS);
+	}
+	
+	private void showPanelGraphicReports() {
+		showCardImage(ConstantsGUI.PANEL_GRAPHIC_REPORTS);
 	}
 	
 	public static void main(String[] args) {

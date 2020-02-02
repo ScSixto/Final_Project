@@ -2,6 +2,7 @@ package views.body;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.util.ArrayList;
 //import java.util.HashMap;
@@ -39,13 +40,11 @@ public class JPanelTable extends JPanel{
 	private void initComponents() {
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.setBackground(Color.decode("#30373D"));
-//		String[] header = Constants.HEAD_TABLE;
 		dtmElements = new DefaultTableModel() {
 			private static final long serialVersionUID = 1L;
 			@Override
 		    public boolean isCellEditable(int rowIndex,int columnIndex){return false;}
 		};
-//		dtmElements.setColumnIdentifiers(header);
 		
 		Font fontHeader = new Font("Franklin Gothic Demi", Font.ITALIC,15);
 		
@@ -53,7 +52,6 @@ public class JPanelTable extends JPanel{
 		jtElements.setModel(dtmElements);
 		jtElements.setFont(new Font("Arial", Font.PLAIN,15));
 		jtElements.getTableHeader().setReorderingAllowed(false);
-		jtElements.getTableHeader().setBackground(Color.decode("#282E33"));;
 		jtElements.getTableHeader().setForeground(Color.white);
 		jtElements.getTableHeader().setFont(fontHeader);
 		jtElements.setBackground(Color.white);
@@ -76,10 +74,12 @@ public class JPanelTable extends JPanel{
 	}
 	
 	public void showTableCultives(HashMap<String, ArrayList<Object[]>> info) {
-		setBorder(BorderFactory.createEmptyBorder(0, 20, 15, 20));
+		setBorder(BorderFactory.createEmptyBorder(20, 0, 15, 0));
 		cleanRowsTable();
+		jtElements.getTableHeader().setBackground(Color.decode(ConstantsGUI.COLOR_LINE));
 		changeLanguageTableCultives();
 		stringFormat(info);
+		this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH * 0.12),(int)(ConstantsGUI.HEIGHT*0.6)));
 	}
 	
 	public void changeLanguageTableCultives() {
@@ -91,6 +91,7 @@ public class JPanelTable extends JPanel{
 				HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TOTAL_CULTIVE_WEIGHT_KG),
 				HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TOTAL_CULTIVE_PRICE)};
 		dtmElements.setColumnIdentifiers(header);
+//		this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH * 0.12),(int)(ConstantsGUI.HEIGHT*0.5)));
 	}
 	
 //	public void updateTable() {
@@ -115,14 +116,6 @@ public class JPanelTable extends JPanel{
 		}
 		addRunnerList(arrayFormat);
 	}
-	
-//	public void showTableAvarage(HashMap<String, LocalTime> avarage) {
-//		setBorder(BorderFactory.createEmptyBorder(0, 30, 0, 30));
-//		cleanRowsTable();
-//		String[] headerAvarage = Constants.TITLE_AVARAGE;
-//		dtmElements.setColumnIdentifiers(headerAvarage);
-//		stringFormat(avarage);
-//	}
 	
 	private void cleanRowsTable() {
 		dtmElements.setNumRows(0);

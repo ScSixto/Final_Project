@@ -23,12 +23,11 @@ public class JPanelMenu extends JPanel{
 	public static final String SEPARATOR = " |";
 	
 	private JMenuBar menu;
-	private JMenu cultive,export,options,table;
-	private JMenuItem add,delete,edit,invalidRunners,leave,tableCultives;
+	private JMenu cultive,export,reports;
+	private JMenuItem add,delete,edit,invalidRunners,homePage,tables,graphics;
 	
 	public JPanelMenu(ActionListener actionListenner) {
 		setLayout(new FlowLayout(FlowLayout.LEFT));
-		setBackground(new Color(225,225,225,150));
 		setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
 		setOpaque(false);
 		menu = new JMenuBar();
@@ -40,10 +39,10 @@ public class JPanelMenu extends JPanel{
 	}
 	
 	private void initComponents(ActionListener actionListenner) {
+		addHomePageOptions(actionListenner);
 		addCultiveOptions(actionListenner);
 		addExportOptions(actionListenner);
 		addTableOptions(actionListenner);
-		addLeaveOptions(actionListenner);
 		
 	}
 	
@@ -84,23 +83,25 @@ public class JPanelMenu extends JPanel{
 		menu.add(export);
 	}
 	
-	private void addLeaveOptions(ActionListener actionListenner) {
-		options = createJMenu(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_OPTIONS));
-		leave = createJMenuItem(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EXIT) + SEPARATOR);
-		leave.addActionListener(actionListenner);
-		leave.setActionCommand(Commands.EXIT.toString());
-		leave.setForeground(Color.WHITE);
-		options.add(leave);
-		menu.add(leave);
+	private void addHomePageOptions(ActionListener actionListenner) {
+		homePage = createJMenuItem(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_HOMEPAGE) + SEPARATOR);
+		homePage.addActionListener(actionListenner);
+		homePage.setActionCommand(Commands.PANEL_INITIAL.toString());
+		homePage.setForeground(Color.WHITE);
+		menu.add(homePage);
 	}
 	
 	private void addTableOptions(ActionListener actionListenner) {
-		table = createJMenu(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TABLES));
-		tableCultives = createJMenuItem(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TABLE_CULTIVES));
-		tableCultives.addActionListener(actionListenner);
-		tableCultives.setActionCommand(Commands.TABLE_CULTIVES.toString());
-		table.add(tableCultives);
-		menu.add(table);
+		reports = createJMenu(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_REPORTS));
+		tables = createJMenuItem(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TABLES));
+		tables.addActionListener(actionListenner);
+		tables.setActionCommand(Commands.TABLE_REPORTS.toString());
+		reports.add(tables);
+		graphics = createJMenuItem(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_GRAPHICS));
+		graphics.addActionListener(actionListenner);
+		graphics.setActionCommand(Commands.GRAPHIC_REPORTS.toString());
+		reports.add(graphics);
+		menu.add(reports);
 	}
 	
 	public void changeLanguage() {
@@ -109,10 +110,9 @@ public class JPanelMenu extends JPanel{
 		delete.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_DELETE));
 		edit.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EDIT));
 		export.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EXPORT) + SEPARATOR);
-		options.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_OPTIONS)+ SEPARATOR);
-		leave.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EXIT) + SEPARATOR);
-		table.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TABLES)+ SEPARATOR);
-		tableCultives.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TABLE_CULTIVES));
+		homePage.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_HOMEPAGE) + SEPARATOR);
+		reports.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_REPORTS)+ SEPARATOR);
+		tables.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TABLES));
 	}
 	
 	private JMenu createJMenu(String text) {

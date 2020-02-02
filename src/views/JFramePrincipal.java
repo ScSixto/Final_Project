@@ -1,5 +1,6 @@
 package views;
 
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -7,6 +8,7 @@ import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 
 import general.HandlerLanguage;
 import views.dialogs.JDialogLanguage;
@@ -17,6 +19,8 @@ public class JFramePrincipal extends JFrame{
 	
 	private JPanelPrincipal panelPpal;
 	private JDialogLanguage dialogLanguage;
+
+	private JScrollPane scroll;
 	
 	public JFramePrincipal(ActionListener actionListener) {
 		setMinimumSize(new Dimension(700, 400));
@@ -29,9 +33,14 @@ public class JFramePrincipal extends JFrame{
 	}
 	
 	private void initComponents(ActionListener actionListener) {
+		scroll = new JScrollPane();
+		scroll.setOpaque(false);
+		scroll.setBorder(null);
+		scroll.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panelPpal = new JPanelPrincipal(actionListener);
-		this.add(panelPpal);
-		dialogLanguage = new JDialogLanguage(this,actionListener);
+		dialogLanguage = new JDialogLanguage(this,actionListener);		
+		scroll.setViewportView(panelPpal);
+		add(scroll);
 	}
 	
 	public void changeLanguage() {
