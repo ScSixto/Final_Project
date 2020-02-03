@@ -113,6 +113,7 @@ public class JPanelMenu extends JPanel{
 		homePage.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_HOMEPAGE) + SEPARATOR);
 		reports.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_REPORTS)+ SEPARATOR);
 		tables.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TABLES));
+		graphics.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_GRAPHICS));
 	}
 	
 	private JMenu createJMenu(String text) {

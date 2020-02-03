@@ -80,7 +80,12 @@ public class JFramePrincipal extends JFrame{
 		panelPpal.showTableCultives(info);
 	}
 
-	public void showPanelGraphicReports(HashMap<String, Double> info, String graphicTitle) {
-		panelPpal.showPanelGraphicReports(info, graphicTitle);
+	public void showBarGraphicReport(HashMap<String, Double> info, GraphicReportTitle graphicTitle) {
+		panelPpal.showBarGraphicReport(info, graphicTitle);
+	}
+	
+	public void repaintPanel() {
+		panelPpal.validate();
+		panelPpal.repaint();
 	}
 }

@@ -117,8 +117,8 @@ public class JPBarGraphicPanel extends JPanel {
 
 	public void addPanelInformationScrollBar() {
         JScrollPane scrollPane = new JScrollPane(this.panelInformation);
-        //scrollPane.getVerticalScrollBar().setUI(new JScrollFormat());
-        // scrollPane.getHorizontalScrollBar().setUI(new JScrollFormat());
+        scrollPane.getVerticalScrollBar().setUI(new JScrollFormat());
+        scrollPane.getHorizontalScrollBar().setUI(new JScrollFormat());
         scrollPane.setBorder(null);
 		scrollPane.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.add(scrollPane);

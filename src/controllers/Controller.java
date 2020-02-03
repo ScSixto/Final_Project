@@ -20,6 +20,7 @@ import models.Town;
 import models.Util;
 import persistence.JsonFile;
 import views.ConstantsGUI;
+import views.GraphicReportTitle;
 import views.JFramePrincipal;
 import views.body.UtilView;
 
@@ -184,6 +185,7 @@ public class Controller implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		frame.repaintPanel();
 		switch (Commands.valueOf(e.getActionCommand())) {
 		case CHANGE_ENGLISH:
 			manageChangeLanguageUS();
@@ -204,7 +206,10 @@ public class Controller implements ActionListener{
 			showPanelInitial();
 			break;
 		case GRAPHIC_REPORTS:
-			showPanelGraphicReports();
+			showGraphicButtonPanel();
+			break;
+		case GRAPHIC_REPORT_ONE:
+			showCultivatedAndHarvestedFishesPerYear();
 			break;
 		default:
 			break;
@@ -233,10 +238,7 @@ public class Controller implements ActionListener{
 
 	private void showCultivesTable(){
 		HashMap<String, ArrayList<Object[]>> cultivesTable = farmManager.townsAndCultives();
-		HashMap<String, ArrayList<Object[]>> formatedCultivesTable = new HashMap<>();
-		ArrayList<Object[]> cultiveTemp = new ArrayList<>();
 		Iterator<Entry<String, ArrayList<Object[]>>> it = cultivesTable.entrySet().iterator();
-
 		while(it.hasNext()){
 			Entry<String, ArrayList<Object[]>> entry = it.next();
 			for (Object[] objectArray : entry.getValue()) {
@@ -245,7 +247,6 @@ public class Controller implements ActionListener{
 				objectArray[5] = UtilView.formatDouble((double)objectArray[5]);
 				objectArray[6] = "COL$ " + UtilView.formatDouble((double)objectArray[6]);
 			}
-			formatedCultivesTable.put(entry.getKey(),cultiveTemp);
 		}
 		frame.showTableCultives(cultivesTable);
 	}
@@ -254,9 +255,12 @@ public class Controller implements ActionListener{
 		showCardImage(ConstantsGUI.PANEL_TABLE_REPORTS);
 	}
 	
-	private void showPanelGraphicReports() {
-		String graphicTitle = HandlerLanguage.languageProperties.getProperty(ConstantsGUI.GRAPHIC_TITLE_CULTIVATED_FISHES_PER_YEAR);
-		frame.showPanelGraphicReports(farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), graphicTitle);
+	private void showCultivatedAndHarvestedFishesPerYear(){
+		frame.showBarGraphicReport(farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), GraphicReportTitle.CULTIVATED_AND_HARVESTED_FISHES_PER_YEAR);
+		showCardImage(ConstantsGUI.PANEL_GRAPHIC_REPORT);
+	}
+
+	private void showGraphicButtonPanel() {
 		showCardImage(ConstantsGUI.PANEL_GRAPHIC_REPORTS);
 	}
 	

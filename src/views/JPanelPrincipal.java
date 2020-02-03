@@ -1,6 +1,7 @@
 package views;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,7 +31,6 @@ public class JPanelPrincipal extends JPanel{
 		add(panelHeader,BorderLayout.NORTH);
 		panelBody = new JPanelBody(actionListenner);
 		add(panelBody,BorderLayout.CENTER);
-		
 	}
 	
 	public void changeLanguage() {
@@ -46,7 +46,11 @@ public class JPanelPrincipal extends JPanel{
 		panelBody.showTableCultives(info);
 	}
 
-	public void showPanelGraphicReports(HashMap<String, Double> info, String graphicTitle) {
-		panelBody.setGraphicReportPanel(info, graphicTitle);
+	public void showBarGraphicReport(HashMap<String, Double> info, GraphicReportTitle graphicTitle) {
+		panelBody.showBarGraphicReport(info, graphicTitle);
 	}
+	
+//	public void repaint() {
+//		panelHeader.repaint();
+//	}
 }

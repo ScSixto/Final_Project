@@ -17,7 +17,7 @@ import controllers.Commands;
 import general.HandlerLanguage;
 import views.ConstantsGUI;
 import views.JFramePrincipal;
-import views.header.JButtonsMenuAndDialogs;
+import views.buttons.JButtonsMenuAndDialogs;
 
 public class JDialogLanguage extends JDialog{
 

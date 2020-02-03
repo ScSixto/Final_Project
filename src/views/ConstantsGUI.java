@@ -9,6 +9,8 @@ import java.awt.Font;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 
 public class ConstantsGUI {
 	// Vaores de la pantalla
@@ -46,6 +48,18 @@ public class ConstantsGUI {
 	public static final String T_GRAPHICS = "Graphics";
 	// Titulos de Gráficos
 	public static final String GRAPHIC_TITLE_CULTIVATED_FISHES_PER_YEAR = "Cultivated_Fishes_Per_Year";
+	public static final String T_TITLE_REPORT_GRAPHICS = "Title_Report_Graphics";
+	public static final String T_TITLE_REPORT_TABLES = "Title_Report_Tables";
+	public static final String T_TEXT_REPORT_GRAPHICS_ONE = "Text_Report_Graphics_One";
+	public static final String T_TEXT_REPORT_GRAPHICS_TWO = "Text_Report_Graphics_Two";
+	public static final String T_TEXT_REPORT_GRAPHICS_THREE = "Text_Report_Graphics_Three";
+	public static final String T_TEXT_REPORT_GRAPHICS_FOUR = "Text_Report_Graphics_Four";
+	public static final String T_TEXT_REPORT_GRAPHICS_FIVE = "Text_Report_Graphics_Five";
+	public static final String T_TEXT_REPORT_GRAPHICS_SIX = "Text_Report_Graphics_Six";
+	public static final String T_TEXT_REPORT_GRAPHICS_SEVEN = "Text_Report_Graphics_Seven";
+	public static final String T_TEXT_REPORT_GRAPHICS_EIGHT = "Text_Report_Graphics_Eight";
+	public static final String T_TEXT_REPORT_GRAPHICS_NINE = "Text_Report_Graphics_Nine";
+	public static final String T_TEXT_REPORT_GRAPHICS_TEN = "Text_Report_Graphics_Ten";
 
     public static final char LOWERCASE_ACCENTED_N = (char) 241;
     public static final char LOWERCASE_ACCENTED_A = (char) 225;
@@ -68,6 +82,8 @@ public class ConstantsGUI {
 	public static final Color COLOR_LINE = Color.decode("#17a788");
 	public static final Color COLOR_WHITE = Color.WHITE;
 	//public static final Color COLOR_PRESENTATION = Color.decode("#E77714");
+	//public static final Color COLOR_BACKGRAUND_SIXTO = Color.decode("#ffffff");
+	//public static final String COLOR_PRESENTATION_SIXTO = "#E77714";
 	public static final Color COLOR_BLACK = Color.BLACK;
 	public static final Paint COLOR_SCROLL_GRAY = Color.decode("#444444");
 
@@ -76,17 +92,13 @@ public class ConstantsGUI {
 	public static final String PANEL_INITIAL = "Panel Presentation";
 	public static final String PANEL_TABLE = "Panel Table";
 	public static final String PANEL_TABLE_REPORTS = "Panel Table Reports";
+	public static final String PANEL_GRAPHIC_REPORT = "Panel Table Specific Report";
 	public static final String PANEL_GRAPHIC_REPORTS = "Panel Graphics Reports";
+	public static final String PANEL_GRAPHIC_BAR_CHART = "Panel Bar Chart";
 	
 //adiciones
-	public static final String LINE = EM_DASH + " " + EM_DASH + " " + EM_DASH + " " + EM_DASH + " " + EM_DASH + " " + EM_DASH + " " + EM_DASH + " " + EM_DASH + " " + EM_DASH + " " + EM_DASH;
-	public static final String PANEL_GRAFICA = "Panel Grafica";
+	public static final String LINE = EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH;
 	
-	public static Icon convertToIcon(String route, int width, int heigth) {
-		ImageIcon icon = new ImageIcon(route);
-		Icon scaleIcon = new ImageIcon(icon.getImage().getScaledInstance(width,heigth, Image.SCALE_SMOOTH));
-		return scaleIcon;
-	}
 
 //Valores gráfica de barras
 	public static final Color DEFAULT_AXIS_COLOR = ConstantsGUI.COLOR_BLACK;
@@ -103,4 +115,17 @@ public class ConstantsGUI {
 	public static final int INFORMATION_CIRCLE_LABEL_SEPARATION = 5;
 	public static final Font TITLE_GRAPHIC_FONT = new Font("Arial", Font.BOLD, 15);
 	public static final Color TITLE_GRAPHIC_FOREGROUND = ConstantsGUI.COLOR_BLACK;
+	
+	public static Icon convertToIcon(String route, int width, int heigth) {
+		ImageIcon icon = new ImageIcon(route);
+		Icon scaleIcon = new ImageIcon(icon.getImage().getScaledInstance(width,heigth, Image.SCALE_SMOOTH));
+		return scaleIcon;
+	}
+	
+	public static JLabel createLabelTitles(String text) {
+		JLabel label = new JLabel(text);
+		label.setFont(new Font("Roboto", Font.ITALIC, 50));
+		label.setForeground(ConstantsGUI.COLOR_PRESENTATION);
+		return label;
+	}
 }

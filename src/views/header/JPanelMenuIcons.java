@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import controllers.Commands;
 import general.HandlerLanguage;
 import views.ConstantsGUI;
+import views.buttons.JButtonsMenuAndDialogs;
 
 public class JPanelMenuIcons extends JPanel{
 	

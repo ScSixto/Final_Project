@@ -1,4 +1,4 @@
-package views.header;
+package views.buttons;
 
 import java.awt.Color;
 import java.awt.Cursor;

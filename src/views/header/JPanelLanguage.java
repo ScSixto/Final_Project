@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import controllers.Commands;
 import general.HandlerLanguage;
 import views.ConstantsGUI;
-import views.header.JButtonsMenuAndDialogs;
+import views.buttons.JButtonsMenuAndDialogs;
 
 public class JPanelLanguage extends JPanel{
 
