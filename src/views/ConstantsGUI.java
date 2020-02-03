@@ -7,6 +7,8 @@ import java.awt.Font;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 
 public class ConstantsGUI {
 
@@ -38,6 +40,18 @@ public class ConstantsGUI {
 	public static final String T_TEXT_OF_PISCICULTURE = "Text_Of_Pisciculture";
 	public static final String T_TITLE_TABLE_CULTIVES = "Title_Table_Cultives";
 	public static final String T_GRAPHICS = "Graphics";
+	public static final String T_TITLE_REPORT_GRAPHICS = "Title_Report_Graphics";
+	public static final String T_TITLE_REPORT_TABLES = "Title_Report_Tables";
+	public static final String T_TEXT_REPORT_GRAPHICS_ONE = "Text_Report_Graphics_One";
+	public static final String T_TEXT_REPORT_GRAPHICS_TWO = "Text_Report_Graphics_Two";
+	public static final String T_TEXT_REPORT_GRAPHICS_THREE = "Text_Report_Graphics_Three";
+	public static final String T_TEXT_REPORT_GRAPHICS_FOUR = "Text_Report_Graphics_Four";
+	public static final String T_TEXT_REPORT_GRAPHICS_FIVE = "Text_Report_Graphics_Five";
+	public static final String T_TEXT_REPORT_GRAPHICS_SIX = "Text_Report_Graphics_Six";
+	public static final String T_TEXT_REPORT_GRAPHICS_SEVEN = "Text_Report_Graphics_Seven";
+	public static final String T_TEXT_REPORT_GRAPHICS_EIGHT = "Text_Report_Graphics_Eight";
+	public static final String T_TEXT_REPORT_GRAPHICS_NINE = "Text_Report_Graphics_Nine";
+	public static final String T_TEXT_REPORT_GRAPHICS_TEN = "Text_Report_Graphics_Ten";
 
     public static final char LOWERCASE_ACCENTED_N = (char) 241;
     public static final char LOWERCASE_ACCENTED_A = (char) 225;
@@ -67,21 +81,11 @@ public class ConstantsGUI {
 	public static final String PANEL_TABLE = "Panel Table";
 	public static final String PANEL_TABLE_REPORTS = "Panel Table Reports";
 	public static final String PANEL_GRAPHIC_REPORTS = "Panel Graphics Reports";
+	public static final String PANEL_GRAPHIC_BAR_CHART = "Panel Bar Chart";
 	
 //adiciones
-<<<<<<< HEAD
-//	public static final String LINE = "óóóóóóóóóóóóó";
-	public static final String LINE = RAYA + " " + RAYA + " " + RAYA + " " + RAYA + " " + RAYA + " " + RAYA + " " + RAYA + " " + RAYA + " " + RAYA + " " + RAYA;
-=======
-	public static final String LINE = EM_DASH + " " + EM_DASH + " " + EM_DASH + " " + EM_DASH + " " + EM_DASH + " " + EM_DASH + " " + EM_DASH + " " + EM_DASH + " " + EM_DASH + " " + EM_DASH;
->>>>>>> a90486ecaa20d6975a09dacb9b16ec463330e438
-	public static final String PANEL_GRAFICA = "Panel Grafica";
+	public static final String LINE = EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH;
 	
-	public static Icon convertToIcon(String route, int width, int heigth) {
-		ImageIcon icon = new ImageIcon(route);
-		Icon scaleIcon = new ImageIcon(icon.getImage().getScaledInstance(width,heigth, Image.SCALE_SMOOTH));
-		return scaleIcon;
-	}
 
 //Valores gr√°fica de barras
 	public static final Color DEFAULT_AXIS_COLOR = ConstantsGUI.COLOR_BLACK;
@@ -94,4 +98,26 @@ public class ConstantsGUI {
 	public static final int Y_AXIS_LABEL_WIDTH = 30;
 	public static final int INFORMATION_CIRCLE_DIAMETER = 15;
 	public static final int INFORMATION_CIRCLE_ANGLE = 45;
+	
+	public static Icon convertToIcon(String route, int width, int heigth) {
+		ImageIcon icon = new ImageIcon(route);
+		Icon scaleIcon = new ImageIcon(icon.getImage().getScaledInstance(width,heigth, Image.SCALE_SMOOTH));
+		return scaleIcon;
+	}
+	
+	public static JLabel createLabelTitles(String text) {
+		JLabel label = new JLabel(text);
+		label.setFont(new Font("Roboto", Font.ITALIC, 50));
+		label.setForeground(Color.decode(ConstantsGUI.COLOR_PRESENTATION));
+		return label;
+	}
+	
+	public static JLabel createLabelTitleMenu(String text) {
+		JLabel label = new JLabel(text);
+		label.setFont(new Font("Roboto", Font.ITALIC, 30));
+		label.setForeground(Color.decode(ConstantsGUI.COLOR_BACKGRAUND_SIXTO));
+		return label;
+	}
+	
+	
 }

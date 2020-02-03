@@ -42,9 +42,7 @@ public class JPanelInitiation extends JPanel{
 	}
 	
 	public void addInformation() {
-		labelTitle = new JLabel(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_PISCICULTURE));
-		labelTitle.setFont(new Font("Roboto", Font.ITALIC, 50));
-		labelTitle.setForeground(Color.decode(ConstantsGUI.COLOR_PRESENTATION));
+		labelTitle = ConstantsGUI.createLabelTitles(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_PISCICULTURE));
 //		labelTitle.setBackground(Color.BLACK);
 //		labelTitle.setOpaque(true);
 		panelYAxis.add(labelTitle);
@@ -58,8 +56,8 @@ public class JPanelInitiation extends JPanel{
 	}
 	
 	public void addTable() {
-		labelTitleTable = new JLabel( HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TITLE_TABLE_CULTIVES) );
-		labelTitleTable.setBorder(BorderFactory.createEmptyBorder(20,0,0,0));
+		labelTitleTable = ConstantsGUI.createLabelTitles( HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TITLE_TABLE_CULTIVES) );
+		labelTitleTable.setBorder(BorderFactory.createEmptyBorder(15,0,0,0));
 		labelTitleTable.setFont(new Font("Roboto", Font.ITALIC, 50));
 		labelTitleTable.setForeground(Color.decode(ConstantsGUI.COLOR_PRESENTATION));
 //		labelTitleTable.setBackground(Color.BLACK);
@@ -77,7 +75,7 @@ public class JPanelInitiation extends JPanel{
 	
 	public void changeLanguage() {
 		labelTitle.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_PISCICULTURE));
-		labelText.setText("<html> <br>" + HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_OF_PISCICULTURE) + "</p></html>");
+		labelText.setText("<html>" + HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_OF_PISCICULTURE) + "</p></html>");
 		labelTitleTable.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TITLE_TABLE_CULTIVES));
 		table.changeLanguageTableCultives();
 	}
@@ -87,7 +85,6 @@ public class JPanelInitiation extends JPanel{
 		line.setFont(new Font("Roboto", Font.BOLD, 40));
 		line.setForeground(Color.decode(ConstantsGUI.COLOR_LINE));
 		panelYAxis.add(line);
-		
 	}
 	
 

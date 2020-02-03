@@ -76,4 +76,9 @@ public class JFramePrincipal extends JFrame{
 	public void showPanelGraphicReports(HashMap<String, Double> info) {
 		panelPpal.showPanelGraphicReports(info);
 	}
+	
+	public void repaintPanel() {
+		panelPpal.validate();
+		panelPpal.repaint();
+	}
 }

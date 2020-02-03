@@ -31,7 +31,6 @@ public class JPanelPrincipal extends JPanel{
 		add(panelHeader,BorderLayout.NORTH);
 		panelBody = new JPanelBody(actionListenner);
 		add(panelBody,BorderLayout.CENTER);
-		
 	}
 	
 	public void changeLanguage() {
@@ -50,4 +49,8 @@ public class JPanelPrincipal extends JPanel{
 	public void showPanelGraphicReports(HashMap<String, Double> info) {
 		panelBody.setGraphicReportPanel(info);
 	}
+	
+//	public void repaint() {
+//		panelHeader.repaint();
+//	}
 }

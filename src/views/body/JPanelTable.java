@@ -74,7 +74,7 @@ public class JPanelTable extends JPanel{
 	}
 	
 	public void showTableCultives(HashMap<String, ArrayList<Object[]>> info) {
-		setBorder(BorderFactory.createEmptyBorder(20, 0, 15, 0));
+		setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
 		cleanRowsTable();
 		jtElements.getTableHeader().setBackground(Color.decode(ConstantsGUI.COLOR_LINE));
 		changeLanguageTableCultives();

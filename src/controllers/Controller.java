@@ -180,6 +180,7 @@ public class Controller implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		frame.repaintPanel();
 		switch (Commands.valueOf(e.getActionCommand())) {
 		case CHANGE_ENGLISH:
 			manageChangeLanguageUS();
