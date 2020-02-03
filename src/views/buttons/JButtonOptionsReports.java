@@ -18,11 +18,10 @@ public class JButtonOptionsReports extends JButton{
 
 	private static final long serialVersionUID = 1L;
 	public static final int WIDHT_AND_HEIGHT_LOGO = 70;
-	public static final String HTML_TAG = "<html><center>";
 
 	public JButtonOptionsReports(String text, char logo) {
 //		setPreferredSize(new Dimension(50,50));
-		setText(HTML_TAG+text);
+		setText(ConstantsGUI.HTML_TAG_CENTER+text);
 		setIconButton(logo);
 		setBorder(BorderFactory.createEmptyBorder(20, 20, 5, 20));
 		setBackground(Color.WHITE);
@@ -55,7 +54,7 @@ public class JButtonOptionsReports extends JButton{
 	}
 	
 	public void setNewText(String text) {
-		this.setText(HTML_TAG+text);
+		this.setText(ConstantsGUI.HTML_TAG_CENTER+text);
 	}
 	
 	protected void paintComponent(Graphics g) {

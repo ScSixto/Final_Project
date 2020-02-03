@@ -78,14 +78,15 @@ public class ConstantsGUI {
 	
 //nombre paneles cardlayout
 	public static final String PANEL_INITIAL = "Panel Presentation";
-	public static final String PANEL_TABLE = "Panel Table";
+	public static final String PANEL_SHOW_TABLE_REPORTS = "Panel Show Table Reports";
 	public static final String PANEL_TABLE_REPORTS = "Panel Table Reports";
 	public static final String PANEL_GRAPHIC_REPORTS = "Panel Graphics Reports";
 	public static final String PANEL_GRAPHIC_BAR_CHART = "Panel Bar Chart";
 	
 //adiciones
 	public static final String LINE = EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH;
-	
+	public static final String HTML_TAG_CENTER= "<html><center>";
+	public static final String HTML_TAG_B= "<html><b>";
 
 //Valores gráfica de barras
 	public static final Color DEFAULT_AXIS_COLOR = ConstantsGUI.COLOR_BLACK;
@@ -113,7 +114,7 @@ public class ConstantsGUI {
 	}
 	
 	public static JLabel createLabelTitleMenu(String text) {
-		JLabel label = new JLabel(text);
+		JLabel label = new JLabel(HTML_TAG_B+text);
 		label.setFont(new Font("Roboto", Font.ITALIC, 30));
 		label.setForeground(Color.decode(ConstantsGUI.COLOR_BACKGRAUND_SIXTO));
 		return label;

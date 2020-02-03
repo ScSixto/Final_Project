@@ -50,6 +50,10 @@ public class JPanelPrincipal extends JPanel{
 		panelBody.setGraphicReportPanel(info);
 	}
 	
+	public void addLabel(String title) {
+		panelBody.addLabel(title);
+	}
+	
 //	public void repaint() {
 //		panelHeader.repaint();
 //	}

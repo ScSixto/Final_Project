@@ -203,7 +203,14 @@ public class Controller implements ActionListener{
 		case GRAPHIC_REPORTS:
 			showPanelGraphicReports();
 			break;
-		default:
+		case REPORT_EIGHT:
+			showReportCultivesPerTown();
+			break;
+		case REPORT_NINE:
+			showReportCultivesPerYear();
+			break;
+		case REPORT_TEN:
+			showReportCultivesPerSpecie();
 			break;
 		}
 	}
@@ -235,6 +242,23 @@ public class Controller implements ActionListener{
 	private void showPanelGraphicReports() {
 		frame.showPanelGraphicReports(farmManager.getFishesPerYear(FishFarmManager.CULTIVATED_FISHES_STATE));
 		showCardImage(ConstantsGUI.PANEL_GRAPHIC_REPORTS);
+	}
+	
+	private void showPanelTables(String title) {
+		showCardImage(ConstantsGUI.PANEL_SHOW_TABLE_REPORTS);
+		frame.addLabel(title);
+	}
+	
+	private void showReportCultivesPerTown() {
+		showPanelTables(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_EIGHT);
+	}
+	
+	private void showReportCultivesPerYear() {
+		showPanelTables(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_NINE);
+	}
+	
+	private void showReportCultivesPerSpecie() {
+		showPanelTables(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_TEN);
 	}
 	
 	public static void main(String[] args) {

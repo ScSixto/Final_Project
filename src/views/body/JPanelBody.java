@@ -18,7 +18,7 @@ public class JPanelBody extends JPanel{
 	
 	private CardLayout layout;
 	private JPanelInitiation panelInitial;
-	private JPanelTable table;
+	private JPanelShowReports showReportsTable;
 	private JPanelTableReports panelTableReports;
 	private JPanelGraphicReports panelGraphicReports;
 	private JPanelGraphicBarChart graphicBarChat;
@@ -35,19 +35,23 @@ public class JPanelBody extends JPanel{
 	private void initComponents(ActionListener actionListener) {
 		panelInitial = new JPanelInitiation();
 		this.add(panelInitial,ConstantsGUI.PANEL_INITIAL);
-		table = new JPanelTable();
-		this.add(table,ConstantsGUI.PANEL_TABLE);
+		showReportsTable = new JPanelShowReports(actionListener);
+		this.add(showReportsTable,ConstantsGUI.PANEL_SHOW_TABLE_REPORTS);
 		panelTableReports = new JPanelTableReports(actionListener);
 		this.add(panelTableReports,ConstantsGUI.PANEL_TABLE_REPORTS);
 		panelGraphicReports = new JPanelGraphicReports(actionListener);
 		this.add(panelGraphicReports,ConstantsGUI.PANEL_GRAPHIC_REPORTS);
 	}
 	
+	public void addLabel(String title) {
+		showReportsTable.addLabel(title);
+	}
 	
 	public void changeLanguage() {
 		panelInitial.changeLanguage();
 		panelGraphicReports.changeLanguage();
 		panelTableReports.changeLanguage();
+		showReportsTable.changeLanguage();
 	}
 
 	public void setGraphicReportPanel(HashMap<String, Double> info){
@@ -65,8 +69,8 @@ public class JPanelBody extends JPanel{
                 this.layout.show(this, ConstantsGUI.PANEL_INITIAL);
                 this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.HEIGHT*1.33)));
                 break;
-            case ConstantsGUI.PANEL_TABLE:
-                this.layout.show(this, ConstantsGUI.PANEL_TABLE);
+            case ConstantsGUI.PANEL_SHOW_TABLE_REPORTS:
+                this.layout.show(this, ConstantsGUI.PANEL_SHOW_TABLE_REPORTS);
 				break;
 				case ConstantsGUI.PANEL_GRAPHIC_BAR_CHART:
                 this.layout.show(this, ConstantsGUI.PANEL_GRAPHIC_BAR_CHART);

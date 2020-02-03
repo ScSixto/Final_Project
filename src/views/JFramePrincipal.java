@@ -81,4 +81,8 @@ public class JFramePrincipal extends JFrame{
 		panelPpal.validate();
 		panelPpal.repaint();
 	}
+	
+	public void addLabel(String title) {
+		panelPpal.addLabel(title);
+	}
 }
