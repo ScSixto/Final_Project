@@ -22,10 +22,16 @@ public class JPanelHeaderShowReports extends JPanel{
 	
 	public JPanelHeaderShowReports(ActionListener actionListener,String command) {
 		setLayout(new BorderLayout());
+<<<<<<< HEAD
 		setBorder(BorderFactory.createEmptyBorder(0,20,0,20));
 
 		setBackground(Color.decode(ConstantsGUI.COLOR_LINE));
 		initComponents(actionListener, command);
+=======
+		setBackground(ConstantsGUI.COLOR_LINE);
+		setOpaque(false);
+		initComponents();
+>>>>>>> f4e8d4ab5e803473169d034f3bdef0c52390d149
 		setVisible(true);
 	}
 	

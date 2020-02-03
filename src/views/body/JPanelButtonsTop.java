@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
+import controllers.Commands;
 import general.HandlerLanguage;
 import views.ConstantsGUI;
 import views.buttons.JButtonOptionsReports;
@@ -32,6 +33,8 @@ public class JPanelButtonsTop extends JPanel{
 		fishesHarvestedPerYear = new JButtonOptionsReports(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_TWO),'R');
 		this.add(fishesHarvestedPerYear);
 		fishesCultivatedAndHarvested = new JButtonOptionsReports(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_ONE),'B');
+		fishesCultivatedAndHarvested.addActionListener(actionListener);
+		fishesCultivatedAndHarvested.setActionCommand(Commands.GRAPHIC_REPORT_ONE.toString());
 		this.add(fishesCultivatedAndHarvested);
 		speciesCultivatedPerYear = new JButtonOptionsReports(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_THREE),'R');
 		this.add(speciesCultivatedPerYear);

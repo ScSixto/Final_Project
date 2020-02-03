@@ -22,14 +22,13 @@ import javax.swing.table.DefaultTableModel;
 import general.HandlerLanguage;
 import views.ConstantsGUI;
 
-
 public class JPanelTable extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 	private DefaultTableModel dtmElements;
 	private JTable jtElements;
 	private JScrollPane jsTable;
-	
+
 	public JPanelTable() {
 		setOpaque(false);
 		initComponents();
@@ -45,7 +44,7 @@ public class JPanelTable extends JPanel{
 			@Override
 		    public boolean isCellEditable(int rowIndex,int columnIndex){return false;}
 		};
-		
+
 		Font fontHeader = new Font("Franklin Gothic Demi", Font.ITALIC,15);
 		
 		jtElements = new JTable();
@@ -58,8 +57,11 @@ public class JPanelTable extends JPanel{
 		jtElements.setFillsViewportHeight(true);
 		jtElements.setBorder(null);
 		jtElements.setRowHeight(25);
+		
 		jsTable = new JScrollPane(jtElements);
 		jsTable.setForeground(Color.white);
+		// jsTable.getVerticalScrollBar().setUI(new JScrollFormat());
+		// jsTable.getHorizontalScrollBar().setUI(new JScrollFormat());		
 		jsTable.setBorder(null);
 		jsTable.setAlignmentX(Component.CENTER_ALIGNMENT);
 		this.add(jsTable);
@@ -76,7 +78,7 @@ public class JPanelTable extends JPanel{
 	public void showTableCultives(HashMap<String, ArrayList<Object[]>> info) {
 		setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
 		cleanRowsTable();
-		jtElements.getTableHeader().setBackground(Color.decode(ConstantsGUI.COLOR_LINE));
+		jtElements.getTableHeader().setBackground(ConstantsGUI.COLOR_LINE);
 		changeLanguageTableCultives();
 		stringFormat(info);
 		this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH * 0.12),(int)(ConstantsGUI.HEIGHT*0.6)));
@@ -91,8 +93,17 @@ public class JPanelTable extends JPanel{
 				HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TOTAL_CULTIVE_WEIGHT_KG),
 				HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TOTAL_CULTIVE_PRICE)};
 		dtmElements.setColumnIdentifiers(header);
+		setColumnWidth();
 //		this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH * 0.12),(int)(ConstantsGUI.HEIGHT*0.5)));
 	}
+		
+    private void setColumnWidth(){
+		int[] columWidthArray = new int[]{15,150,20,150,80,80,110,100};
+        for(int i = 0; i < columWidthArray.length; i++){
+            jtElements.getColumnModel().getColumn(i).setPreferredWidth(columWidthArray[i]);
+        }
+    }
+
 	
 //	public void updateTable() {
 //		dtmElements.fireTableDataChanged();
@@ -130,7 +141,6 @@ public class JPanelTable extends JPanel{
 	        	int i = 0;
 	        	arrayFormat.add(new Object[] {object[i],pair.getKey(),object[++i],object[++i],object[++i],object[++i],object[++i],object[++i]});
 			}
-	        
 	        it.remove(); 
 	    }
 		addRunnerList(arrayFormat);

@@ -37,7 +37,7 @@ public class JPanelTitle extends JPanel{
 	public JLabel createLine() {
 		JLabel line = new JLabel(ConstantsGUI.LINE);
 		line.setFont(new Font("Roboto", Font.BOLD, 40));
-		line.setForeground(Color.decode(ConstantsGUI.COLOR_LINE));
+		line.setForeground(ConstantsGUI.COLOR_LINE);
 		line.setOpaque(false);
 		return line;
 	}
@@ -45,7 +45,7 @@ public class JPanelTitle extends JPanel{
 	public static JLabel createLabelTitles(String text) {
 		JLabel label = new JLabel(text);
 		label.setFont(new Font("Roboto", Font.ITALIC, 50));
-		label.setForeground(Color.decode(ConstantsGUI.COLOR_PRESENTATION));
+		label.setForeground(ConstantsGUI.COLOR_PRESENTATION);
 		return label;
 	}
 

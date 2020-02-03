@@ -9,7 +9,9 @@ import java.util.HashMap;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
+import general.HandlerLanguage;
 import views.ConstantsGUI;
+import views.GraphicReportTitle;
 
 
 public class JPanelBody extends JPanel{
@@ -21,7 +23,7 @@ public class JPanelBody extends JPanel{
 	private JPanelShowReports showReportsTable;
 	private JPanelTableReports panelTableReports;
 	private JPanelGraphicReports panelGraphicReports;
-	private JPanelGraphicBarChart graphicBarChat;
+	private JPanelGraphicBarChart panelGraphicSpecificReport;
 	
 	public JPanelBody(ActionListener actionListener) {
 		this.layout = new CardLayout();
@@ -41,6 +43,8 @@ public class JPanelBody extends JPanel{
 		this.add(panelTableReports,ConstantsGUI.PANEL_TABLE_REPORTS);
 		panelGraphicReports = new JPanelGraphicReports(actionListener);
 		this.add(panelGraphicReports,ConstantsGUI.PANEL_GRAPHIC_REPORTS);
+		panelGraphicSpecificReport = new JPanelGraphicBarChart();
+		this.add(panelGraphicSpecificReport,ConstantsGUI.PANEL_GRAPHIC_REPORT);
 	}
 	
 	public void addLabel(String title) {
@@ -54,9 +58,15 @@ public class JPanelBody extends JPanel{
 		showReportsTable.changeLanguage();
 	}
 
-	public void setGraphicReportPanel(HashMap<String, Double> info){
-		graphicBarChat = new JPanelGraphicBarChart(info);
-		this.add(graphicBarChat,ConstantsGUI.PANEL_GRAPHIC_BAR_CHART);
+	public void showBarGraphicReport(HashMap<String, Double> info, GraphicReportTitle title){
+		String graphicTitle = "";
+		for (GraphicReportTitle graphicReport : GraphicReportTitle.values()) {
+			if(title.equals(graphicReport)){
+				graphicTitle = HandlerLanguage.languageProperties.getProperty(graphicReport.getPropertyText());
+				break;
+			}
+		}
+		panelGraphicSpecificReport.addGraphic(info, graphicTitle);
 	}
 	
 	public void showTableCultives(HashMap<String, ArrayList<Object[]>> info) {
@@ -76,15 +86,17 @@ public class JPanelBody extends JPanel{
                 this.layout.show(this, ConstantsGUI.PANEL_GRAPHIC_BAR_CHART);
                 break;
             case ConstantsGUI.PANEL_TABLE_REPORTS:
-            	this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH),(int)(ConstantsGUI.WIDTH*0.1)));
+            	this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.WIDTH*0.1)));
                 this.layout.show(this, ConstantsGUI.PANEL_TABLE_REPORTS);
                 break;
-            case ConstantsGUI.PANEL_GRAPHIC_REPORTS:
+			case ConstantsGUI.PANEL_GRAPHIC_REPORTS:
             	this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.HEIGHT*0.65)));
                 this.layout.show(this, ConstantsGUI.PANEL_GRAPHIC_REPORTS);
+				break;
+			case ConstantsGUI.PANEL_GRAPHIC_REPORT:
+            	this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.HEIGHT*0.1)));
+                this.layout.show(this, ConstantsGUI.PANEL_GRAPHIC_REPORT);
                 break;
         }
     }
-	
-
 }

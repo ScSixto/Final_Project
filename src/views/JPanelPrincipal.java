@@ -20,7 +20,7 @@ public class JPanelPrincipal extends JPanel{
 	
 	
 	public JPanelPrincipal(ActionListener actionListenner) {
-		setBackground(Color.decode(ConstantsGUI.COLOR_BACKGRAUND));
+		setBackground(ConstantsGUI.COLOR_BACKGRAUND);
 		setLayout(new BorderLayout());
 		initComponents(actionListenner);
 		setVisible(true);
@@ -46,8 +46,8 @@ public class JPanelPrincipal extends JPanel{
 		panelBody.showTableCultives(info);
 	}
 
-	public void showPanelGraphicReports(HashMap<String, Double> info) {
-		panelBody.setGraphicReportPanel(info);
+	public void showBarGraphicReport(HashMap<String, Double> info, GraphicReportTitle graphicTitle) {
+		panelBody.showBarGraphicReport(info, graphicTitle);
 	}
 	
 	public void addLabel(String title) {

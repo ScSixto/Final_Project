@@ -1,6 +1,7 @@
 package views.body;
 
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -8,6 +9,7 @@ import javax.swing.JPanel;
 
 import general.HandlerLanguage;
 import views.ConstantsGUI;
+import views.GraphicReportTitle;
 import views.title.JPanelTitle;
 
 
@@ -18,6 +20,12 @@ public class JPanelGraphicReports extends JPanel {
 	private JPanelButtonsTop buttonsTop;
 	private JPanelButtonsBottom buttonsBottom;
 	private JLabel title;
+
+	// JPanelGraphicReports(HashMap<String, Double> info, String graphicTitle){
+	// 	this.setLayout(new FlowLayout(FlowLayout.CENTER));
+	// 	this.setOpaque(false);
+	// 	this.add(new JPBarGraphicPanel(info, graphicTitle));
+	// }
 
 	public JPanelGraphicReports(ActionListener actionListener) {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -40,5 +48,5 @@ public class JPanelGraphicReports extends JPanel {
 		buttonsBottom.changeLanguage();
 		title.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TITLE_REPORT_GRAPHICS));
 	}
-	
+
 }

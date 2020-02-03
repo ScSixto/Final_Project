@@ -9,8 +9,17 @@ public class JPanelGraphicBarChart extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	JPanelGraphicBarChart(HashMap<String, Double> info){
+	JPanelGraphicBarChart(){
 		this.setLayout(new FlowLayout(FlowLayout.CENTER));
-		this.add(new JPGraphicPanel(info));
+		this.setOpaque(false);
+	}
+
+	JPanelGraphicBarChart(HashMap<String, Double> info, String name){
+		this();
+		this.add(new JPBarGraphicPanel(info, name));
+	}
+
+	public void addGraphic(HashMap<String, Double> info, String name){
+		this.add(new JPBarGraphicPanel(info, name));
 	}
 }
