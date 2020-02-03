@@ -20,6 +20,7 @@ public class JPanelGraphicBarChart extends JPanel {
 	}
 
 	public void addGraphic(HashMap<String, Double> info, String name){
+		if(this.getComponents().length > 0)this.remove(this.getComponent(0));
 		this.add(new JPBarGraphicPanel(info, name));
 	}
 }

@@ -82,7 +82,7 @@ public class ConstantsGUI {
 	public static final Color COLOR_LINE = Color.decode("#17a788");
 	public static final Color COLOR_WHITE = Color.WHITE;
 	//public static final Color COLOR_PRESENTATION = Color.decode("#E77714");
-	//public static final Color COLOR_BACKGRAUND_SIXTO = Color.decode("#ffffff");
+	public static final Color COLOR_BACKGRAUND_SIXTO = Color.decode("#ffffff");
 	//public static final String COLOR_PRESENTATION_SIXTO = "#E77714";
 	public static final Color COLOR_BLACK = Color.BLACK;
 	public static final Paint COLOR_SCROLL_GRAY = Color.decode("#444444");
@@ -129,16 +129,13 @@ public class ConstantsGUI {
 		label.setForeground(ConstantsGUI.COLOR_PRESENTATION);
 		return label;
 	}
-<<<<<<< HEAD
 	
 	public static JLabel createLabelTitleMenu(String text) {
 		JLabel label = new JLabel(HTML_TAG_B+text);
 		label.setFont(new Font("Roboto", Font.ITALIC, 30));
-		label.setForeground(Color.decode(ConstantsGUI.COLOR_BACKGRAUND_SIXTO));
+		label.setForeground(ConstantsGUI.COLOR_BACKGRAUND_SIXTO);
 		return label;
 	}
 	
 	
-=======
->>>>>>> f4e8d4ab5e803473169d034f3bdef0c52390d149
 }
