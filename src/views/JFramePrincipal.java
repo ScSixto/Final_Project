@@ -40,8 +40,15 @@ public class JFramePrincipal extends JFrame{
 		panelPpal = new JPanelPrincipal(actionListener);
 		dialogLanguage = new JDialogLanguage(this,actionListener);		
 		scroll.setViewportView(panelPpal);
-		add(scroll);
+		addScrollBar();
 	}
+	
+    public void addScrollBar(){
+        JScrollPane scrollPane = new JScrollPane(this.panelPpal);
+        scrollPane.getVerticalScrollBar().setUI(new JScrollFormat());
+        scrollPane.getHorizontalScrollBar().setUI(new JScrollFormat());
+        this.add(scrollPane);
+    }
 	
 	public void changeLanguage() {
 		setTitle(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.TITLE_PROGRAM));
@@ -69,11 +76,11 @@ public class JFramePrincipal extends JFrame{
 		return JOptionPaneMessages.jOptionPaneYesOption();
 	}
 	
-	public void showTableCultives(HashMap<String, ArrayList<Object[]>> info) {
+	public void showTableCultives(HashMap<String, ArrayList<Object[]>> info){
 		panelPpal.showTableCultives(info);
 	}
 
-	public void showPanelGraphicReports(HashMap<String, Double> info) {
-		panelPpal.showPanelGraphicReports(info);
+	public void showPanelGraphicReports(HashMap<String, Double> info, String graphicTitle) {
+		panelPpal.showPanelGraphicReports(info, graphicTitle);
 	}
 }

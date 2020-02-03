@@ -1,7 +1,9 @@
 package views;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.Paint;
 import java.awt.Toolkit;
 import java.awt.Font;
 
@@ -9,6 +11,10 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class ConstantsGUI {
+	// Vaores de la pantalla
+	public static final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
+	public static final int MAXIMUM_SCREEN_WIDTH = (int) SCREEN_SIZE.getWidth();
+	public static final int MAXIMUM_SCREEN_HEIGHT = (int) SCREEN_SIZE.getHeight();
 
 	public static final String TITLE_PROGRAM = "Title_Window";
 	public static final String T_CULTIVE = "Cultive";
@@ -38,6 +44,8 @@ public class ConstantsGUI {
 	public static final String T_TEXT_OF_PISCICULTURE = "Text_Of_Pisciculture";
 	public static final String T_TITLE_TABLE_CULTIVES = "Title_Table_Cultives";
 	public static final String T_GRAPHICS = "Graphics";
+	// Titulos de Gráficos
+	public static final String GRAPHIC_TITLE_CULTIVATED_FISHES_PER_YEAR = "Cultivated_Fishes_Per_Year";
 
     public static final char LOWERCASE_ACCENTED_N = (char) 241;
     public static final char LOWERCASE_ACCENTED_A = (char) 225;
@@ -58,9 +66,11 @@ public class ConstantsGUI {
 	public static final Color COLOR_BACKGRAUND = Color.decode("#d7d8d8");
 	public static final Color COLOR_PRESENTATION = Color.decode("#333333");
 	public static final Color COLOR_LINE = Color.decode("#17a788");
-	//public static final Color COLOR_BACKGRAUND = Color.decode("#ffffff");
+	public static final Color COLOR_WHITE = Color.WHITE;
 	//public static final Color COLOR_PRESENTATION = Color.decode("#E77714");
 	public static final Color COLOR_BLACK = Color.BLACK;
+	public static final Paint COLOR_SCROLL_GRAY = Color.decode("#444444");
+
 	
 //nombre paneles cardlayout
 	public static final String PANEL_INITIAL = "Panel Presentation";
@@ -81,12 +91,16 @@ public class ConstantsGUI {
 //Valores gráfica de barras
 	public static final Color DEFAULT_AXIS_COLOR = ConstantsGUI.COLOR_BLACK;
 	public static final int MAX_PIXEL_COL_HEIGHT_VALUE = 300;
-	public static final int MAX_PIXEL_COL_WIDTH_VALUE = 40;
-	public static final int AXIS_LINE_WIDTH = 2;
-	public static final int COL_SEPARATION = 3;
+	public static final int MAX_PIXEL_COL_WIDTH_VALUE = 25;
+	public static final int AXIS_LINE_WIDTH = 1;
+	public static final int COL_SEPARATION = 5;
 	public static final int Y_AXIS_VALUE_QUANTITY = 5;
-	public static final Font DATA_LABEL_FONT = new Font("Arial",Font.PLAIN,10);
+	public static final Font DATA_LABEL_FONT = new Font("Arial",Font.PLAIN,9);
 	public static final int Y_AXIS_LABEL_WIDTH = 30;
 	public static final int INFORMATION_CIRCLE_DIAMETER = 15;
 	public static final int INFORMATION_CIRCLE_ANGLE = 45;
+	public static final int INFORMATION_CIRCLE_SEPARATION = 15;
+	public static final int INFORMATION_CIRCLE_LABEL_SEPARATION = 5;
+	public static final Font TITLE_GRAPHIC_FONT = new Font("Arial", Font.BOLD, 15);
+	public static final Color TITLE_GRAPHIC_FOREGROUND = ConstantsGUI.COLOR_BLACK;
 }

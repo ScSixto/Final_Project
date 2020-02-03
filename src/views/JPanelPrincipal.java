@@ -46,7 +46,7 @@ public class JPanelPrincipal extends JPanel{
 		panelBody.showTableCultives(info);
 	}
 
-	public void showPanelGraphicReports(HashMap<String, Double> info) {
-		panelBody.setGraphicReportPanel(info);
+	public void showPanelGraphicReports(HashMap<String, Double> info, String graphicTitle) {
+		panelBody.setGraphicReportPanel(info, graphicTitle);
 	}
 }

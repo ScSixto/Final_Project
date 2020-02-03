@@ -5,7 +5,10 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Locale;
+import java.util.Map.Entry;
 
 import org.json.simple.DeserializationException;
 
@@ -18,6 +21,7 @@ import models.Util;
 import persistence.JsonFile;
 import views.ConstantsGUI;
 import views.JFramePrincipal;
+import views.body.UtilView;
 
 public class Controller implements ActionListener{
 	
@@ -49,7 +53,7 @@ public class Controller implements ActionListener{
 	
     private void init(){
         this.readRecords();
-        frame.showTableCultives(farmManager.townsAndCultives());
+        showCultivesTable();
 //---------------------------------------------------------------------------------------------------
 //        farmManager.showConsoleReportReport();
 //---------------------------------------------------------------------------------------------------
@@ -223,8 +227,27 @@ public class Controller implements ActionListener{
 	}
 
 	private void showPanelInitial() {
-		frame.showTableCultives(farmManager.townsAndCultives());
+		showCultivesTable();
 		showCardImage(ConstantsGUI.PANEL_INITIAL);
+	}
+
+	private void showCultivesTable(){
+		HashMap<String, ArrayList<Object[]>> cultivesTable = farmManager.townsAndCultives();
+		HashMap<String, ArrayList<Object[]>> formatedCultivesTable = new HashMap<>();
+		ArrayList<Object[]> cultiveTemp = new ArrayList<>();
+		Iterator<Entry<String, ArrayList<Object[]>>> it = cultivesTable.entrySet().iterator();
+
+		while(it.hasNext()){
+			Entry<String, ArrayList<Object[]>> entry = it.next();
+			for (Object[] objectArray : entry.getValue()) {
+				objectArray[3] = UtilView.formatDouble((int)objectArray[3]);
+				objectArray[4] = UtilView.formatDouble((int)objectArray[4]);
+				objectArray[5] = UtilView.formatDouble((double)objectArray[5]);
+				objectArray[6] = "COL$ " + UtilView.formatDouble((double)objectArray[6]);
+			}
+			formatedCultivesTable.put(entry.getKey(),cultiveTemp);
+		}
+		frame.showTableCultives(cultivesTable);
 	}
 	
 	private void showPanelTableReports() {
@@ -232,7 +255,8 @@ public class Controller implements ActionListener{
 	}
 	
 	private void showPanelGraphicReports() {
-		frame.showPanelGraphicReports(farmManager.getFishesPerYear(FishFarmManager.CULTIVATED_FISHES_STATE));
+		String graphicTitle = HandlerLanguage.languageProperties.getProperty(ConstantsGUI.GRAPHIC_TITLE_CULTIVATED_FISHES_PER_YEAR);
+		frame.showPanelGraphicReports(farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), graphicTitle);
 		showCardImage(ConstantsGUI.PANEL_GRAPHIC_REPORTS);
 	}
 	

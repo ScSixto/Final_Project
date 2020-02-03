@@ -45,8 +45,8 @@ public class JPanelBody extends JPanel{
 		panelInitial.changeLanguage();
 	}
 
-	public void setGraphicReportPanel(HashMap<String, Double> info){
-		panelGraphicReports = new JPanelGraphicReports(info);
+	public void setGraphicReportPanel(HashMap<String, Double> info, String graphicTitle){
+		panelGraphicReports = new JPanelGraphicReports(info, graphicTitle);
 		this.add(panelGraphicReports,ConstantsGUI.PANEL_GRAPHIC_REPORTS);
 	}
 	
@@ -73,5 +73,4 @@ public class JPanelBody extends JPanel{
                 break;
         }
     }
-
 }

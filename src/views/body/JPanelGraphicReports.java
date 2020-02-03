@@ -9,8 +9,9 @@ public class JPanelGraphicReports extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	JPanelGraphicReports(HashMap<String, Double> info){
+	JPanelGraphicReports(HashMap<String, Double> info, String graphicTitle){
 		this.setLayout(new FlowLayout(FlowLayout.CENTER));
-		this.add(new JPGraphicPanel(info));
+		this.setOpaque(false);
+		this.add(new JPBarGraphicPanel(info, graphicTitle));
 	}
 }

@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - TesterMetodos",
+            "request": "launch",
+            "mainClass": "models.TesterMetodos",
+            "projectName": "Eejercicio_3.0"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Run",
             "request": "launch",
             "mainClass": "runner.Run",
