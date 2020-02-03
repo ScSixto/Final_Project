@@ -45,15 +45,14 @@ public class Controller implements ActionListener{
 //	    this.farmManager.showConsoleReport();
 //	    this.farmManager.reportdelreport();
 //---------------------------------------------------------------------------------------------------
-		this.loadConfiguration();
-		frame = new JFramePrincipal(this);	
-		this.getLanguageDefault();
-		
 		this.init();
 	}
 	
     private void init(){
-        this.readRecords();
+    	this.readRecords();
+	    this.loadConfiguration();
+		frame = new JFramePrincipal(this);	
+		this.getLanguageDefault();
         showCultivesTable();
 //---------------------------------------------------------------------------------------------------
 //        farmManager.showConsoleReportReport();

@@ -2,6 +2,7 @@ package views.header;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -24,7 +25,8 @@ public class JPanelMenu extends JPanel{
 	
 	private JMenuBar menu;
 	private JMenu cultive,export,reports;
-	private JMenuItem add,delete,edit,invalidRunners,homePage,tables,graphics;
+	private JMenuItem add,delete,edit,invalidRunners,tables,graphics,homePage;
+//	private JButton homePage;
 	
 	public JPanelMenu(ActionListener actionListenner) {
 		setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -111,6 +113,7 @@ public class JPanelMenu extends JPanel{
 		edit.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EDIT));
 		export.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EXPORT) + SEPARATOR);
 		homePage.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_HOMEPAGE) + SEPARATOR);
+		homePage.setPreferredSize(new Dimension(Integer.parseInt(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_SIZE_HOMEPAGE)),homePage.getHeight()));
 		reports.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_REPORTS)+ SEPARATOR);
 		tables.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TABLES));
 		graphics.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_GRAPHICS));
@@ -130,6 +133,18 @@ public class JPanelMenu extends JPanel{
 		createFont(item);
 		return item;
 	}
+	
+//	private JButton createJButton(String text) {
+//		JButton button = new JButton(text);
+//		button.setOpaque(false);
+//		button.setBorderPainted(false);
+//		button.setContentAreaFilled(false);
+//		button.addMouseMotionListener(null);
+//		button.addMouseWheelListener(null);
+//		button.repaint();
+//		createFont(button);
+//		return button;
+//	}
 	
 	private void createFont(Component component) {
 		component.setFont((new Font("Roboto", Font.BOLD,20)));

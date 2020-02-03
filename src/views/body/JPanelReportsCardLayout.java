@@ -1,7 +1,6 @@
 package views.body;
 
 import java.awt.CardLayout;
-import java.awt.Dimension;
 
 import javax.swing.JPanel;
 

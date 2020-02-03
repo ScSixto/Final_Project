@@ -3,8 +3,6 @@ package views.body;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -14,8 +12,6 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import views.ConstantsGUI;
-import views.JScrollFormat;
 
 public class JPGraphicInformation extends JPanel{
 

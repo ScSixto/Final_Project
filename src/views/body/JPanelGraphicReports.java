@@ -1,7 +1,6 @@
 package views.body;
 
 import java.awt.event.ActionListener;
-import java.util.HashMap;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -9,7 +8,6 @@ import javax.swing.JPanel;
 
 import general.HandlerLanguage;
 import views.ConstantsGUI;
-import views.GraphicReportTitle;
 import views.title.JPanelTitle;
 
 

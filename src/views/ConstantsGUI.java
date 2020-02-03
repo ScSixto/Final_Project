@@ -46,6 +46,7 @@ public class ConstantsGUI {
 	public static final String T_TEXT_OF_PISCICULTURE = "Text_Of_Pisciculture";
 	public static final String T_TITLE_TABLE_CULTIVES = "Title_Table_Cultives";
 	public static final String T_GRAPHICS = "Graphics";
+	public static final String T_SIZE_HOMEPAGE = "Size_HomePage";
 	// Titulos de Gráficos
 	public static final String GRAPHIC_TITLE_CULTIVATED_FISHES_PER_YEAR = "Cultivated_Fishes_Per_Year";
 	public static final String T_TITLE_REPORT_GRAPHICS = "Title_Report_Graphics";
@@ -60,6 +61,7 @@ public class ConstantsGUI {
 	public static final String T_TEXT_REPORT_GRAPHICS_EIGHT = "Text_Report_Graphics_Eight";
 	public static final String T_TEXT_REPORT_GRAPHICS_NINE = "Text_Report_Graphics_Nine";
 	public static final String T_TEXT_REPORT_GRAPHICS_TEN = "Text_Report_Graphics_Ten";
+//	public static final String T_HOMEPAGE_LENGHT = "Home_Page_Length";
 
     public static final char LOWERCASE_ACCENTED_N = (char) 241;
     public static final char LOWERCASE_ACCENTED_A = (char) 225;
@@ -129,16 +131,12 @@ public class ConstantsGUI {
 		label.setForeground(ConstantsGUI.COLOR_PRESENTATION);
 		return label;
 	}
-<<<<<<< HEAD
 	
 	public static JLabel createLabelTitleMenu(String text) {
 		JLabel label = new JLabel(HTML_TAG_B+text);
 		label.setFont(new Font("Roboto", Font.ITALIC, 30));
-		label.setForeground(Color.decode(ConstantsGUI.COLOR_BACKGRAUND_SIXTO));
+		label.setForeground(COLOR_WHITE);
 		return label;
 	}
 	
-	
-=======
->>>>>>> f4e8d4ab5e803473169d034f3bdef0c52390d149
 }

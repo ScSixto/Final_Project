@@ -1,7 +1,6 @@
 package views.title;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
@@ -22,21 +21,15 @@ public class JPanelHeaderShowReports extends JPanel{
 	
 	public JPanelHeaderShowReports(ActionListener actionListener,String command) {
 		setLayout(new BorderLayout());
-<<<<<<< HEAD
 		setBorder(BorderFactory.createEmptyBorder(0,20,0,20));
-
-		setBackground(Color.decode(ConstantsGUI.COLOR_LINE));
-		initComponents(actionListener, command);
-=======
 		setBackground(ConstantsGUI.COLOR_LINE);
-		setOpaque(false);
-		initComponents();
->>>>>>> f4e8d4ab5e803473169d034f3bdef0c52390d149
+		initComponents(actionListener, command);
 		setVisible(true);
 	}
 	
 	private void initComponents(ActionListener actionListener,String command) {
 		addButton( actionListener,command);
+		addLabel(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_EIGHT);
 	}
 	
 	public void addButton(ActionListener actionListener,String command) {
@@ -56,6 +49,7 @@ public class JPanelHeaderShowReports extends JPanel{
 	}
 	
 	public void changeLanguage() {
+//		if(labelTitleReport != null)
 		labelTitleReport.setText(ConstantsGUI.HTML_TAG_B+HandlerLanguage.languageProperties.getProperty(text));
 	}
 	
