@@ -3,17 +3,13 @@ package views.body;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Locale;
 import java.util.Map.Entry;
 import java.awt.Color;
 import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
 
 public class UtilView {
 
     private static DecimalFormat doubleFormat = new DecimalFormat("#.###");
-    private static DecimalFormat integerFormat = new DecimalFormat("###,###.##");
 
     public static HashMap<String, Double> getPercentValues(HashMap<String, Double> normalValues) {
         HashMap<String, Double> percentValues = new HashMap<>();
@@ -139,4 +135,18 @@ public class UtilView {
         }
         return numericSeparator;
     }
+    
+    public static HashMap<String, ArrayList<Object[]>> showCultivesTable(HashMap<String, ArrayList<Object[]>> cultivesTable){
+		Iterator<Entry<String, ArrayList<Object[]>>> it = cultivesTable.entrySet().iterator();
+		while(it.hasNext()){
+			Entry<String, ArrayList<Object[]>> entry = it.next();
+			for (Object[] objectArray : entry.getValue()) {
+				objectArray[3] = UtilView.formatDouble((int)objectArray[3]);
+				objectArray[4] = UtilView.formatDouble((int)objectArray[4]);
+				objectArray[5] = UtilView.formatDouble((double)objectArray[5]);
+				objectArray[6] = "COL$ " + UtilView.formatDouble((double)objectArray[6]);
+			}
+		}
+		return cultivesTable;
+	}
 }

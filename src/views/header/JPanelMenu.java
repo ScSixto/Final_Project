@@ -2,6 +2,7 @@ package views.header;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -124,6 +125,7 @@ public class JPanelMenu extends JPanel{
 		menuOptions.setForeground(Color.WHITE);
 		menuOptions.setOpaque(false);
 		createFont(menuOptions);
+		menuOptions.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		return menuOptions;
 	}
 	
@@ -131,6 +133,7 @@ public class JPanelMenu extends JPanel{
 		JMenuItem item = new JMenuItem(text);
 		item.setOpaque(false);
 		createFont(item);
+		item.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		return item;
 	}
 	

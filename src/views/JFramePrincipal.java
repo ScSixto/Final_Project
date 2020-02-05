@@ -92,4 +92,16 @@ public class JFramePrincipal extends JFrame{
 	public void addLabel(String title) {
 		panelPpal.addLabel(title);
 	}
+	
+	public void addItemsComboBox(Object[] items) {
+		panelPpal.addItemsComboBox(items);
+	}
+	
+	public Object getItemComboBox() {
+		return panelPpal.getItemComboBox();
+	}
+	
+	public void getInformationCultives(HashMap<String, ArrayList<Object[]>> info) {
+		panelPpal.getInformationCultives(info);
+	}
 }

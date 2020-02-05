@@ -47,6 +47,7 @@ public class ConstantsGUI {
 	public static final String T_TITLE_TABLE_CULTIVES = "Title_Table_Cultives";
 	public static final String T_GRAPHICS = "Graphics";
 	public static final String T_SIZE_HOMEPAGE = "Size_HomePage";
+	public static final String T_SELECT_OPTION = "Select_Option";
 	// Titulos de Gráficos
 	public static final String GRAPHIC_TITLE_CULTIVATED_FISHES_PER_YEAR = "Cultivated_Fishes_Per_Year";
 	public static final String T_TITLE_REPORT_GRAPHICS = "Title_Report_Graphics";
@@ -79,7 +80,7 @@ public class ConstantsGUI {
 	public static final String BUTTON_NO = "No_Button";
 	public static final String BUTTON_ACCEPT = "Accept_Button";
 	
-	public static final Color COLOR_BACKGRAUND = Color.decode("#d7d8d8");
+	public static final Color COLOR_BACKGRAUND = Color.decode("#cdd3f9");
 	public static final Color COLOR_PRESENTATION = Color.decode("#333333");
 	public static final Color COLOR_LINE = Color.decode("#17a788");
 	public static final Color COLOR_WHITE = Color.WHITE;
@@ -102,6 +103,8 @@ public class ConstantsGUI {
 	public static final String LINE = EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH;
 	public static final String HTML_TAG_CENTER= "<html><center>";
 	public static final String HTML_TAG_B= "<html><b>";
+	public static final String TOWN_BRICENIO_CORRECT= "BRICE�O";
+	public static final String TOWN_BRICENIO_INCORRECT= "BRICEÑO";
 
 //Valores gráfica de barras
 	public static final Color DEFAULT_AXIS_COLOR = ConstantsGUI.COLOR_BLACK;
@@ -135,16 +138,8 @@ public class ConstantsGUI {
 	public static JLabel createLabelTitleMenu(String text) {
 		JLabel label = new JLabel(HTML_TAG_B+text);
 		label.setFont(new Font("Roboto", Font.ITALIC, 30));
-<<<<<<< HEAD
 		label.setForeground(COLOR_WHITE);
 		return label;
 	}
 	
-=======
-		label.setForeground(ConstantsGUI.COLOR_BACKGRAUND_SIXTO);
-		return label;
-	}
-	
-	
->>>>>>> ca063f8df7da0a61d1d699f32ed89369078ad8f9
 }

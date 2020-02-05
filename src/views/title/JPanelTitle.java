@@ -41,11 +41,4 @@ public class JPanelTitle extends JPanel{
 		return line;
 	}
 	
-	public static JLabel createLabelTitles(String text) {
-		JLabel label = new JLabel(text);
-		label.setFont(new Font("Roboto", Font.ITALIC, 50));
-		label.setForeground(ConstantsGUI.COLOR_PRESENTATION);
-		return label;
-	}
-
 }

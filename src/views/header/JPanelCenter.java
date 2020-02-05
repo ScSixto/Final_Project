@@ -17,7 +17,9 @@ public class JPanelCenter extends JPanel{
 	private JPanelLanguage panelLanguage;
 	
 	public JPanelCenter(ActionListener actionListener) {
-		setLayout(new FlowLayout(FlowLayout.CENTER));
+		FlowLayout layout = new FlowLayout(FlowLayout.CENTER);
+		layout.setHgap(20);
+		setLayout(layout);
 		setBackground(new Color(198,227,128,180));
 		initComponents(actionListener);
 		setVisible(true);

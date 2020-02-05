@@ -34,6 +34,8 @@ public class JPanelHeader extends JPanel{
 	
 	public void changeLanguage() {
 		panelCenter.changeLanguage();
+//		System.out.println(getWidth() + "anchoH");
+//		System.out.println(getHeight() + "largoH");
 	}
 	
 	private void setBackGraund() {

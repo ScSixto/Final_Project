@@ -27,7 +27,7 @@ public class JPanelBody extends JPanel{
 	
 	public JPanelBody(ActionListener actionListener) {
 		this.layout = new CardLayout();
-		setBorder(BorderFactory.createEmptyBorder(20,0,0,0));
+		setBorder(BorderFactory.createEmptyBorder(20,0,20,0));
 		setLayout(layout);
         this.setOpaque(false);
         initComponents(actionListener);
@@ -35,7 +35,7 @@ public class JPanelBody extends JPanel{
 	}
 	
 	private void initComponents(ActionListener actionListener) {
-		panelInitial = new JPanelInitiation();
+		panelInitial = new JPanelInitiation(actionListener);
 		this.add(panelInitial,ConstantsGUI.PANEL_INITIAL);
 		showReportsTable = new JPanelShowReports(actionListener);
 		this.add(showReportsTable,ConstantsGUI.PANEL_SHOW_TABLE_REPORTS);
@@ -73,20 +73,33 @@ public class JPanelBody extends JPanel{
 		panelInitial.showTableCultives(info);
 	}
 	
+	public void addItemsComboBox(Object[] items) {
+		showReportsTable.addItemsComboBox(items);
+	}
+	
+	public Object getItemComboBox() {
+		return showReportsTable.getItemComboBox();
+	}
+	
+	public void getInformationCultives(HashMap<String, ArrayList<Object[]>> info) {
+		showReportsTable.getInformationCultives(info);
+	}
+	
 	public void showCardImage(String key){
         switch(key){
             case ConstantsGUI.PANEL_INITIAL:
                 this.layout.show(this, ConstantsGUI.PANEL_INITIAL);
-                this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.HEIGHT*1.33)));
+                this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.95),(int)(ConstantsGUI.HEIGHT*1.45)));
                 break;
             case ConstantsGUI.PANEL_SHOW_TABLE_REPORTS:
+            	this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.HEIGHT*0.6)));
                 this.layout.show(this, ConstantsGUI.PANEL_SHOW_TABLE_REPORTS);
 				break;
 				case ConstantsGUI.PANEL_GRAPHIC_BAR_CHART:
                 this.layout.show(this, ConstantsGUI.PANEL_GRAPHIC_BAR_CHART);
                 break;
             case ConstantsGUI.PANEL_TABLE_REPORTS:
-            	this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.WIDTH*0.1)));
+            	this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.HEIGHT*0.6)));
                 this.layout.show(this, ConstantsGUI.PANEL_TABLE_REPORTS);
                 break;
 			case ConstantsGUI.PANEL_GRAPHIC_REPORTS:
