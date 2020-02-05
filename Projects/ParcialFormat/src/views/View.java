@@ -1,12 +1,10 @@
 package views;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Map.Entry;
 
-import models.Gender;
 import models.Team;
 
 public class View {
@@ -85,15 +83,6 @@ public class View {
 		System.out.println(MODIFY_LASTNAME);
 		return sc.nextLine();
 	}
-	
-	public int getGender(){
-		System.out.println(MODIFY_GENDER);			
-		for (Gender gender : Gender.values()) {
-			System.out.println("\t" + gender.getId() + ". " + gender.getGender() + ".");
-		}
-		System.out.println(COME_BACK_OPTION);
-		return sc.nextInt();
-	}
 
 	public void showErrorMessage(ErrorMessage error) {
 		System.out.println(SEPARATOR);
@@ -104,16 +93,6 @@ public class View {
 	public void showErrorMessage(ErrorMessage error, String message) {
 		System.out.println(SEPARATOR);
 		System.out.println("\tError: " + error.getMessage() + "[" + message + "].");
-		System.out.println(SEPARATOR);
-	}
-
-	public void showRunnerList(ArrayList<Object[]> runnerList) {
-		System.out.println(SEPARATOR);
-		System.out.println(String.format(RUNNER_LIST_FORMAT,"Id","Nombre1","Nombre2","Apellido","Genero","Equipo"));
-		System.out.println(SEPARATOR);
-		for (Object[] runner : runnerList) {
-			System.out.println(String.format(RUNNER_LIST_FORMAT,runner[0],runner[1],runner[2],runner[3],runner[4],runner[5],runner[6]));
-		}
 		System.out.println(SEPARATOR);
 	}
 

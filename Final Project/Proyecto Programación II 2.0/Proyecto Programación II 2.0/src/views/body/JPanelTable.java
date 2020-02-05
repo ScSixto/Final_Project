@@ -2,6 +2,7 @@ package views.body;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.util.ArrayList;
 //import java.util.HashMap;
@@ -21,15 +22,14 @@ import javax.swing.table.DefaultTableModel;
 import general.HandlerLanguage;
 import views.ConstantsGUI;
 
-
 public class JPanelTable extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 	private DefaultTableModel dtmElements;
 	private JTable jtElements;
 	private JScrollPane jsTable;
-	
-	public JPanelTable() {
+
+	public JPanelTable(){
 		setOpaque(false);
 		initComponents();
 		setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -39,29 +39,29 @@ public class JPanelTable extends JPanel{
 	private void initComponents() {
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.setBackground(Color.decode("#30373D"));
-//		String[] header = Constants.HEAD_TABLE;
 		dtmElements = new DefaultTableModel() {
 			private static final long serialVersionUID = 1L;
 			@Override
 		    public boolean isCellEditable(int rowIndex,int columnIndex){return false;}
 		};
-//		dtmElements.setColumnIdentifiers(header);
-		
+
 		Font fontHeader = new Font("Franklin Gothic Demi", Font.ITALIC,15);
 		
 		jtElements = new JTable();
 		jtElements.setModel(dtmElements);
 		jtElements.setFont(new Font("Arial", Font.PLAIN,15));
 		jtElements.getTableHeader().setReorderingAllowed(false);
-		jtElements.getTableHeader().setBackground(Color.decode("#282E33"));;
 		jtElements.getTableHeader().setForeground(Color.white);
 		jtElements.getTableHeader().setFont(fontHeader);
 		jtElements.setBackground(Color.white);
 		jtElements.setFillsViewportHeight(true);
 		jtElements.setBorder(null);
 		jtElements.setRowHeight(25);
+		
 		jsTable = new JScrollPane(jtElements);
 		jsTable.setForeground(Color.white);
+		// jsTable.getVerticalScrollBar().setUI(new JScrollFormat());
+		// jsTable.getHorizontalScrollBar().setUI(new JScrollFormat());		
 		jsTable.setBorder(null);
 		jsTable.setAlignmentX(Component.CENTER_ALIGNMENT);
 		this.add(jsTable);
@@ -76,10 +76,12 @@ public class JPanelTable extends JPanel{
 	}
 	
 	public void showTableCultives(HashMap<String, ArrayList<Object[]>> info) {
-		setBorder(BorderFactory.createEmptyBorder(0, 20, 15, 20));
+		setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
 		cleanRowsTable();
+		jtElements.getTableHeader().setBackground(ConstantsGUI.COLOR_LINE);
 		changeLanguageTableCultives();
 		stringFormat(info);
+		this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH * 0.12),(int)(ConstantsGUI.HEIGHT*0.6)));
 	}
 	
 	public void changeLanguageTableCultives() {
@@ -91,7 +93,17 @@ public class JPanelTable extends JPanel{
 				HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TOTAL_CULTIVE_WEIGHT_KG),
 				HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TOTAL_CULTIVE_PRICE)};
 		dtmElements.setColumnIdentifiers(header);
+		setColumnWidth();
+//		this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH * 0.12),(int)(ConstantsGUI.HEIGHT*0.5)));
 	}
+		
+    private void setColumnWidth(){
+		int[] columWidthArray = new int[]{15,150,20,150,80,80,110,100};
+        for(int i = 0; i < columWidthArray.length; i++){
+            jtElements.getColumnModel().getColumn(i).setPreferredWidth(columWidthArray[i]);
+        }
+    }
+
 	
 //	public void updateTable() {
 //		dtmElements.fireTableDataChanged();
@@ -116,14 +128,6 @@ public class JPanelTable extends JPanel{
 		addRunnerList(arrayFormat);
 	}
 	
-//	public void showTableAvarage(HashMap<String, LocalTime> avarage) {
-//		setBorder(BorderFactory.createEmptyBorder(0, 30, 0, 30));
-//		cleanRowsTable();
-//		String[] headerAvarage = Constants.TITLE_AVARAGE;
-//		dtmElements.setColumnIdentifiers(headerAvarage);
-//		stringFormat(avarage);
-//	}
-	
 	private void cleanRowsTable() {
 		dtmElements.setNumRows(0);
 	}
@@ -137,7 +141,6 @@ public class JPanelTable extends JPanel{
 	        	int i = 0;
 	        	arrayFormat.add(new Object[] {object[i],pair.getKey(),object[++i],object[++i],object[++i],object[++i],object[++i],object[++i]});
 			}
-	        
 	        it.remove(); 
 	    }
 		addRunnerList(arrayFormat);

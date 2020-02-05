@@ -45,14 +45,23 @@ public class Cultive{
   		this.harvestedQuantity = harvestedQuantity;
   	}
 
-  	public double getCostByKg() {
+  	public double getAverageWeightByHarvestedAnimalKg() {
+		return averageWeightByHarvestedAnimalKg;
+	}
+
+	public void setAverageWeightByHarvestedAnimalKg(
+			double averageWeightByHarvestedAnimalKg) {
+		this.averageWeightByHarvestedAnimalKg = averageWeightByHarvestedAnimalKg;
+	}
+
+	public double getCostByKg() {
   		return costByKg;
   	}
 
   	public void setCostByKg(double costByKg) {
   		this.costByKg = costByKg;
   	}
-  	
+
   	public double calculateTotalCultiveCost(){
   		return (this.costByKg *(this.harvestedQuantity * this.averageWeightByHarvestedAnimalKg));
   	}

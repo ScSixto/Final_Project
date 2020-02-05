@@ -4,12 +4,14 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controllers.Commands;
 import general.HandlerLanguage;
 import views.ConstantsGUI;
+import views.buttons.JButtonsMenuAndDialogs;
 
 public class JPanelMenuIcons extends JPanel{
 	
@@ -22,8 +24,10 @@ public class JPanelMenuIcons extends JPanel{
 	
 	public JPanelMenuIcons(ActionListener actionListener) {
 		FlowLayout layout = new FlowLayout(FlowLayout.CENTER);
+		setBackground(new Color(225,225,225,150));
+		setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
 		setLayout(layout);
-		setOpaque(false);
+		setOpaque(true);
 		initComponents(actionListener);
 		setVisible(true);
 	}
@@ -35,7 +39,7 @@ public class JPanelMenuIcons extends JPanel{
 	
 	private void addLogo() {
 		JLabel labelLogo = new JLabel();
-		labelLogo.setIcon(ConstantsGUI.convertToIcon("resources/img/logo.png",120,120));
+		labelLogo.setIcon(ConstantsGUI.convertToIcon("resources/img/logo2.png",200,200));
 		this.add(labelLogo);
 	}
 	
@@ -50,9 +54,9 @@ public class JPanelMenuIcons extends JPanel{
 		language.addActionListener(actionListener);
 		language.setActionCommand(Commands.OPEN_LENGUAGE_DIALOG.toString());
 		add(language);
-		tableCultives = new JButtonsMenuAndDialogs(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TABLE_CULTIVES),"resources/img/tablaCultivos.png",WIDTH_BUTTONS,HEIGTH_BUTTONS,Color.WHITE);
+		tableCultives = new JButtonsMenuAndDialogs(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TABLES),"resources/img/tablaCultivos.png",WIDTH_BUTTONS,HEIGTH_BUTTONS,Color.WHITE);
 		tableCultives.addActionListener(actionListener);
-		tableCultives.setActionCommand(Commands.TABLE_CULTIVES.toString());
+		tableCultives.setActionCommand(Commands.TABLE_REPORTS.toString());
 		add(tableCultives);
 	}
 	
@@ -61,7 +65,7 @@ public class JPanelMenuIcons extends JPanel{
 		delete.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_DELETE));
 		edit.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EDIT));
 		language.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_LANGUAGE));
-		tableCultives.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TABLE_CULTIVES));
+		tableCultives.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TABLES));
 	}
 	
 }

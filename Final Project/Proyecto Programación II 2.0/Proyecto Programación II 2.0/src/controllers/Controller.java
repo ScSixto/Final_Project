@@ -5,7 +5,10 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Locale;
+import java.util.Map.Entry;
 
 import org.json.simple.DeserializationException;
 
@@ -18,6 +21,7 @@ import models.Util;
 import persistence.JsonFile;
 import views.ConstantsGUI;
 import views.JFramePrincipal;
+import views.body.UtilView;
 
 public class Controller implements ActionListener{
 	
@@ -35,17 +39,24 @@ public class Controller implements ActionListener{
 	public Controller(){
 		this.farmManager = new FishFarmManager();
 	    this.fileManager = new JsonFile();
-//	    this.farmManager.showConsoleReport();
-	    this.init();
-	    this.farmManager.showConsoleReport();
-		loadConfiguration();
-		frame = new JFramePrincipal(this);	
-		frame.revalidate();
-		getLanguageDefault();
+		//	    this.farmManager.showConsoleReport();
+		//---------------------------------------------------------------------------------------------------
+		//	    this.farmManager.showConsoleReport();
+		//	    this.farmManager.reportdelreport();
+		//---------------------------------------------------------------------------------------------------
+		
+		this.init();
 	}
 	
     private void init(){
-        this.readRecords();
+		this.readRecords();
+		this.loadConfiguration();
+		frame = new JFramePrincipal(this);
+		this.getLanguageDefault();
+		showCultivesTable();
+//---------------------------------------------------------------------------------------------------
+//        farmManager.showConsoleReportReport();
+//---------------------------------------------------------------------------------------------------
     }
 
     private void readRecords(){
@@ -57,7 +68,7 @@ public class Controller implements ActionListener{
         try{
             ArrayList<Object[]> speciesList = this.fileManager.readSpeciesList(SPECIES_JSON_FILE_PATH, true);
             for(Object[] speciesObj: speciesList){
-                farmManager.addSpecies(this.farmManager.createSpecies((int)speciesObj[0],(String)speciesObj[1], (double)speciesObj[2], Util.getWaterType((String)speciesObj[3]), Util.getFood((String)speciesObj[4])));
+                farmManager.addSpecies(FishFarmManager.createSpecies((int)speciesObj[0],(String)speciesObj[1], (double)speciesObj[2], Util.getWaterType((String)speciesObj[3]), Util.getFood((String)speciesObj[4])));
             }
         }catch(FileNotFoundException e){
             e.printStackTrace();
@@ -76,11 +87,11 @@ public class Controller implements ActionListener{
             for(Object[] cultiveObj: cultiveList){
             	try {
             		speciesPosition = this.farmManager.searchSpeciesByName((String)cultiveObj[2]);
-	                cultive = this.farmManager.createCultive((Integer)cultiveObj[1], this.farmManager.getSpecies(speciesPosition), (Integer)cultiveObj[3], (Integer)cultiveObj[4], Util.toKilograms((Double)cultiveObj[5]),(Double)cultiveObj[6]);
+	                cultive = FishFarmManager.createCultive((Integer)cultiveObj[1], this.farmManager.getSpecies(speciesPosition), (Integer)cultiveObj[3], (Integer)cultiveObj[4], Util.toKilograms((Double)cultiveObj[5]),(Double)cultiveObj[6]);
 	                try{
 	                    this.farmManager.addCultive(cultive, this.farmManager.getTownId(this.farmManager.searchTownByName((String)cultiveObj[0])));
 	                }catch(UnfoundObject e){
-	                    Town town = this.farmManager.createTown((String)cultiveObj[0]);
+	                    Town town = FishFarmManager.createTown((String)cultiveObj[0]);
 	                    town.addCultive(cultive);
 	                    this.farmManager.addTown(town);
 	                }
@@ -101,13 +112,14 @@ public class Controller implements ActionListener{
 
 	public String getLanguageDefault(){
 		languageDefault = Locale.getDefault().getLanguage();
+		String language = "Spanish";
 		switch (languageDefault) {
 		case "es":
-			return "Spanish";
+			language = "Spanish";
 		case "us":
-			return "English";
+			language = "English";
 		}
-		return "Spanish";
+		return language;
 	}
 
 	public void loadLanguage() throws IOException{
@@ -172,6 +184,7 @@ public class Controller implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		frame.repaintPanel();
 		switch (Commands.valueOf(e.getActionCommand())) {
 		case CHANGE_ENGLISH:
 			manageChangeLanguageUS();
@@ -185,8 +198,26 @@ public class Controller implements ActionListener{
 		case EXIT:
 			endProgram();
 			break;
-		case TABLE_CULTIVES:
-			showTableCultives();
+		case TABLE_REPORTS:
+			showPanelTableReports();
+			break;
+		case PANEL_INITIAL:
+			showPanelInitial();
+			break;
+		case GRAPHIC_REPORTS:
+			showGraphicButtonPanel();
+			break;
+		case GRAPHIC_REPORT_ONE:
+			showCultivatedAndHarvestedFishesPerYear();
+			break;
+		case REPORT_EIGHT:
+			showReportCultivesPerTown();
+			break;
+		case REPORT_NINE:
+			showReportCultivesPerYear();
+			break;
+		case REPORT_TEN:
+			showReportCultivesPerSpecie();
 			break;
 		}
 	}
@@ -205,10 +236,55 @@ public class Controller implements ActionListener{
 			System.exit(0);	
 		}
 	}
+
+	private void showPanelInitial() {
+		showCultivesTable();
+		showCardImage(ConstantsGUI.PANEL_INITIAL);
+	}
+
+	private void showCultivesTable(){
+		HashMap<String, ArrayList<Object[]>> cultivesTable = farmManager.townsAndCultives();
+		Iterator<Entry<String, ArrayList<Object[]>>> it = cultivesTable.entrySet().iterator();
+		while(it.hasNext()){
+			Entry<String, ArrayList<Object[]>> entry = it.next();
+			for (Object[] objectArray : entry.getValue()) {
+				objectArray[3] = UtilView.formatDouble((int)objectArray[3]);
+				objectArray[4] = UtilView.formatDouble((int)objectArray[4]);
+				objectArray[5] = UtilView.formatDouble((double)objectArray[5]);
+				objectArray[6] = "COL$ " + UtilView.formatDouble((double)objectArray[6]);
+			}
+		}
+		frame.showTableCultives(cultivesTable);
+	}
 	
-	private void showTableCultives() {
-		frame.showTableCultives(farmManager.townsAndCultives());
-		showCardImage(ConstantsGUI.PANEL_TABLE);
+	private void showPanelTableReports() {
+		showCardImage(ConstantsGUI.PANEL_TABLE_REPORTS);
+	}
+	
+	private void showCultivatedAndHarvestedFishesPerYear(){
+		frame.showBarGraphicReport(farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), CULTIVATED_AND_HARVESTED_FISHES_PER_YEAR);
+		showCardImage(ConstantsGUI.PANEL_GRAPHIC_REPORT);
+	}
+
+	private void showGraphicButtonPanel() {
+		showCardImage(ConstantsGUI.PANEL_GRAPHIC_REPORTS);
+	}
+	
+	private void showPanelTables(String title) {
+		showCardImage(ConstantsGUI.PANEL_SHOW_TABLE_REPORTS);
+		frame.addLabel(title);
+	}
+	
+	private void showReportCultivesPerTown() {
+		showPanelTables(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_EIGHT);
+	}
+	
+	private void showReportCultivesPerYear() {
+		showPanelTables(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_NINE);
+	}
+	
+	private void showReportCultivesPerSpecie() {
+		showPanelTables(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_TEN);
 	}
 	
 	public static void main(String[] args) {

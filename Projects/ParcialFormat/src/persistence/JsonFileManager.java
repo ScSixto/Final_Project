@@ -1,7 +1,7 @@
 package persistence;
 
-import models.PlayerVariable;
-import models.TeamVariable;
+import models.AlgoVariable;
+import models.ClaseVariable;
 import org.json.simple.DeserializationException;
 import org.json.simple.JsonArray;
 import org.json.simple.JsonObject;
@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class JsonFileManager{
+public class JsonFileManager {
     public static final char READ_MODE = 'r';
     public static final char WRITE_MODE = 'w';
 
@@ -24,59 +24,59 @@ public class JsonFileManager{
     private BufferedWriter buffWriter;
     private BufferedReader buffReader;
 
-    public ArrayList<Object[]> readPlayers(String fileName) throws FileNotFoundException, IOException, org.json.simple.DeserializationException{
+    public ArrayList<Object[]> readAlgos(String fileName) throws FileNotFoundException, IOException, org.json.simple.DeserializationException{
         BufferedReader br = new BufferedReader(new InputStreamReader(getHttpURLConnection(false,fileName)));
         ArrayList<Object[]> playerList = new ArrayList<>();
         JsonObject jsonObject = (JsonObject) org.json.simple.Jsoner.deserialize(br);
-        JsonArray listOfPlayer = (JsonArray) ((JsonObject) jsonObject.get("league")).get("standard");
-        for(Object object: listOfPlayer){
+        JsonArray listOfAlgo = (JsonArray) ((JsonObject) jsonObject.get("league")).get("standard");
+        for(Object object: listOfAlgo){
             JsonObject playerObj = (JsonObject) object;
-            playerList.add(new Object[]{playerObj.getString(PlayerVariable.ID.getJsonName()), playerObj.getString(PlayerVariable.FIRST_NAME.getJsonName()), playerObj.getString(PlayerVariable.LAST_NAME.getJsonName()), playerObj.getString(PlayerVariable.TEAM_ID.getJsonName()).split(" ")[0], playerObj.getString(PlayerVariable.JERSEY.getJsonName()), playerObj.getString(PlayerVariable.BIRTHDATE.getJsonName()), playerObj.getString(PlayerVariable.HEIGHT.getJsonName())});
+            playerList.add(new Object[]{playerObj.getString(AlgoVariable.ID.getJsonName()), playerObj.getString(AlgoVariable.FIRST_NAME.getJsonName()), playerObj.getString(AlgoVariable.LAST_NAME.getJsonName()), playerObj.getString(AlgoVariable.TEAM_ID.getJsonName()).split(" ")[0], playerObj.getString(AlgoVariable.JERSEY.getJsonName()), playerObj.getString(AlgoVariable.BIRTHDATE.getJsonName()), playerObj.getString(AlgoVariable.HEIGHT.getJsonName())});
         }
         return playerList;
     }
 
-    public JsonArray getJsonPlayerArray(ArrayList<HashMap<PlayerVariable, Object>> playerList){
-        JsonArray jsonPlayerList = new JsonArray();
-        for(HashMap<PlayerVariable, Object> player: playerList){
+    public JsonArray getJsonAlgoArray(ArrayList<HashMap<AlgoVariable, Object>> playerList){
+        JsonArray jsonAlgoList = new JsonArray();
+        for(HashMap<AlgoVariable, Object> player: playerList){
             if(player!= null){
             JsonObject playerObj = new JsonObject();
-            Iterator<Map.Entry<PlayerVariable,Object>> it = player.entrySet().iterator();
-//            System.out.println(player.get(PlayerVariable.ID) + " - " + player.get(PlayerVariable.FIRST_NAME));
+            Iterator<Map.Entry<AlgoVariable,Object>> it = player.entrySet().iterator();
+//            System.out.println(player.get(AlgoVariable.ID) + " - " + player.get(AlgoVariable.FIRST_NAME));
             while(it.hasNext()){
-                Map.Entry<PlayerVariable,Object> playerInfo = it.next();
+                Map.Entry<AlgoVariable,Object> playerInfo = it.next();
                 playerObj.put(playerInfo.getKey().getJsonName(), "" + playerInfo.getValue());
             }
-        jsonPlayerList.add(playerObj);
+        jsonAlgoList.add(playerObj);
         }}
-        return jsonPlayerList;
+        return jsonAlgoList;
     }
 
-    public JsonArray getJsonTeamArray(ArrayList<HashMap<TeamVariable,Object>> teamList){
-        JsonArray jsonTeamList = new JsonArray();
-        for(HashMap<TeamVariable,Object> team: teamList){
+    public JsonArray getJsonClaseArray(ArrayList<HashMap<ClaseVariable,Object>> teamList){
+        JsonArray jsonClaseList = new JsonArray();
+        for(HashMap<ClaseVariable,Object> team: teamList){
             JsonObject teamObj = new JsonObject();
-            Iterator<Map.Entry<TeamVariable,Object>> it = team.entrySet().iterator();
+            Iterator<Map.Entry<ClaseVariable,Object>> it = team.entrySet().iterator();
             while(it.hasNext()){
-                Map.Entry<TeamVariable,Object> teamInfo = it.next();
-                if(teamInfo.getKey().equals(TeamVariable.PLAYER_LIST)){
-                    teamObj.put(TeamVariable.PLAYER_LIST.getJsonName(), this.getJsonPlayerArray((ArrayList<HashMap<PlayerVariable, Object>>) teamInfo.getValue()));
+                Map.Entry<ClaseVariable,Object> teamInfo = it.next();
+                if(teamInfo.getKey().equals(ClaseVariable.PLAYER_LIST)){
+                    teamObj.put(ClaseVariable.PLAYER_LIST.getJsonName(), this.getJsonAlgoArray((ArrayList<HashMap<AlgoVariable, Object>>) teamInfo.getValue()));
                 }else{
                     teamObj.put(teamInfo.getKey().getJsonName(), "" + teamInfo.getValue());
                 }
             }
-            jsonTeamList.add(teamObj);
+            jsonClaseList.add(teamObj);
         }
-        return jsonTeamList;
+        return jsonClaseList;
     }
 
-    public JsonObject getJsonTeamHeightReportObject(HashMap<TeamVariable,Object> object){
+    public JsonObject getJsonClaseHeightReportObject(HashMap<ClaseVariable,Object> object){
         JsonObject jsonObject = new JsonObject();
-        Iterator<Map.Entry<TeamVariable, Object>> it = object.entrySet().iterator();
+        Iterator<Map.Entry<ClaseVariable, Object>> it = object.entrySet().iterator();
         while(it.hasNext()){
-            Map.Entry<TeamVariable, Object> objectEntry = it.next();
-            if(objectEntry.getKey().equals(TeamVariable.TEAM_LIST)){
-                jsonObject.put(objectEntry.getKey().getJsonName(), this.getJsonTeamArray((ArrayList<HashMap<TeamVariable,Object>>)objectEntry.getValue()));
+            Map.Entry<ClaseVariable, Object> objectEntry = it.next();
+            if(objectEntry.getKey().equals(ClaseVariable.TEAM_LIST)){
+                jsonObject.put(objectEntry.getKey().getJsonName(), this.getJsonClaseArray((ArrayList<HashMap<ClaseVariable,Object>>)objectEntry.getValue()));
             }else{
                 jsonObject.put(objectEntry.getKey().getJsonName(),objectEntry.getValue());
             }
@@ -85,13 +85,13 @@ public class JsonFileManager{
     }
 
 
-    public JsonObject getJsonTeamAgeReportObject(HashMap<AgePeriod, Object> object){
+    public JsonObject getJsonClaseAgeReportObject(HashMap<AgePeriod, Object> object){
         JsonObject jsonObject = new JsonObject();
         Iterator<Map.Entry<AgePeriod, Object>> it = object.entrySet().iterator();
         while(it.hasNext()){
             Map.Entry<AgePeriod, Object> objectEntry = it.next();
-            if(objectEntry.getKey().equals(TeamVariable.TEAM_LIST)){
-                jsonObject.put(objectEntry.getKey().getJsonName(), this.getJsonTeamArray((ArrayList<HashMap<TeamVariable,Object>>)objectEntry.getValue()));
+            if(objectEntry.getKey().equals(ClaseVariable.TEAM_LIST)){
+                jsonObject.put(objectEntry.getKey().getJsonName(), this.getJsonClaseArray((ArrayList<HashMap<ClaseVariable,Object>>)objectEntry.getValue()));
             }else{
                 jsonObject.put(objectEntry.getKey().getJsonName(),objectEntry.getValue());
             }
@@ -99,16 +99,16 @@ public class JsonFileManager{
         return jsonObject;
     }
 
-    public ArrayList<Object[]> readTeams(String fileName) throws FileNotFoundException, IOException, DeserializationException{
+    public static ArrayList<Object[]> readClases(String fileName) throws FileNotFoundException, IOException, DeserializationException{
         BufferedReader br = new BufferedReader(new InputStreamReader(getHttpURLConnection(false,fileName)));
 //        System.out.println(br.readLine());
         ArrayList<Object[]> teamList = new ArrayList<>();
         JsonObject jsonObject = (JsonObject) Jsoner.deserialize(br);
 //        System.out.println(((JsonObject)((JsonArray) ((JsonObject) ((JsonObject) jsonObject.get("sports_content")).get("teams")).get("team")).get(0)).getString("team_name"));
-        JsonArray listOfTeam = (JsonArray) ((JsonObject) ((JsonObject) jsonObject.get("sports_content")).get("teams")).get("team");
-        for(Object object: listOfTeam){
+        JsonArray listOfClase = (JsonArray) ((JsonObject) ((JsonObject) jsonObject.get("sports_content")).get("teams")).get("team");
+        for(Object object: listOfClase){
             JsonObject teamObj = (JsonObject) object;
-            teamList.add(new Object[]{teamObj.getString(TeamVariable.ID.getJsonName()), teamObj.getString(TeamVariable.NAME.getJsonName()), teamObj.getString(TeamVariable.NICKNAME.getJsonName()), teamObj.getString(TeamVariable.CITY.getJsonName()), teamObj.getString(TeamVariable.CONFERENCE.getJsonName()), teamObj.getBoolean(TeamVariable.NBA_TEAM.getJsonName())});
+            teamList.add(new Object[]{teamObj.getString(ClaseVariable.ID.getJsonName()), teamObj.getString(ClaseVariable.NAME.getJsonName()), teamObj.getString(ClaseVariable.NICKNAME.getJsonName()), teamObj.getString(ClaseVariable.CITY.getJsonName()), teamObj.getString(ClaseVariable.CONFERENCE.getJsonName()), teamObj.getBoolean(ClaseVariable.NBA_TEAM.getJsonName())});
         }
         return teamList;
     }
@@ -147,7 +147,7 @@ public class JsonFileManager{
         }
     }
 
-        public static InputStream getHttpURLConnection(boolean isProxy, String filePath) {
+    public static InputStream getHttpURLConnection(boolean isProxy, String filePath) {
         HttpURLConnection httpURLConnection;
         URL url = null;
         InputStream inputStream = null;
@@ -163,7 +163,7 @@ public class JsonFileManager{
                 httpURLConnection = (HttpURLConnection) url.openConnection(proxy);
                 inputStream = httpURLConnection.getInputStream();
                 if(inputStream == null )
-                    System.out.println( "Este input No quiere funcionar" );
+                    System.out.println( "Este input no quiere funcionar" );
             }
 
         }catch(ConnectException connectException) {
@@ -181,5 +181,12 @@ public class JsonFileManager{
         return inputStream;
     }
 
-
+    public Reader getReader(String route, boolean isFile) throws FileNotFoundException{
+        Reader reader;
+        if(isFile)
+            reader = new FileReader(route);
+        else
+            reader = new BufferedReader(new InputStreamReader(JsonFile.getHttpURLConnection(false, route)));
+        return reader;
+    }
 }

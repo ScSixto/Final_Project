@@ -1,34 +1,47 @@
 package views.header;
 
 import java.awt.BorderLayout;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+
 
 
 public class JPanelHeader extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 	
-	private JPanelMenu panelMenu;
-	private JPanelMenuIcons panelMenuIcons;
+	private Image backGraundImage;
+	private JPanelCenter panelCenter;
 
 	public JPanelHeader(ActionListener actionListener) {
 		setLayout(new BorderLayout());
+		setBorder(BorderFactory.createEmptyBorder(60, 20, 60, 20));
 		setOpaque(false);
 		initComponents(actionListener);
 		setVisible(true);
 	}
 	
 	private void initComponents(ActionListener actionListener) {
-		panelMenu = new JPanelMenu(actionListener);
-		add(panelMenu,BorderLayout.NORTH);
-		panelMenuIcons = new JPanelMenuIcons(actionListener);
-		add(panelMenuIcons,BorderLayout.SOUTH);
+		setBackGraund();
+		panelCenter = new JPanelCenter(actionListener);
+		add(panelCenter,BorderLayout.CENTER);
 	}
 	
 	public void changeLanguage() {
-		panelMenu.changeLanguage();
-		panelMenuIcons.changeLanguage();
+		panelCenter.changeLanguage();
+	}
+	
+	private void setBackGraund() {
+		backGraundImage = new ImageIcon("resources/img/fondo3.png").getImage();
+		// backGraundImage = new ImageIcon("resources/img/fondoPeces.png").getImage();
+	}
+	
+	public void paintComponent(Graphics g) {
+		g.drawImage(backGraundImage, 0, 0, getWidth(),getHeight(),this);
 	}
 }
