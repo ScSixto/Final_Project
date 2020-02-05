@@ -223,6 +223,9 @@ public class Controller implements ActionListener{
 		case GET_INFO_TABLES:
 			getItemForTablesReport();
 			break;
+		case PANEL_TABLE_CULTIVES:
+			showPanelTableCultives();
+			break;
 		}
 	}
 	
@@ -242,8 +245,12 @@ public class Controller implements ActionListener{
 	}
 
 	private void showPanelInitial() {
-		showCultivesTable();
 		showCardImage(ConstantsGUI.PANEL_INITIAL);
+	}
+	
+	private void showPanelTableCultives() {
+		showCultivesTable();
+		showCardImage(ConstantsGUI.PANEL_TABLE_CULTIVES);
 	}
 
 	private void showCultivesTable(){

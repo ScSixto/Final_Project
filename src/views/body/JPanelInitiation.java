@@ -19,10 +19,8 @@ public class JPanelInitiation extends JPanel{
 	
 	private JLabel labelTitle;
 	private JLabel labelText;
-	private JLabel labelTitleTable;
 	private JPanel panelYAxis;
 	private JPanelTable table;
-	private JPanelMenuIcons buttons;
 	
 	public JPanelInitiation(ActionListener actionListener) {
 		setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -37,13 +35,11 @@ public class JPanelInitiation extends JPanel{
 		panelYAxis.setOpaque(false);
 		add(panelYAxis);
 		addInformation();
-		addTable(actionListener);
 	}
 	
 	public void addInformation() {
 		labelTitle = ConstantsGUI.createLabelTitles(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_PISCICULTURE));
 //		labelTitle.setBackground(new Color(49,201,150,150));
-		labelTitle.setOpaque(true);
 		//		panelYAxis.add(new JPanelTitle(labelTitle,true));
 		addPanel(labelTitle);
 		createLine();
@@ -55,19 +51,6 @@ public class JPanelInitiation extends JPanel{
 		addPanel(labelText);
 	}
 	
-	public void addTable(ActionListener actionListener) {
-		labelTitleTable = ConstantsGUI.createLabelTitles( HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TITLE_TABLE_CULTIVES) );
-//		panelYAxis.add(new JPanelTitle(labelTitleTable,true));
-		addPanel(labelTitleTable);
-		createLine();
-		
-		buttons = new JPanelMenuIcons(actionListener);
-		panelYAxis.add(buttons);
-		
-		table = new JPanelTable();
-		panelYAxis.add(table);
-	}
-	
 	public void showTableCultives(HashMap<String, ArrayList<Object[]>> info) {
 		table.showTableCultives(info);
 	}
@@ -75,8 +58,6 @@ public class JPanelInitiation extends JPanel{
 	public void changeLanguage() {
 		labelTitle.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_PISCICULTURE));
 		labelText.setText("<html>" + HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_OF_PISCICULTURE) + "</html>");
-		labelTitleTable.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TITLE_TABLE_CULTIVES));
-		table.changeLanguageTableCultives();
 	}
 	
 	public void addPanel(JLabel label) {
