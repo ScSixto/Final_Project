@@ -1,0 +1,16 @@
+package models;
+
+public enum RankingCategory{
+    AUXILIARY("Auxiliar"),ASSISTANT("Asistente"),BMC(3,"BMC"),TINKOFF(4,"Tinkoff"),SKY(5,"Sky"),IAM_CYCLING(6,"Iam Cycling");
+
+    private String name;
+
+    RankingCategory(String name){
+        this.name = name;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+}

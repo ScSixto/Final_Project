@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;views.JPSpringLayout&apos; to &apos;JPGroupLayout&apos;&#x0D;&#x0A;- Original project: &apos;Layouts&apos;&#x0D;&#x0A;- Original element: &apos;views.JPSpringLayout&apos;&#x0D;&#x0A;- Renamed element: &apos;views.JPGroupLayout&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;JPSpringLayout&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;views{JPSpringLayout.java[JPSpringLayout" matchStrategy="1" name="JPGroupLayout" qualified="false" references="true" similarDeclarations="false" stamp="1573048983917" textual="false" version="1.0"/>
+</session>

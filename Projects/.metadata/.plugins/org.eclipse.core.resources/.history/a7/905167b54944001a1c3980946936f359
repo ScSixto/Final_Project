@@ -1,0 +1,123 @@
+package controllers;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+
+import exceptions.FileFormatInvalid;
+import models.*;
+import org.json.simple.DeserializationException;
+import persistence.FileManager;
+import persistence.EmployeeFormat;
+import persistence.JsonFileManager;
+import views.*;
+
+public class Control implements ActionListener{
+
+	public static final String EMPLOYEE_FILE_PATH = "resources/Riders.info";
+
+	private FileManager fileManager;
+	private JFramePpal jFramePpal;
+	private EmployeeManager employeeManager;
+
+
+
+	public Control() {
+		jFramePpal = new JFramePpal(this);
+		fileManager = new FileManager();
+		employeeManager = new EmployeeManager();
+		init();
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		switch(ActionCommands.valueOf(e.getActionCommand())){
+		case SHOW_EMPLOYEE_WINNER_LIST:
+			break;
+		case SHOW_EMPLOYEE_LIST:
+			this.showEmployeeList();
+			break;
+		default:
+			break;
+		
+		}
+	}
+
+	public void showEmployeeList(){
+		ArrayList<Object[]> employeeDataList = UtilView.formatEmployeeData(employeeManager.getEmployeeDataList());
+		if(employeeDataList.size() > 0){
+			jFramePpal.showTable(employeeDataList, TableHeader.EMPLOYEE_LIST);
+		}else{
+			jFramePpal.showErrorMessage(ErrorMessage.EMPLOYEE_LIST_EMPTY);
+		}
+	}
+
+	public void init(){
+		this.readFiles();
+	}
+
+
+	private void readFiles(){
+		this.readEmployees();
+	}
+
+	private void readEmployees(){
+		try {
+			ArrayList<Object[]> employeeObjectArrayList = fileManager.readEmployees("http://data.nba.net/10s/prod/v1/2016/employees.json");
+			for(Object[] employeeArray: employeeObjectArrayList){
+				long claseId = Util.toLong((String)employeeArray[3]);
+				employeeManager.addEmployee(employeeManager.createEmployee(Util.toInteger((String)employeeArray[3]),(String)employeeArray[0],(String)employeeArray[1],Util.toDocumentTypeFormat((String)employeeArray[2]), Util.toBondingTypeFormat((String)employeeArray[4]), Util.toInteger((String)employeeArray[5]), Util.toInteger((String) employeeArray[6])));
+			}
+		} catch (IOException e){
+			e.printStackTrace();
+		} catch (DeserializationException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void writeClaseArray(){
+		try{
+			fileManager.writeJsonFile("C:/Users/S.c. Sixto/Documents/U/Programacion/P(II)/Projects/Json_pV1.1/resources/clases.json",((fileManager.getJsonClaseArray(claseManager.toHashMapList())).toJson()));
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+	}
+
+
+	private void readFile() {
+		try {
+			ArrayList<String[]> damagedEmployeeList = new ArrayList<>();
+			ArrayList<String[]> employeeDataMatrix = Util.getFileInfo(file.readFile(EMPLOYEE_FILE_PATH));
+			for (String[] register : employeeDataMatrix){
+				try{
+					String secondName = register[EmployeeFormat.SECOND_NAME.getFileFormatPosition()];
+					if(Util.isValidSecondName(secondName) && employeeManager.searchEmployee(Integer.parseInt(register[EmployeeFormat.ID.getFileFormatPosition()])) == EmployeeManager.VALUE_NOT_FOUND_CODE){
+						employeeManager.addEmployee(this.createEmployee(register));
+					}else{
+						damagedEmployeeList.add(register);
+					}
+				}catch(DateTimeParseException e){
+					System.out.println(1);
+					damagedEmployeeList.add(register);
+				}
+			}
+		}catch (IOException | FileFormatInvalid e) {
+			view.showErrorMessage(ErrorMessage.INVALID_FILE,e.getMessage());
+		}
+	}
+
+	private Employee createEmployee(String[] register){
+		int id = Integer.parseInt(register[EmployeeFormat.ID.getFileFormatPosition()]);
+		String secondName = register[EmployeeFormat.SECOND_NAME.getFileFormatPosition()];
+		String firstName = register[EmployeeFormat.FIRST_NAME.getFileFormatPosition()];
+		String lastName = register[EmployeeFormat.LAST_NAME.getFileFormatPosition()];
+		LocalTime routeTime = Util.toLocalTime(register[EmployeeFormat.ROUTE_TIME.getFileFormatPosition()]);
+		Clase clase = Util.toClaseFormat(register[EmployeeFormat.TEAM.getFileFormatPosition()]);
+		return employeeManager.createEmployee(id, firstName, secondName, lastName, clase, routeTime);
+	}
+}

@@ -1,0 +1,151 @@
+package controllers;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+
+import exceptions.FileFormatInvalid;
+import models.*;
+import org.json.simple.DeserializationException;
+import persistence.FileManager;
+import persistence.EmployeeFormat;
+import persistence.JsonFileManager;
+import views.*;
+
+public class Control implements ActionListener{
+
+	public static final String ALGO_FILE_PATH = "resources/Riders.info";
+
+	private FileManager fileManager;
+	private View view;
+	private JFramePpal jFramePpal;
+	private ClaseManager algoManager;
+	private Clase claseManager;
+
+
+
+	public Control() {
+		view = new View();
+		jFramePpal = new JFramePpal(this);
+		fileManager = new FileManager();
+		algoManager = new ClaseManager();
+		claseManager = new Clase();
+		init();
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		switch(ActionCommands.valueOf(e.getActionCommand())){
+		case SHOW_ALGO_WINNER_LIST:
+			this.showWinnerReportTable();
+			break;
+		case SHOW_ALGO_LIST:
+			this.showAlgoList();
+			break;
+		default:
+			break;
+		
+		}
+	}
+
+	public void showAlgoList(){
+		ArrayList<Object[]> algoDataList = UtilView.formatAlgoData(algoManager.getAlgoDataList());
+		if(algoDataList.size() > 0){
+			jFramePpal.showTable(algoDataList, TableHeader.ALGO_LIST);
+		}else{
+			jFramePpal.showErrorMessage(ErrorMessage.ALGO_LIST_EMPTY);
+		}
+	}
+
+	public void showWinnerReportTable(){
+		ArrayList<Object[]> algoWinnerDataList = UtilView.formatAlgoWinnerData(algoManager.getAlgoWinnerDataList());
+		if(algoWinnerDataList.size() > 0){
+			jFramePpal.showTable(algoWinnerDataList, TableHeader.ALGO_WINNER);
+		}else{
+			jFramePpal.showErrorMessage(ErrorMessage.ALGO_LIST_EMPTY);
+		}
+	}
+
+	public void init(){
+		this.readFiles();
+	}
+
+
+	private void readFiles(){
+		this.readClases();
+		this.readAlgos();
+	}
+
+	private void readClases(){
+		try {
+			ArrayList<Object[]> claseObjectArrayList = fileManager.readClases("http://data.nba.net/10s/", FileManager.JSON_FILE_TYPE);
+			for(Object[] claseArray: claseObjectArrayList){
+				claseManager.addClase(new Clase(Util.toLong((String)claseArray[0]),(String)claseArray[1],(String)claseArray[2],(String)claseArray[3],(String)claseArray[4],(boolean)claseArray[5]));
+			}        } catch (IOException e) {
+			e.printStackTrace();
+
+		} catch (DeserializationException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void readAlgos(){
+		try {
+			ArrayList<Object[]> algoObjectArrayList = fileManager.readAlgos("http://data.nba.net/10s/prod/v1/2016/algos.json");
+			for(Object[] algoArray: algoObjectArrayList){
+				long claseId = Util.toLong((String)algoArray[3]);
+				claseManager.addAlgo(new Employee(Util.toLong((String)algoArray[0]),(String)algoArray[1],(String)algoArray[2],claseId, Util.toLong((String)algoArray[4]), Util.toLocalDate((String)algoArray[5]), Util.toDouble((String) algoArray[6])), claseId);
+			}
+		} catch (IOException e){
+			e.printStackTrace();
+		} catch (DeserializationException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void writeClaseArray(){
+		try{
+			fileManager.writeJsonFile("C:/Users/S.c. Sixto/Documents/U/Programacion/P(II)/Projects/Json_pV1.1/resources/clases.json",((fileManager.getJsonClaseArray(claseManager.toHashMapList())).toJson()));
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+	}
+
+
+	private void readFile() {
+		try {
+			ArrayList<String[]> damagedAlgoList = new ArrayList<>();
+			ArrayList<String[]> algoDataMatrix = Util.getFileInfo(file.readFile(ALGO_FILE_PATH));
+			for (String[] register : algoDataMatrix){
+				try{
+					String secondName = register[EmployeeFormat.SECOND_NAME.getFileFormatPosition()];
+					if(Util.isValidSecondName(secondName) && algoManager.searchAlgo(Integer.parseInt(register[EmployeeFormat.ID.getFileFormatPosition()])) == ClaseManager.VALUE_NOT_FOUND_CODE){
+						algoManager.addAlgo(this.createAlgo(register));
+					}else{
+						damagedAlgoList.add(register);
+					}
+				}catch(DateTimeParseException e){
+					System.out.println(1);
+					damagedAlgoList.add(register);
+				}
+			}
+		}catch (IOException | FileFormatInvalid e) {
+			view.showErrorMessage(ErrorMessage.INVALID_FILE,e.getMessage());
+		}
+	}
+
+	private Employee createAlgo(String[] register){
+		int id = Integer.parseInt(register[EmployeeFormat.ID.getFileFormatPosition()]);
+		String secondName = register[EmployeeFormat.SECOND_NAME.getFileFormatPosition()];
+		String firstName = register[EmployeeFormat.FIRST_NAME.getFileFormatPosition()];
+		String lastName = register[EmployeeFormat.LAST_NAME.getFileFormatPosition()];
+		LocalTime routeTime = Util.toLocalTime(register[EmployeeFormat.ROUTE_TIME.getFileFormatPosition()]);
+		Clase clase = Util.toClaseFormat(register[EmployeeFormat.TEAM.getFileFormatPosition()]);
+		return algoManager.createAlgo(id, firstName, secondName, lastName, clase, routeTime);
+	}
+}

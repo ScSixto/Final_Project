@@ -1,0 +1,80 @@
+package models;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+
+public class EmployeeManager {
+
+    public static final LocalDate MAX_BIRTH_DATE = LocalDate.of(2008,6,20);
+    public static final LocalDate MIN_BIRTH_DATE = LocalDate.of(1970,9,18);
+	public static final int VALUE_NOT_FOUND_CODE = -1;
+    
+	private ArrayList<Employee> employeeList;
+
+    public EmployeeManager(){
+        this.employeeList = new ArrayList<Employee>();
+    }
+
+    public ArrayList<Object[]> getEmployeeDataList(){
+    	ArrayList<Object[]> employeeListTemp = new ArrayList<>();
+        for (Employee employee : employeeList) {
+        	employeeListTemp.add(employee.toObjectArray());
+        }
+        return employeeListTemp;
+    }
+    
+    public ArrayList<HashMap<EmployeeVariable, Object>> getEmployeeListHashmap(){
+    	ArrayList<HashMap<EmployeeVariable, Object>> employeeListHashmap = new ArrayList<>();
+    	
+    	
+    	return employeeListHashmap;
+    }
+
+    public Employee createEmployee(int id, String firstName, String lastName, RankingCategory rankingCategory, DocumentType docType, BondingType bondingType,int salaryPoints, int workedMonths){
+        return new Employee(id,firstName,lastName,rankingCategory, docType, bondingType, salaryPoints, workedMonths);
+    }
+
+    public void addEmployee(Employee employee){
+        employeeList.add(employee);
+    }
+
+    public void orderByRankingCategory(){
+    	Collections.sort(employeeList, new Comparator<Employee>(){
+			public int compare(Employee r1, Employee r2) {
+				return r1.getRankingCategory().getText().compareToIgnoreCase(r2.getRankingCategory().getText());
+			}
+		});
+    }
+
+    public void orderById(){
+    	Collections.sort(employeeList, new Comparator<Employee>(){
+			public int compare(Employee r1, Employee r2) {
+				if (r1.getId() > r2.getId()) return 1;
+				else if (r1.getId() < r2.getId()) return -1;
+				else return 0;				
+			}
+		});	
+    }
+    
+    public int searchEmployee(int id){
+    	this.orderById();
+		int position = VALUE_NOT_FOUND_CODE;
+		int half;
+		int initialP = 0;
+		int finalP = this.employeeList.size()-1;
+		while(initialP <= finalP && position == VALUE_NOT_FOUND_CODE){
+			half = (int)((finalP + initialP)/2);
+			if(half >= 0 && half < this.employeeList.size())
+				if(id > this.employeeList.get(half).getId())
+					initialP = half + 1;
+				else if(id < this.employeeList.get(half).getId())
+					finalP = half - 1;
+				else
+					position = half;
+		}
+		return position;
+    }
+}

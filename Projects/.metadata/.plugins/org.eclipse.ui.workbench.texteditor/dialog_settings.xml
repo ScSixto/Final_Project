@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item value="489" key="DIALOG_X_ORIGIN"/>
+		<item value="313" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="false" key="isRegEx"/>
+		<item value="Employee" key="selection"/>
+		<item value="true" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="true" key="wrap"/>
+		<item value="false" key="wholeword"/>
+		<list key="findhistory">
+			<item value="Clase"/>
+			<item value="player"/>
+			<item value="documentType"/>
+			<item value="DocumentType"/>
+			<item value="RankingCategory"/>
+			<item value="rankingCategory"/>
+			<item value="team"/>
+			<item value="Team"/>
+			<item value="name"/>
+			<item value="ALGO"/>
+			<item value="algo"/>
+			<item value="Algo"/>
+			<item value="view"/>
+			<item value="ErrorMessage"/>
+			<item value=""/>
+		</list>
+		<list key="replacehistory">
+			<item value="Employee"/>
+			<item value="employee"/>
+			<item value="bondingType"/>
+			<item value="BondingType"/>
+			<item value="DocumentType"/>
+			<item value="documentType"/>
+			<item value="rankingCategory"/>
+			<item value="RankingCategory"/>
+			<item value="text"/>
+			<item value="EMPLOYEE"/>
+			<item value="jFramePpal"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="284" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="391" key="DIALOG_HEIGHT"/>
+		<item value="586" key="DIALOG_X_ORIGIN"/>
+		<item value="178" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>
