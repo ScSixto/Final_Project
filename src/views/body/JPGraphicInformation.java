@@ -29,14 +29,11 @@ public class JPGraphicInformation extends JPanel{
     private void initComponents(HashMap<String, Color> columnInformation){
         this.setContentPanel();
         Iterator<Entry<String, Color>> it = columnInformation.entrySet().iterator();
-            while(it.hasNext()){
-                Entry<String, Color> entry = it.next();
-                    for (int i = 0; i < 5; i++) {   
-                    this.contentPanel.add(new JLInformationLabel(entry.getKey(), entry.getValue()));
-                }
-            }
-        
-            this.addPanelInformationScrollBar();
+        while(it.hasNext()){
+            Entry<String, Color> entry = it.next();
+            this.contentPanel.add(new JLInformationLabel(entry.getKey(), entry.getValue()));
+        }
+        this.addPanelInformationScrollBar();
         this.add(this.contentPanel);
     }
 
@@ -51,7 +48,6 @@ public class JPGraphicInformation extends JPanel{
     }
 
     public void addPanelInformationScrollBar() {
-        
         JScrollPane scrollPane = new JScrollPane(this.contentPanel);
         //scrollPane.getVerticalScrollBar().setUI(new JScrollFormat());
         // scrollPane.getHorizontalScrollBar().setUI(new JScrollFormat());
@@ -59,4 +55,4 @@ public class JPGraphicInformation extends JPanel{
 		scrollPane.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.add(scrollPane);
     }
-} 
+}
