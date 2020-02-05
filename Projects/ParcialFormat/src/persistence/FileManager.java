@@ -1,0 +1,78 @@
+package persistence;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import exceptions.FileFormatInvalid;
+import org.json.simple.DeserializationException;
+
+public class FileManager {
+	public static final char READ_MODE = 'r';
+	public static final char WRITE_MODE = 'w';
+
+	public static final char JSON_FILE_TYPE = 'j';
+	public static final char XML_FILE_TYPE = 'x';
+
+	private File file;
+	private FileReader fileReader;
+	private FileWriter fileWriter;
+	private BufferedWriter buffWriter;
+	private BufferedReader buffReader;
+
+	public ArrayList<Object[]> readClases(String filePath, char appiType) throws IOException, DeserializationException {
+		ArrayList<Object[]> reading = new ArrayList<>();
+		switch(appiType){
+			case JSON_FILE_TYPE:
+				reading = JsonFileManager.readClases(filePath);
+				break;
+			case XML_FILE_TYPE:
+				reading = XmlFileManager.readClases(filePath);
+				break;
+		}
+		return reading;
+	}
+
+	public void writeFile(String filePath, String[] info) throws IOException, FileFormatInvalid {
+		this.openFile(filePath, WRITE_MODE);
+		this.buffWriter = new BufferedWriter(this.fileWriter);
+		for (int i = 0; i < info.length; i++) {
+			if (info[i] != null) {
+				this.buffWriter.write(info[i]);
+				this.buffWriter.newLine();
+			}
+		}
+		this.closeFile();
+	}
+
+	public void writeJsonFile(String filePath, String fileContent) throws IOException{
+		this.openFile(filePath, WRITE_MODE);
+		this.buffWriter = new BufferedWriter(this.fileWriter);
+		this.buffWriter.write(fileContent);
+		this.closeFile();
+	}
+
+	private void openFile(String filePath, char mode) throws IOException{
+		this.file = new File(filePath);
+		if(!this.file.isDirectory()){
+			if(mode == WRITE_MODE){
+				this.fileWriter = new FileWriter(file);
+			}else if(mode == READ_MODE)
+				this.fileReader = new FileReader(file);
+		}
+	}
+
+	private void closeFile() throws IOException{
+		if (fileReader != null) {
+			buffReader.close();
+			fileReader.close();
+		}
+		if (fileWriter != null) {
+			buffWriter.close();
+			fileWriter.close();
+		}
+	}
+}

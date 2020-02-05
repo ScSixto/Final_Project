@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="E:\Programacion\P(II)\Projects\p_DespegarInterfaceV1.2"/>
+		<item value="F:\Programacion\P(I)\Projects\p_businessPilaClaseV1.2"/>
+		<item value="E:\Programacion\P(I)\Projects\p_businessPilaClaseV1.3"/>
+		<item value="E:\Programacion\P(I)\Projects\p_businessPilaClase"/>
+		<item value="E:\Programacion\P(I)\Projects\p_exposition_Interface_&amp;_Collections"/>
+		<item value="E:\Programacion\P(I)\Projects\p_businessPilaClaseV1.2"/>
+	</list>
+	<section name="ExternalProjectImportWizard">
+		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="E:\Programacion\P(II)\Projects\p_Carrera_V1.1"/>
+			<item value="F:\Programacion\P(II)\Projects\p_Carrera_V1.1"/>
+			<item value="E:\Programacion\P(II)\Projects\p_Carrera_V1.3"/>
+			<item value="E:\Programacion\P(II)\Projects\p_Carrera_V1.2"/>
+			<item value="F:\Programacion\P(II)\Projects\p_DespegarInterfaceV1.2"/>
+			<item value="E:\Programacion\P(II)\Projects\p_DespegarInterfaceV1.2"/>
+			<item value="E:\Programacion\P(II)\Projects\p_Carrera_V1.0"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+	</section>
+	<section name="BasicNewProjectResourceWizard">
+	</section>
+	<section name="SaveAsDialogSettings">
+		<item value="525" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="580" key="DIALOG_HEIGHT"/>
+		<item value="466" key="DIALOG_X_ORIGIN"/>
+		<item value="52" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>

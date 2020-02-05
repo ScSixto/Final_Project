@@ -1,0 +1,41 @@
+package views;
+
+import models.RankingCategory;
+
+import java.time.LocalTime;
+import java.util.ArrayList;
+
+public class UtilView{
+
+    public static final String DATE_FORMAT = "M/d/yyyy";
+    public static final String TIME_FORMAT = "HH:mm:ss";
+	public static final String TIME_STRING_FORMAT = "%02d:%02d:%02d";
+	public static final String DATA_STRING_FORMAT = "%02d/%02d/%04d";
+    public static final char FIELD_SEPARATOR = '?';
+
+    public static String formatLocalTime(LocalTime time){
+        return String.format(TIME_STRING_FORMAT, time.getHour(), time.getMinute(), time.getSecond());
+    }
+
+    public static String formatEmployeeID(long id){
+        return String.format("%d",id);
+    }
+    
+    public static ArrayList<Object[]> formatEmployeeData(ArrayList<Object[]> employeeData){
+        for(Object[] employee: employeeData){
+            employee[0] = formatEmployeeID((long)employee[0]);
+            employee[3] = ((RankingCategory)(employee[3])).getText();
+            employee[4] = ((RankingCategory)(employee[4])).getText();
+            employee[4] = ((RankingCategory)(employee[4])).getText();
+            employee[4] = ((RankingCategory)(employee[4])).getText();
+        }
+		return employeeData;
+    }
+
+    public static ArrayList<Object[]> formatEmployeeWinnerData(ArrayList<Object[]> employeeData){
+        for(Object[] employeeWinner: employeeData) {
+            employeeWinner[0] = formatEmployeeID((int) employeeWinner[0]);
+        }
+        return employeeData;
+    }
+}

@@ -1,0 +1,175 @@
+package views;
+
+import javax.swing.*;
+
+import com.github.lgooddatepicker.components.TimePicker;
+import com.toedter.calendar.JDateChooser;
+
+import java.awt.*;
+import java.awt.event.ActionListener;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.util.Date;
+
+public class JDAddRunner extends JDialog{
+
+	private static final long serialVersionUID = 1L;
+
+    public static final String ADD_RUNNER_TITLE_TEXT = "A"+ ConstantsGUI.LOWERCASE_ACCENTED_N +"adir corredor";
+    public static final String ADD_ID_GETTER_TEXT = "Id:";
+    public static final String ADD_FIRST_NAME_GETTER_TEXT = "";//"Ejemplo: Sofia";
+    public static final String ADD_SECOND_NAME_GETTER_TEXT = "";//"Ejemplo: Carlos";
+    public static final String ADD_LAST_NAME_GETTER_TEXT = "";//"Ejemplo: Marinez";
+    public static final String ADD_GENDER_GETTER_TEXT = "";
+    public static final String ADD_BIRTH_DATE_GETTER_TEXT = "";
+    public static final String ADD_ROUTE_TIME_GETTER_TEXT = "";
+    public static final String ADD_ID_TEXT = "Id:";
+    public static final String ADD_FIRST_NAME_TEXT = "Primer nombre";
+    public static final String ADD_SECOND_NAME_TEXT = "Segundo nombre";
+    public static final String ADD_LAST_NAME_TEXT = "Apellido:";
+    public static final String ADD_GENDER_TEXT = "Genero";
+    public static final String ADD_BIRTH_DATE_TEXT = "Fecha de nacimiento:";
+    public static final String ADD_ROUTE_TIME_TEXT = "Tiempo de recorrido:";
+
+    public  static final String SAVE_INFORMATION_BUTTON_TEXT = "Guardar";
+    public static final Dimension DEFAULT_SAVE_BUTTON_DIMENSION = new Dimension(40,20);
+
+    private JPanel container = new JPanel();
+
+    private JSpinnerFormat idGetter;
+    private JTextFieldFormat firstNameGetter;
+    private JTextFieldFormat secondNameGetter;
+    private JTextFieldFormat lastNameGetter;
+    private JRadioButtonFormat maleRadioButton;
+    private JRadioButtonFormat femaleRadioButton;
+    private JDateChooserFormat birthDateGetter;
+    private JComboBoxFormat teamGetter;
+    private TimePicker routeTimeGetter;
+
+    public JDAddRunner(ActionListener act){
+//    	this.setModal(true);
+		this.setSize(new Dimension(300, 420));
+		this.setMinimumSize(this.getSize());
+		this.setTitle(ADD_RUNNER_TITLE_TEXT);
+		this.setLocationRelativeTo(null);
+		this.initComponents(act);
+//		setVisible( true );
+//        this.setPreferredSize(new Dimension(200,500));
+//        this.initComponents(act);
+    }
+
+    private void initComponents(ActionListener act){
+        this.addContainerPanel(act);
+    }
+
+    private void addContainerPanel(ActionListener act){
+        this.container.setLayout(new BoxLayout(this.container,BoxLayout.PAGE_AXIS));
+        this.container.setBackground(Color.WHITE);
+        this.container.setBorder(BorderFactory.createEmptyBorder(15,20,15,20));
+        this.addIdGetter(act);
+//        this.addFirstNameGetter(act);
+//        this.addSecondNameGetter(act);
+        this.addNamesPanel();
+        this.addLastNameGetter(act);
+        this.addGenderGetter(act);
+        this.addBirthDateGetter(act);
+        this.addRouteTimeGetter(act);
+        this.addSaveButton(act);
+        this.add(container);
+    }
+
+    private void addIdGetter(ActionListener act){
+        this.idGetter = new JSpinnerFormat();
+        JPGetterSection idGetterSection = new JPGetterSection(ADD_ID_TEXT,idGetter,JPGetterSection.COMPONENT_RIGTH_ALIGN);
+        idGetterSection.setLayout(new FlowLayout(FlowLayout.LEFT));
+        this.container.add(idGetterSection);
+//        JPanel idGetterPanel = new JPanel();
+//        idGetterPanel.setOpaque(false);
+//        idGetterPanel.setLayout(new BorderLayout());
+//        JLabelFormat addId = new JLabelFormat(ADD_ID_TEXT, DEFAULT_GETTER_FONT, DEFAULT_GETTER_FOREGROUND);
+//        idGetterPanel.add(addId);
+//        this.container.add(idGetterPanel);
+
+    }
+
+    private void addNamesPanel(){
+        JPanel namesPanel = new JPanel();
+        namesPanel.setOpaque(false);
+        GridLayout layout = new GridLayout(1,2);
+        layout.setHgap(10);
+        namesPanel.setLayout(layout);
+
+        this.firstNameGetter = new JTextFieldFormat(ADD_FIRST_NAME_GETTER_TEXT, new Dimension((int)(this.getWidth() * 0.4),25));
+        JPGetterSection firstNamePanel = new JPGetterSection(ADD_FIRST_NAME_TEXT, this.firstNameGetter);
+        namesPanel.add(firstNamePanel, BorderLayout.WEST);
+
+        this.secondNameGetter = new JTextFieldFormat(ADD_SECOND_NAME_GETTER_TEXT, new Dimension((int)(this.getWidth() * 0.4),25));
+        JPGetterSection secondNamePanel = new JPGetterSection(ADD_SECOND_NAME_TEXT, this.secondNameGetter);
+        namesPanel.add(secondNamePanel, BorderLayout.EAST);
+        this.container.add(namesPanel);
+    }
+
+    private void addLastNameGetter(ActionListener act){
+        this.lastNameGetter = new JTextFieldFormat(ADD_LAST_NAME_GETTER_TEXT, new Dimension(260,25));
+        this.container.add(new JPGetterSection(ADD_LAST_NAME_TEXT, this.lastNameGetter));
+//
+//        JPanel lastNameGetterPanel = new JPanel();
+//        lastNameGetterPanel.setOpaque(false);
+//        lastNameGetterPanel.setLayout(new BorderLayout());
+//        JLabelFormat addLastName = new JLabelFormat(ADD_LAST_NAME_TEXT, DEFAULT_GETTER_FONT, DEFAULT_GETTER_FOREGROUND);
+//        JTextFieldFormat lastNameGetter = new JTextFieldFormat(ADD_LAST_NAME_GETTER_TEXT,new Dimension(100,20));
+//        lastNameGetterPanel.add(addLastName, BorderLayout.NORTH);
+//        lastNameGetterPanel.add(lastNameGetter, BorderLayout.SOUTH);
+//        this.container.add(lastNameGetterPanel);
+    }
+
+    private void addGenderGetter(ActionListener act){
+        JPanel radialButtonsPanel = new JPanel();
+        radialButtonsPanel.setOpaque(false);
+        FlowLayout layout = new FlowLayout(FlowLayout.LEFT);
+        layout.setHgap(10);
+        radialButtonsPanel.setLayout(layout);
+        radialButtonsPanel.setBorder(BorderFactory.createEmptyBorder(0,-layout.getHgap(),0,0));
+
+        this.femaleRadioButton = new JRadioButtonFormat(models.Gender.FEMALE.getGender());
+        this.maleRadioButton = new JRadioButtonFormat(models.Gender.MALE.getGender());
+
+        radialButtonsPanel.add(maleRadioButton);
+        radialButtonsPanel.add(femaleRadioButton);
+
+        this.container.add(new JPGetterSection(ADD_GENDER_TEXT,radialButtonsPanel));
+    }
+
+    private void addBirthDateGetter(ActionListener act){
+    	birthDateGetter  = new JDateChooserFormat();
+        this.container.add(new JPGetterSection(ADD_BIRTH_DATE_TEXT, birthDateGetter));
+    }
+
+    private void addRouteTimeGetter(ActionListener act){
+        JTextFieldFormat lastNameTextField = new JTextFieldFormat(ADD_ROUTE_TIME_GETTER_TEXT, new Dimension(125,25));
+        this.routeTimeGetter = new TimePicker();
+        this.container.add(new JPGetterSection(ADD_ROUTE_TIME_TEXT,lastNameTextField));
+    }
+
+    private void addSaveButton(ActionListener act){
+        JPanel saveButtonPanel = new JPanel();
+        saveButtonPanel.setOpaque(false);
+        saveButtonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        saveButtonPanel.setBorder(BorderFactory.createEmptyBorder(5,0,5,0));
+
+        JButtonFormat saveButton = new JButtonFormat(SAVE_INFORMATION_BUTTON_TEXT, DEFAULT_SAVE_BUTTON_DIMENSION, ConstantsGUI.COLOR_LIGHT_GRAY_3);
+        saveButtonPanel.add(saveButton, BorderLayout.EAST);
+        this.container.add(saveButtonPanel);
+    }
+
+    public void reset(){
+        this.setSize(new Dimension(300, 420));
+        this.idGetter.setValue(0);
+        this.firstNameGetter.setText("");
+        this.secondNameGetter.setText("");
+        this.lastNameGetter.setText("");
+        this.maleRadioButton.setSelected(false);
+        this.femaleRadioButton.setSelected(false);
+        this.birthDateGetter.setDate(null);
+    }
+}

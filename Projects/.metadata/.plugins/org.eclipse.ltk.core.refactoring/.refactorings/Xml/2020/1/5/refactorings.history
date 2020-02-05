@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;models.model&apos; to &apos;Utilities&apos;&#x0D;&#x0A;- Original project: &apos;Xml&apos;&#x0D;&#x0A;- Original element: &apos;models.model&apos;&#x0D;&#x0A;- Renamed element: &apos;models.Utilities&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;model&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;models{model.java[model" matchStrategy="1" name="Utilities" qualified="false" references="true" similarDeclarations="false" stamp="1580328590748" textual="false" version="1.0"/>
+</session>

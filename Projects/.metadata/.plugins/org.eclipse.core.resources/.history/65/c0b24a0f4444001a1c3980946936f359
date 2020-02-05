@@ -1,0 +1,94 @@
+package models;
+
+public class Employee {
+	
+	public static final int SALARY_POINT_VALUE = 14420;
+	
+	private int id;
+	private String firstName;
+	private String lastName;
+	private RankingCategory rankingCategory;
+	private DocumentType docType;
+	private BondingType bondingType;
+	private int salaryPoints;
+	private int workedMonths;
+	
+	public Employee(int id, String firstName, String lastName, RankingCategory rankingCategory, DocumentType docType, int salaryPoints, int workedMonths){
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.rankingCategory = rankingCategory;
+		this.docType = docType;
+		this.salaryPoints = salaryPoints;
+		this.workedMonths = workedMonths;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public RankingCategory getRankingCategory() {
+		return rankingCategory;
+	}
+
+	public DocumentType getRouteTime() {
+		return docType;
+	}
+
+	public int getId(){
+		return this.id;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public void setRankingCategory(RankingCategory rankingCategory) {
+		this.rankingCategory = rankingCategory;
+	}
+
+	public void setDocumentType(DocumentType docType) {
+		this.docType = docType;
+	}
+
+	public BondingType getBondingType() {
+		return bondingType;
+	}
+
+	public void setBondingType(BondingType bondingType) {
+		this.bondingType = bondingType;
+	}
+	
+	public double calculateBasicSalary() {
+		double basicSalary = SALARY_POINT_VALUE * this.salaryPoints;
+		if(this.bondingType.equals(BondingType.OCCASIONAL_HALFTIME))
+			basicSalary /= 2;
+		return basicSalary;
+	}
+	
+	public double calculateNetWorthToPay(){
+		switch(rankingCategory) {
+		case AUXILIARY:
+		case ASSISTANT:
+			double income = 0;
+			this.calculateBasicSalary();
+			
+			break;
+		case:
+			break;
+		}
+	}
+
+	public Object[] toObjectArray(){
+		return new Object[]{this.id, this.firstName, this.lastName, this.rankingCategory, this.docType, this.salaryPoints, this.workedMonths};
+	}
+
+}

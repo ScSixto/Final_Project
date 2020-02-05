@@ -1,0 +1,5 @@
+INDEX VERSION 1.127+D:\Users\S.c. Sixto\Documents\U\Programacion\P(II)\Projects\.metadata\.plugins\org.eclipse.jdt.core
+3509310320.index
+1387487440.index
+2047503596.index
+1731446380.index

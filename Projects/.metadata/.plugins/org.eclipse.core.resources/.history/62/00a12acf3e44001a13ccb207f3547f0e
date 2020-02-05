@@ -1,0 +1,15 @@
+package models;
+
+public enum BondingType {
+	OCCASIONAL_HALFTIME("Ocasional Medio Tiempo"), FOREIGNER_ID("Cedula de extranjeria"),PASSPORT("Pasaporte");
+
+	private String text;
+
+	BondingType(String text){
+		this.text = text;
+	}
+
+	public String getText() {
+		return text;
+	}
+}

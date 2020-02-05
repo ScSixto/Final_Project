@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;MyFile.java&apos; to &apos;p_Persistence_V1.0/src/persistence&apos;&#x0D;&#x0A;- Original project: &apos;p_businessPilaClaseV1.2&apos;&#x0D;&#x0A;- Destination element: &apos;p_Persistence_V1.0/src/persistence&apos;&#x0D;&#x0A;- Original element: &apos;persistence.MyFile.java&apos;" description="Copy compilation unit" destination="=p_Persistence_V1.0/src&lt;persistence" element1="/src&lt;persistence{MyFile.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1567714292420" units="1" version="1.0"/>
+</session>

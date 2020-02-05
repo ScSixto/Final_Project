@@ -1,0 +1,21 @@
+package models;
+
+public enum Team{
+    MOVISTAR(1,"Movistar"),KATUSHA(2,"katusha"),BMC(3,"BMC"),TINKOFF(4,"Tinkoff"),SKY(5,"Sky"),IAM_CYCLING(6,"Iam Cycling");
+
+    private String name;
+    private int id;
+
+    Team(int id,String name){
+        this.id = id;
+        this.name = name;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public int getId(){
+        return id;
+    }
+}

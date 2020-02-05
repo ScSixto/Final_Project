@@ -1,0 +1,39 @@
+package views;
+
+import models.RankingCategory;
+
+import java.time.LocalTime;
+import java.util.ArrayList;
+
+public class UtilView{
+
+    public static final String DATE_FORMAT = "M/d/yyyy";
+    public static final String TIME_FORMAT = "HH:mm:ss";
+	public static final String TIME_STRING_FORMAT = "%02d:%02d:%02d";
+	public static final String DATA_STRING_FORMAT = "%02d/%02d/%04d";
+    public static final char FIELD_SEPARATOR = '?';
+
+    public static String formatLocalTime(LocalTime time){
+        return String.format(TIME_STRING_FORMAT, time.getHour(), time.getMinute(), time.getSecond());
+    }
+
+    public static String formatAlgoID(int id){
+        return String.format("%d",id);
+    }
+    
+    public static ArrayList<Object[]> formatAlgoData(ArrayList<Object[]> algoData){
+        for(Object[] algo: algoData){
+            algo[0] = formatAlgoID((int)algo[0]);
+            algo[4] = ((RankingCategory)(algo[4])).getName();
+            algo[5] = formatLocalTime((LocalTime)(algo[5]));
+        }
+		return algoData;
+    }
+
+    public static ArrayList<Object[]> formatAlgoWinnerData(ArrayList<Object[]> algoData){
+        for(Object[] algoWinner: algoData) {
+            algoWinner[0] = formatAlgoID((int) algoWinner[0]);
+        }
+        return algoData;
+    }
+}
