@@ -2,7 +2,6 @@ package views.body;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import views.ConstantsGUI;

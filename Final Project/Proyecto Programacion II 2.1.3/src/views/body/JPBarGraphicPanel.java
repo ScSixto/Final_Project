@@ -1,17 +1,13 @@
 package views.body;
 
 import java.awt.FlowLayout;
-import java.awt.Component;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
-import javax.swing.border.Border;
 import javax.swing.GroupLayout;
 import javax.swing.JLabel;
 
@@ -19,7 +15,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 import views.ConstantsGUI;
-import views.JScrollFormat;
 
 public class JPBarGraphicPanel extends JPanel {
 

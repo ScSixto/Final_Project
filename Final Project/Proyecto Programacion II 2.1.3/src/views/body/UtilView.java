@@ -3,20 +3,16 @@ package views.body;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Locale;
 import java.util.Map.Entry;
 
 import views.ConstantsGUI;
 
 import java.awt.Color;
 import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
 
 public class UtilView {
 
     private static DecimalFormat doubleFormat = new DecimalFormat("#.###");
-    private static DecimalFormat integerFormat = new DecimalFormat("###,###.##");
 
     public static HashMap<String, Double> getPercentValues(HashMap<String, Double> normalValues) {
         HashMap<String, Double> percentValues = new HashMap<>();
