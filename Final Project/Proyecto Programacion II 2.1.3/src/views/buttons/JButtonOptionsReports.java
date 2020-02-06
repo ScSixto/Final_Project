@@ -24,9 +24,9 @@ public class JButtonOptionsReports extends JButton{
 		setText(ConstantsGUI.HTML_TAG_CENTER+text);
 		setIconButton(logo);
 		setBorder(BorderFactory.createEmptyBorder(20, 20, 5, 20));
-		setBackground(Color.WHITE);
+		setBackground(Color.decode("#2d2e36"));
 		setFont(new Font("Roboto", Font.BOLD, 20));
-		setForeground(ConstantsGUI.COLOR_PRESENTATION);
+		setForeground(ConstantsGUI.COLOR_BACKGRAUND);
 		setHorizontalTextPosition(SwingConstants.CENTER);
 		setVerticalTextPosition(SwingConstants.BOTTOM);
 		setBorderPainted(false);

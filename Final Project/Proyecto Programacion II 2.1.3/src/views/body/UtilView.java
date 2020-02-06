@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
-
-import views.ConstantsGUI;
-
 import java.awt.Color;
 import java.text.DecimalFormat;
 
@@ -138,8 +135,18 @@ public class UtilView {
         }
         return numericSeparator;
     }
-
-    public static int getCircleGraphicAngle(double totalValue, double value){
-        return (int) (value * ConstantsGUI.CIRCLE_GRAPHIC_MAX_ANGLE / totalValue);
-    }
+    
+    public static HashMap<String, ArrayList<Object[]>> showCultivesTable(HashMap<String, ArrayList<Object[]>> cultivesTable){
+		Iterator<Entry<String, ArrayList<Object[]>>> it = cultivesTable.entrySet().iterator();
+		while(it.hasNext()){
+			Entry<String, ArrayList<Object[]>> entry = it.next();
+			for (Object[] objectArray : entry.getValue()) {
+				objectArray[3] = UtilView.formatDouble((int)objectArray[3]);
+				objectArray[4] = UtilView.formatDouble((int)objectArray[4]);
+				objectArray[5] = UtilView.formatDouble((double)objectArray[5]);
+				objectArray[6] = "COL$ " + UtilView.formatDouble((double)objectArray[6]);
+			}
+		}
+		return cultivesTable;
+	}
 }

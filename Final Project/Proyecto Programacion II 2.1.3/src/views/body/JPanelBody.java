@@ -20,6 +20,7 @@ public class JPanelBody extends JPanel{
 	
 	private CardLayout layout;
 	private JPanelInitiation panelInitial;
+	private JPanelTableCultives panelTableCultives;
 	private JPanelShowReports showReportsTable;
 	private JPanelTableReports panelTableReports;
 	private JPanelGraphicReports panelGraphicReports;
@@ -27,7 +28,7 @@ public class JPanelBody extends JPanel{
 	
 	public JPanelBody(ActionListener actionListener) {
 		this.layout = new CardLayout();
-		setBorder(BorderFactory.createEmptyBorder(20,0,0,0));
+		setBorder(BorderFactory.createEmptyBorder(20,0,20,0));
 		setLayout(layout);
         this.setOpaque(false);
         initComponents(actionListener);
@@ -35,8 +36,10 @@ public class JPanelBody extends JPanel{
 	}
 	
 	private void initComponents(ActionListener actionListener) {
-		panelInitial = new JPanelInitiation();
+		panelInitial = new JPanelInitiation(actionListener);
 		this.add(panelInitial,ConstantsGUI.PANEL_INITIAL);
+		panelTableCultives = new JPanelTableCultives(actionListener);
+		this.add(panelTableCultives,ConstantsGUI.PANEL_TABLE_CULTIVES);
 		showReportsTable = new JPanelShowReports(actionListener);
 		this.add(showReportsTable,ConstantsGUI.PANEL_SHOW_TABLE_REPORTS);
 		panelTableReports = new JPanelTableReports(actionListener);
@@ -46,24 +49,24 @@ public class JPanelBody extends JPanel{
 		panelGraphicSpecificReport = new JPanelGraphicBarChart();
 		this.add(panelGraphicSpecificReport,ConstantsGUI.PANEL_GRAPHIC_REPORT);
 	}
-
+	
 	public void addLabel(String title) {
 		showReportsTable.addLabel(title);
 	}
-
+	
 	public void changeLanguage() {
 		panelInitial.changeLanguage();
 		panelGraphicReports.changeLanguage();
 		panelTableReports.changeLanguage();
 		showReportsTable.changeLanguage();
-		panelGraphicSpecificReport.changeLanguage();
+		panelTableCultives.changeLanguage();
 	}
 
 	public void showBarGraphicReport(HashMap<String, Double> info, GraphicReportTitle title){
 		String graphicTitle = "";
 		for (GraphicReportTitle graphicReport : GraphicReportTitle.values()) {
 			if(title.equals(graphicReport)){
-				graphicTitle = ConstantsGUI.HTML_TAG_CENTER + HandlerLanguage.languageProperties.getProperty(graphicReport.getPropertyText());
+				graphicTitle = HandlerLanguage.languageProperties.getProperty(graphicReport.getPropertyText());
 				break;
 			}
 		}
@@ -71,23 +74,40 @@ public class JPanelBody extends JPanel{
 	}
 	
 	public void showTableCultives(HashMap<String, ArrayList<Object[]>> info) {
-		panelInitial.showTableCultives(info);
+		panelTableCultives.showTableCultives(info);
+	}
+	
+	public void addItemsComboBox(Object[] items) {
+		showReportsTable.addItemsComboBox(items);
+	}
+	
+	public Object getItemComboBox() {
+		return showReportsTable.getItemComboBox();
+	}
+	
+	public void getInformationCultives(HashMap<String, ArrayList<Object[]>> info) {
+		showReportsTable.getInformationCultives(info);
 	}
 	
 	public void showCardImage(String key){
         switch(key){
             case ConstantsGUI.PANEL_INITIAL:
                 this.layout.show(this, ConstantsGUI.PANEL_INITIAL);
-                this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.HEIGHT*1.33)));
+//                this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.95),(int)(ConstantsGUI.HEIGHT*1.45)));
+                break;
+            case ConstantsGUI.PANEL_TABLE_CULTIVES:
+                this.layout.show(this, ConstantsGUI.PANEL_TABLE_CULTIVES);
+                this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.HEIGHT*0.87)));
                 break;
             case ConstantsGUI.PANEL_SHOW_TABLE_REPORTS:
+            	this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.HEIGHT*0.6)));
                 this.layout.show(this, ConstantsGUI.PANEL_SHOW_TABLE_REPORTS);
 				break;
 				case ConstantsGUI.PANEL_GRAPHIC_BAR_CHART:
                 this.layout.show(this, ConstantsGUI.PANEL_GRAPHIC_BAR_CHART);
                 break;
             case ConstantsGUI.PANEL_TABLE_REPORTS:
-            	this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.WIDTH*0.1)));
+            	this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.HEIGHT*0.6)));
                 this.layout.show(this, ConstantsGUI.PANEL_TABLE_REPORTS);
                 break;
 			case ConstantsGUI.PANEL_GRAPHIC_REPORTS:

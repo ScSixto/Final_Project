@@ -6,30 +6,17 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Debug (Launch) - Current File",
-            "request": "launch",
-            "mainClass": "${file}"
-        },
-        {
-            "type": "java",
-            "name": "Debug (Launch)-Controller<Proyecto Programacion II 2.1.3_8d42d68b>",
-            "request": "launch",
-            "mainClass": "controllers.Controller",
-            "projectName": "Proyecto Programacion II 2.1.3_8d42d68b"
-        },
-        {
-            "type": "java",
-            "name": "Debug (Launch)-TesterMetodos<Proyecto Programacion II 2.1.3_8d42d68b>",
+            "name": "CodeLens (Launch) - TesterMetodos",
             "request": "launch",
             "mainClass": "models.TesterMetodos",
-            "projectName": "Proyecto Programacion II 2.1.3_8d42d68b"
+            "projectName": "Eejercicio_3.0"
         },
         {
             "type": "java",
-            "name": "Debug (Launch)-Run<Proyecto Programacion II 2.1.3_8d42d68b>",
+            "name": "CodeLens (Launch) - Run",
             "request": "launch",
             "mainClass": "runner.Run",
-            "projectName": "Proyecto Programacion II 2.1.3_8d42d68b"
+            "projectName": "Eejercicio_3.0"
         }
     ]
 }
